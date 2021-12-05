@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late List<Category> _categories;
   late List<Product> _products;
+  ThemeData _theme = Style.getThemeData();
 
   @override
   initState() {
@@ -50,8 +51,9 @@ class _HomeScreenState extends State<HomeScreen>
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               FxText.h6("Hi, Gabriel!",
-                  color: Style.getThemeData().colorScheme.onBackground,
-                  fontWeight: 600),
+                  color: _theme.colorScheme.onBackground, fontWeight: 600),
+
+              //https://api.flutter.dev/flutter/material/InkResponse-class.html
               InkWell(
                 onTap: () {
                   Navigator.of(context).push(new MaterialPageRoute<Null>(
@@ -66,10 +68,7 @@ class _HomeScreenState extends State<HomeScreen>
                     Icon(
                       FeatherIcons.bell,
                       size: 22,
-                      color: Style.getThemeData()
-                          .colorScheme
-                          .onBackground
-                          .withAlpha(200),
+                      color: _theme.colorScheme.onBackground.withAlpha(200),
                     ),
                     Positioned(
                       right: -2,
@@ -79,13 +78,13 @@ class _HomeScreenState extends State<HomeScreen>
                         height: 14,
                         width: 14,
                         decoration: BoxDecoration(
-                            color: Style.getThemeData().primaryColor,
+                            color: _theme.primaryColor,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(40))),
                         child: Center(
                           child: FxText.overline(
                             "2",
-                            color: Style.getThemeData().backgroundColor,
+                            color: _theme.backgroundColor,
                             fontSize: 9,
                             fontWeight: 500,
                           ),
@@ -99,10 +98,9 @@ class _HomeScreenState extends State<HomeScreen>
                 onTap: () =>
                     Navigator.push(context, SlideLeftRoute(AppSettingScreen())),
                 child: Container(
-                  padding: Spacing.x(20),
                   child: Image(
                     image: AssetImage(Images.settingIcon),
-                    color: Style.getThemeData().colorScheme.onBackground,
+                    color: _theme.colorScheme.onBackground,
                     width: 24,
                     height: 24,
                   ),
@@ -115,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen>
         Padding(
           padding: Spacing.horizontal(24),
           child: FxText.b2("What would you buy today?",
-              color: Style.getThemeData().colorScheme.onBackground,
+              color: _theme.colorScheme.onBackground,
               fontWeight: 500,
               xMuted: true),
         ),
@@ -129,10 +127,10 @@ class _HomeScreenState extends State<HomeScreen>
             children: [
               FxText.sh1("Categories",
                   letterSpacing: 0,
-                  color: Style.getThemeData().colorScheme.onBackground,
+                  color: _theme.colorScheme.onBackground,
                   fontWeight: 600),
               FxText.caption("See All",
-                  color: Style.getThemeData().colorScheme.onBackground,
+                  color: _theme.colorScheme.onBackground,
                   fontWeight: 600,
                   xMuted: true,
                   letterSpacing: 0),
@@ -153,10 +151,9 @@ class _HomeScreenState extends State<HomeScreen>
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               FxText.sh1("Best Selling",
-                  color: Style.getThemeData().colorScheme.onBackground,
-                  fontWeight: 600),
+                  color: _theme.colorScheme.onBackground, fontWeight: 600),
               FxText.caption("See All",
-                  color: Style.getThemeData().colorScheme.onBackground,
+                  color: _theme.colorScheme.onBackground,
                   fontWeight: 600,
                   xMuted: true,
                   letterSpacing: 0),
@@ -186,20 +183,17 @@ class _HomeScreenState extends State<HomeScreen>
 
   Widget getBannerWidget() {
     return FxContainer(
-      background: Style.getThemeData().primaryColor.withAlpha(28),
+      background: _theme.primaryColor.withAlpha(28),
       padding: Spacing.all(24),
       margin: Spacing.horizontal(24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           FxText.b1("Enjoy the special offer\nup to 60%",
-              color: Style.getThemeData().primaryColor,
-              fontWeight: 600,
-              letterSpacing: 0),
+              color: _theme.primaryColor, fontWeight: 600, letterSpacing: 0),
           Spacing.height(8),
           FxText.caption("at 15 - 25 March 2021",
-              color:
-                  Style.getThemeData().colorScheme.onBackground.withAlpha(100),
+              color: _theme.colorScheme.onBackground.withAlpha(100),
               fontWeight: 500,
               letterSpacing: -0.2),
         ],
@@ -248,7 +242,7 @@ class _HomeScreenState extends State<HomeScreen>
             Spacing.height(4),
             FxText.overline(
               category.title,
-              color: Style.getThemeData().colorScheme.onBackground,
+              color: _theme.colorScheme.onBackground,
             )
           ],
         ),
@@ -270,12 +264,12 @@ class _HomeScreenState extends State<HomeScreen>
       },
       child: FxContainer(
         margin: Spacing.bottom(16),
-        background: Style.getThemeData().primaryColor.withAlpha(32),
+        background: _theme.primaryColor.withAlpha(32),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FxContainer(
-              background: Style.getThemeData().primaryColor.withAlpha(32),
+              background: _theme.primaryColor.withAlpha(32),
               padding: Spacing.all(8),
               child: Hero(
                 tag: heroKey,
@@ -295,12 +289,10 @@ class _HomeScreenState extends State<HomeScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   FxText.b2(product.name,
-                      color: Style.getThemeData().colorScheme.onBackground,
-                      fontWeight: 600),
+                      color: _theme.colorScheme.onBackground, fontWeight: 600),
                   Spacing.height(8),
                   FxText.overline(product.description,
-                      color: Style.getThemeData().colorScheme.onBackground,
-                      muted: true),
+                      color: _theme.colorScheme.onBackground, muted: true),
                   Spacing.height(8),
                   product.discountedPrice != product.price
                       ? Row(
@@ -312,21 +304,19 @@ class _HomeScreenState extends State<HomeScreen>
                             Spacing.width(8),
                             FxText.b2(
                                 "\$" + doubleToString(product.discountedPrice),
-                                color: Style.getThemeData()
-                                    .colorScheme
-                                    .onBackground,
+                                color: _theme.colorScheme.onBackground,
                                 fontWeight: 700),
                           ],
                         )
                       : FxText.b2("\$" + doubleToString(product.price),
-                          color: Style.getThemeData().colorScheme.onBackground,
+                          color: _theme.colorScheme.onBackground,
                           fontWeight: 700),
                 ],
               ),
             ),
             Icon(
               MdiIcons.heartOutline,
-              color: Style.getThemeData().primaryColor,
+              color: _theme.primaryColor,
               size: 18,
             )
           ],
