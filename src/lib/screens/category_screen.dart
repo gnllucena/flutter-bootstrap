@@ -35,10 +35,10 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Style.getTheme().copyWith(
-          colorScheme: Style.getTheme()
+      data: Style.getThemeData().copyWith(
+          colorScheme: Style.getThemeData()
               .colorScheme
-              .copyWith(secondary: Style.getTheme().primaryColor)),
+              .copyWith(secondary: Style.getThemeData().primaryColor)),
       child: Scaffold(
           appBar: AppBar(
             elevation: 0,
@@ -48,7 +48,7 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
               },
               child: Icon(
                 MdiIcons.chevronLeft,
-                color: Style.getTheme().colorScheme.onBackground,
+                color: Style.getThemeData().colorScheme.onBackground,
               ),
             ),
           ),
@@ -76,7 +76,7 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
                     Spacing.height(16),
                     FxText.sh1(
                       widget.category.title,
-                      color: Style.getTheme().colorScheme.onBackground,
+                      color: Style.getThemeData().colorScheme.onBackground,
                       fontWeight: 600,
                     )
                   ],
@@ -131,7 +131,7 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FxContainer(
-              background: Style.getTheme().primaryColor.withAlpha(32),
+              background: Style.getThemeData().primaryColor.withAlpha(32),
               padding: Spacing.all(8),
               child: Hero(
                 tag: heroKey,
@@ -151,11 +151,11 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   FxText.b2(product.name,
-                      color: Style.getTheme().colorScheme.onBackground,
+                      color: Style.getThemeData().colorScheme.onBackground,
                       fontWeight: 600),
                   Spacing.height(8),
                   FxText.overline(product.description,
-                      color: Style.getTheme().colorScheme.onBackground,
+                      color: Style.getThemeData().colorScheme.onBackground,
                       muted: true),
                   Spacing.height(8),
                   product.discountedPrice != product.price
@@ -168,13 +168,14 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
                             Spacing.width(8),
                             FxText.b2(
                                 "\$" + doubleToString(product.discountedPrice),
-                                color:
-                                    Style.getTheme().colorScheme.onBackground,
+                                color: Style.getThemeData()
+                                    .colorScheme
+                                    .onBackground,
                                 fontWeight: 700),
                           ],
                         )
                       : FxText.b2("\$" + doubleToString(product.price),
-                          color: Style.getTheme().colorScheme.onBackground,
+                          color: Style.getThemeData().colorScheme.onBackground,
                           fontWeight: 700),
                 ],
               ),
@@ -182,7 +183,7 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
             // Space.width(8),
             Icon(
               MdiIcons.heartOutline,
-              color: Style.getTheme().primaryColor,
+              color: Style.getThemeData().primaryColor,
               size: 18,
             )
           ],

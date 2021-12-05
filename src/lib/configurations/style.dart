@@ -6,19 +6,23 @@ import 'package:shared_preferences/shared_preferences.dart';
 enum Styles { light, dark }
 
 class Style {
-  static Styles defaultTheme = Styles.light;
-  static Styles theme = defaultTheme;
+  static Styles _defaultTheme = Styles.light;
+  static Styles _theme = _defaultTheme;
 
   static void setTheme(Styles themeType) async {
-    theme = themeType;
+    _theme = themeType;
 
     var preferences = await SharedPreferences.getInstance();
     preferences.setString(
-        "theme_mode", theme == Styles.light ? "light" : "dark");
+        "theme_mode", _theme == Styles.light ? "light" : "dark");
   }
 
-  static ThemeData getTheme() {
-    if (theme == Styles.light) {
+  static Styles getTheme() {
+    return _theme;
+  }
+
+  static ThemeData getThemeData() {
+    if (_theme == Styles.light) {
       return _light;
     }
 
@@ -276,8 +280,8 @@ class CustomStyle {
     this.shimmerHighlightColor = const Color(0xFFE0E0E0),
   });
 
-  static CustomStyle getTheme() {
-    if (Style.theme == Styles.light) {
+  static CustomStyle getThemeData() {
+    if (Style.getTheme() == Styles.light) {
       return _light;
     }
 

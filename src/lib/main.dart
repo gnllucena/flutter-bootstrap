@@ -30,7 +30,7 @@ class Main extends StatelessWidget {
       builder: (BuildContext context, SettingsNotifier value, Widget? child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: Style.getTheme(),
+          theme: Style.getThemeData(),
           builder: (context, child) {
             return Directionality(
               textDirection: Writing.getTextDirection(),

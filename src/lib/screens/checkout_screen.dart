@@ -29,10 +29,10 @@ class _GroceryCheckoutScreenState extends State<GroceryCheckoutScreen>
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Style.getTheme().copyWith(
-          colorScheme: Style.getTheme()
+      data: Style.getThemeData().copyWith(
+          colorScheme: Style.getThemeData()
               .colorScheme
-              .copyWith(secondary: Style.getTheme().primaryColor)),
+              .copyWith(secondary: Style.getThemeData().primaryColor)),
       child: Scaffold(
           appBar: AppBar(
             elevation: 0,
@@ -43,7 +43,7 @@ class _GroceryCheckoutScreenState extends State<GroceryCheckoutScreen>
               },
               child: Icon(
                 MdiIcons.chevronLeft,
-                color: Style.getTheme().colorScheme.onBackground,
+                color: Style.getThemeData().colorScheme.onBackground,
                 size: 20,
               ),
             ),
@@ -112,11 +112,11 @@ class _GroceryCheckoutScreenState extends State<GroceryCheckoutScreen>
                       },
                       child: FxText.b2(
                         "PROCEED TO PAY",
-                        color: Style.getTheme().backgroundColor,
+                        color: Style.getThemeData().backgroundColor,
                         letterSpacing: 0.5,
                         fontWeight: 600,
                       ),
-                      backgroundColor: Style.getTheme().primaryColor,
+                      backgroundColor: Style.getThemeData().primaryColor,
                       borderRadiusAll: 4,
                       padding: Spacing.y(12),
                       elevation: 0,
@@ -142,10 +142,10 @@ class _GroceryCheckoutScreenState extends State<GroceryCheckoutScreen>
       margin: Spacing.bottom(16),
       padding: Spacing.all(16),
       bordered: !isSelected,
-      border: Border.all(color: CustomStyle.getTheme().border),
+      border: Border.all(color: CustomStyle.getThemeData().border),
       background: isSelected
-          ? CustomStyle.getTheme().card
-          : Style.getTheme().scaffoldBackgroundColor,
+          ? CustomStyle.getThemeData().card
+          : Style.getThemeData().scaffoldBackgroundColor,
       borderRadiusAll: 8,
       child: Row(
         children: [
@@ -154,10 +154,10 @@ class _GroceryCheckoutScreenState extends State<GroceryCheckoutScreen>
                   padding: Spacing.all(8),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Style.getTheme().primaryColor.withAlpha(40)),
+                      color: Style.getThemeData().primaryColor.withAlpha(40)),
                   child: Icon(
                     FeatherIcons.mapPin,
-                    color: Style.getTheme().primaryColor,
+                    color: Style.getThemeData().primaryColor,
                     size: 14,
                   ),
                 )
@@ -166,7 +166,8 @@ class _GroceryCheckoutScreenState extends State<GroceryCheckoutScreen>
                   width: 26,
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      border: Border.all(color: Style.getTheme().primaryColor)),
+                      border:
+                          Border.all(color: Style.getThemeData().primaryColor)),
                 ),
           Spacing.width(isSelected ? 16 : 20),
           Expanded(
@@ -188,10 +189,10 @@ class _GroceryCheckoutScreenState extends State<GroceryCheckoutScreen>
                 );
               }).toList();
             },
-            color: CustomStyle.getTheme().card,
+            color: CustomStyle.getThemeData().card,
             child: Icon(
               MdiIcons.dotsVertical,
-              color: Style.getTheme().colorScheme.onBackground,
+              color: Style.getThemeData().colorScheme.onBackground,
               size: 20,
             ),
           ),
@@ -213,10 +214,10 @@ class _GroceryCheckoutScreenState extends State<GroceryCheckoutScreen>
       margin: Spacing.bottom(16),
       padding: Spacing.all(16),
       bordered: !isSelected,
-      border: Border.all(color: CustomStyle.getTheme().border),
+      border: Border.all(color: CustomStyle.getThemeData().border),
       background: isSelected
-          ? CustomStyle.getTheme().card
-          : Style.getTheme().scaffoldBackgroundColor,
+          ? CustomStyle.getThemeData().card
+          : Style.getThemeData().scaffoldBackgroundColor,
       borderRadiusAll: 8,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -248,10 +249,10 @@ class _GroceryCheckoutScreenState extends State<GroceryCheckoutScreen>
                   padding: Spacing.all(8),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Style.getTheme().primaryColor.withAlpha(40)),
+                      color: Style.getThemeData().primaryColor.withAlpha(40)),
                   child: Icon(
                     FeatherIcons.creditCard,
-                    color: Style.getTheme().primaryColor,
+                    color: Style.getThemeData().primaryColor,
                     size: 14,
                   ),
                 )
@@ -260,7 +261,8 @@ class _GroceryCheckoutScreenState extends State<GroceryCheckoutScreen>
                   width: 26,
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      border: Border.all(color: Style.getTheme().primaryColor)),
+                      border:
+                          Border.all(color: Style.getThemeData().primaryColor)),
                 ),
         ],
       ),

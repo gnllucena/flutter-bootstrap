@@ -54,7 +54,7 @@ class _GroceryCartScreenState extends State<GroceryCartScreen>
             ),
             Spacing.height(16),
             FxContainer(
-              background: CustomStyle.getTheme().card,
+              background: CustomStyle.getThemeData().card,
               padding: Spacing.all(8),
               child: Row(
                 children: [
@@ -69,11 +69,11 @@ class _GroceryCartScreenState extends State<GroceryCartScreen>
                       floatingLabelBehavior: FloatingLabelBehavior.never,
                       contentPadding: Spacing.right(16),
                       focusedBorderColor: Colors.transparent,
-                      cursorColor: Style.getTheme().primaryColor,
+                      cursorColor: Style.getThemeData().primaryColor,
                       prefixIcon: Icon(
                         MdiIcons.ticketPercentOutline,
                         size: 22,
-                        color: Style.getTheme()
+                        color: Style.getThemeData()
                             .colorScheme
                             .onBackground
                             .withAlpha(150),
@@ -91,8 +91,8 @@ class _GroceryCartScreenState extends State<GroceryCartScreen>
                     child: FxText.button("Find",
                         letterSpacing: 0.5,
                         fontWeight: 600,
-                        color: Style.getTheme().backgroundColor),
-                    backgroundColor: Style.getTheme().primaryColor,
+                        color: Style.getThemeData().backgroundColor),
+                    backgroundColor: Style.getThemeData().primaryColor,
                     borderRadiusAll: 4,
                     padding: Spacing.xy(32, 12),
                     elevation: 0,
@@ -131,7 +131,7 @@ class _GroceryCartScreenState extends State<GroceryCartScreen>
                   dashSpace: 6,
                   height: 1.2,
                   dashWidth: 8,
-                  color: Style.getTheme().colorScheme.onBackground,
+                  color: Style.getThemeData().colorScheme.onBackground,
                 ),
                 Spacing.height(12),
                 Row(
@@ -156,9 +156,9 @@ class _GroceryCartScreenState extends State<GroceryCartScreen>
                   "CHECKOUT",
                   letterSpacing: 0.5,
                   fontWeight: 600,
-                  color: Style.getTheme().backgroundColor,
+                  color: Style.getThemeData().backgroundColor,
                 ),
-                backgroundColor: Style.getTheme().primaryColor,
+                backgroundColor: Style.getThemeData().primaryColor,
                 borderRadiusAll: 4,
                 padding: Spacing.xy(32, 12),
                 elevation: 0,
@@ -225,11 +225,11 @@ class _SingleCartWidgetState extends State<SingleCartWidget> {
         key: UniqueKey(),
         direction: DismissDirection.endToStart,
         background: Container(
-          color: CustomStyle.getTheme().card,
+          color: CustomStyle.getThemeData().card,
         ),
         secondaryBackground: Container(
           decoration: BoxDecoration(
-              color: CustomStyle.getTheme().cardDark,
+              color: CustomStyle.getThemeData().cardDark,
               borderRadius: BorderRadius.all(Radius.circular(8))),
           padding: Spacing.horizontal(20),
           alignment: AlignmentDirectional.centerEnd,
@@ -263,7 +263,7 @@ class _SingleCartWidgetState extends State<SingleCartWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               FxContainer(
-                background: Style.getTheme().primaryColor.withAlpha(32),
+                background: Style.getThemeData().primaryColor.withAlpha(32),
                 padding: Spacing.all(8),
                 child: Hero(
                   tag: heroKey!,
@@ -298,13 +298,15 @@ class _SingleCartWidgetState extends State<SingleCartWidget> {
                                   "\$" +
                                       doubleToString(
                                           widget.cart.discountedPrice),
-                                  color:
-                                      Style.getTheme().colorScheme.onBackground,
+                                  color: Style.getThemeData()
+                                      .colorScheme
+                                      .onBackground,
                                   fontWeight: 700),
                             ],
                           )
                         : FxText.b2("\$" + doubleToString(widget.cart.price),
-                            color: Style.getTheme().colorScheme.onBackground,
+                            color:
+                                Style.getThemeData().colorScheme.onBackground,
                             fontWeight: 700),
                     Spacing.height(8),
                     Row(
@@ -319,11 +321,11 @@ class _SingleCartWidgetState extends State<SingleCartWidget> {
                           paddingAll: 8,
                           borderRadiusAll: 4,
                           background:
-                              Style.getTheme().primaryColor.withAlpha(48),
+                              Style.getThemeData().primaryColor.withAlpha(48),
                           child: Icon(
                             MdiIcons.minus,
                             size: 14,
-                            color: Style.getTheme().primaryColor,
+                            color: Style.getThemeData().primaryColor,
                           ),
                         ),
                         Spacing.width(12),
@@ -337,11 +339,11 @@ class _SingleCartWidgetState extends State<SingleCartWidget> {
                               quantity++;
                             });
                           },
-                          background: Style.getTheme().primaryColor,
+                          background: Style.getThemeData().primaryColor,
                           child: Icon(
                             MdiIcons.plus,
                             size: 14,
-                            color: Style.getTheme().backgroundColor,
+                            color: Style.getThemeData().backgroundColor,
                           ),
                         ),
                       ],

@@ -41,7 +41,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
   }
 
   void changeTheme() {
-    if (Style.theme == Styles.light) {
+    if (Style.getTheme() == Styles.light) {
       Provider.of<SettingsNotifier>(context, listen: false)
           .updateTheme(Styles.dark);
     } else {
@@ -116,12 +116,12 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
   Widget build(BuildContext context) {
     return Consumer<SettingsNotifier>(
       builder: (BuildContext context, SettingsNotifier value, Widget? child) {
-        isDark = Style.theme == Styles.dark;
+        isDark = Style.getTheme() == Styles.dark;
         return Theme(
-          data: Style.getTheme().copyWith(
-              colorScheme: Style.getTheme().colorScheme.copyWith(
+          data: Style.getThemeData().copyWith(
+              colorScheme: Style.getThemeData().colorScheme.copyWith(
                   secondary:
-                      Style.getTheme().colorScheme.primary.withAlpha(80))),
+                      Style.getThemeData().colorScheme.primary.withAlpha(80))),
           child: Scaffold(
             body: GestureDetector(
               onPanUpdate: (details) {
@@ -141,7 +141,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         child: autoDirection(Icon(
                           FeatherIcons.chevronLeft,
                           size: 20,
-                          color: Style.getTheme().colorScheme.onBackground,
+                          color: Style.getThemeData().colorScheme.onBackground,
                         )),
                       ),
                       Spacing.width(16),
@@ -184,7 +184,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         autoDirection(Icon(
                           FeatherIcons.chevronRight,
                           size: 18,
-                          color: Style.getTheme().colorScheme.onBackground,
+                          color: Style.getThemeData().colorScheme.onBackground,
                         )),
                       ],
                     ),
@@ -225,7 +225,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         autoDirection(Icon(
                           FeatherIcons.chevronRight,
                           size: 18,
-                          color: Style.getTheme().colorScheme.onBackground,
+                          color: Style.getThemeData().colorScheme.onBackground,
                         )),
                       ],
                     ),
@@ -264,7 +264,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         autoDirection(Icon(
                           FeatherIcons.chevronRight,
                           size: 18,
-                          color: Style.getTheme().colorScheme.onBackground,
+                          color: Style.getThemeData().colorScheme.onBackground,
                         )),
                       ],
                     ),
@@ -337,14 +337,16 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                       onPressed: () {
                         launchCodecanyonURL();
                       },
-                      splashColor:
-                          Style.getTheme().colorScheme.onPrimary.withAlpha(40),
+                      splashColor: Style.getThemeData()
+                          .colorScheme
+                          .onPrimary
+                          .withAlpha(40),
                       child: FxText.button(
                         Language.translate("buy_now"),
-                        color: Style.getTheme().colorScheme.onPrimary,
+                        color: Style.getThemeData().colorScheme.onPrimary,
                         letterSpacing: 0.5,
                       ),
-                      backgroundColor: Style.getTheme().colorScheme.primary,
+                      backgroundColor: Style.getThemeData().colorScheme.primary,
                     ),
                   )
                 ],

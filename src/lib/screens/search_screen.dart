@@ -51,33 +51,33 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
                       prefixIcon: Icon(
                         FeatherIcons.search,
                         size: 18,
-                        color: Style.getTheme()
+                        color: Style.getThemeData()
                             .colorScheme
                             .onBackground
                             .withAlpha(150),
                       ),
                       filled: true,
                       isDense: true,
-                      fillColor: CustomStyle.getTheme().card,
+                      fillColor: CustomStyle.getThemeData().card,
                       hintStyle: Writing.b2(),
                       labelStyle: Writing.b2(),
                       style: Writing.b2(),
                       textCapitalization: TextCapitalization.sentences,
                       labelText: "Search",
                       floatingLabelBehavior: FloatingLabelBehavior.never,
-                      cursorColor: Style.getTheme().primaryColor,
+                      cursorColor: Style.getThemeData().primaryColor,
                       focusedBorderColor: Colors.transparent,
                     ),
                   ),
                   Spacing.width(16),
                   //Space.width(16),
                   FxContainer(
-                    background: Style.getTheme().primaryColor.withAlpha(32),
+                    background: Style.getThemeData().primaryColor.withAlpha(32),
                     child: Transform.rotate(
                       angle: pi / 2,
                       child: Icon(
                         FeatherIcons.sliders,
-                        color: Style.getTheme().primaryColor,
+                        color: Style.getThemeData().primaryColor,
                         size: 20,
                       ),
                     ),
@@ -132,12 +132,12 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
       },
       child: FxContainer(
         margin: Spacing.bottom(16),
-        background: CustomStyle.getTheme().card,
+        background: CustomStyle.getThemeData().card,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FxContainer(
-              background: Style.getTheme().primaryColor.withAlpha(32),
+              background: Style.getThemeData().primaryColor.withAlpha(32),
               padding: Spacing.all(8),
               child: Hero(
                 tag: heroKey,
@@ -157,11 +157,11 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   FxText.b2(product.name,
-                      color: Style.getTheme().colorScheme.onBackground,
+                      color: Style.getThemeData().colorScheme.onBackground,
                       fontWeight: 600),
                   Spacing.height(8),
                   FxText.overline(product.description,
-                      color: Style.getTheme().colorScheme.onBackground,
+                      color: Style.getThemeData().colorScheme.onBackground,
                       muted: true),
                   Spacing.height(8),
                   product.discountedPrice != product.price
@@ -174,13 +174,14 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
                             Spacing.width(8),
                             FxText.b2(
                                 "\$" + doubleToString(product.discountedPrice),
-                                color:
-                                    Style.getTheme().colorScheme.onBackground,
+                                color: Style.getThemeData()
+                                    .colorScheme
+                                    .onBackground,
                                 fontWeight: 700),
                           ],
                         )
                       : FxText.b2("\$" + doubleToString(product.price),
-                          color: Style.getTheme().colorScheme.onBackground,
+                          color: Style.getThemeData().colorScheme.onBackground,
                           fontWeight: 700),
                 ],
               ),
@@ -188,7 +189,7 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
             // Space.width(8),
             Icon(
               MdiIcons.heartOutline,
-              color: Style.getTheme().primaryColor,
+              color: Style.getThemeData().primaryColor,
               size: 18,
             )
           ],

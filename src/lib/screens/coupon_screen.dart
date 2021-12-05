@@ -15,10 +15,10 @@ class _GroceryCouponScreenState extends State<GroceryCouponScreen> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Style.getTheme().copyWith(
-          colorScheme: Style.getTheme()
+      data: Style.getThemeData().copyWith(
+          colorScheme: Style.getThemeData()
               .colorScheme
-              .copyWith(secondary: Style.getTheme().primaryColor)),
+              .copyWith(secondary: Style.getThemeData().primaryColor)),
       child: Scaffold(
           appBar: AppBar(
             elevation: 0,
@@ -57,7 +57,7 @@ class _GroceryCouponScreenState extends State<GroceryCouponScreen> {
     return FxContainer(
       margin: Spacing.bottom(16),
       padding: Spacing.all(16),
-      background: CustomStyle.getTheme().card,
+      background: CustomStyle.getThemeData().card,
       onTap: () {
         Navigator.pop(context);
       },
@@ -71,7 +71,7 @@ class _GroceryCouponScreenState extends State<GroceryCouponScreen> {
                     shape: BoxShape.circle, color: color.withAlpha(200)),
                 child: Icon(
                   iconData,
-                  color: Style.getTheme().backgroundColor,
+                  color: Style.getThemeData().backgroundColor,
                 ),
               ),
               Spacing.height(8),
@@ -86,7 +86,7 @@ class _GroceryCouponScreenState extends State<GroceryCouponScreen> {
           ),
           Spacing.width(16),
           FxDottedLine(
-            color: Style.getTheme().colorScheme.onBackground.withAlpha(100),
+            color: Style.getThemeData().colorScheme.onBackground.withAlpha(100),
             height: 100,
             strokeWidth: 1.2,
             dottedLength: 8,
@@ -115,12 +115,12 @@ class _GroceryCouponScreenState extends State<GroceryCouponScreen> {
                   FxContainer(
                     padding: Spacing.fromLTRB(12, 8, 12, 8),
                     borderRadiusAll: 4,
-                    background: Style.getTheme().primaryColor.withAlpha(40),
+                    background: Style.getThemeData().primaryColor.withAlpha(40),
                     child: FxText.caption(
                       code,
                       letterSpacing: 0,
                       fontWeight: 600,
-                      color: Style.getTheme().primaryColor,
+                      color: Style.getThemeData().primaryColor,
                     ),
                   )
                 ],

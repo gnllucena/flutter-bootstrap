@@ -192,20 +192,23 @@ class FxCard extends StatelessWidget {
         height: height,
         margin: margin ?? Spacing.all(marginAll ?? 0),
         decoration: BoxDecoration(
-            color: color ?? Style.getTheme().cardTheme.color,
+            color: color ?? Style.getThemeData().cardTheme.color,
             borderRadius: boxShape != BoxShape.circle
                 ? borderRadius ??
                     BorderRadius.all(Radius.circular(borderRadiusAll ?? 8))
                 : null,
             border: bordered
                 ? border ??
-                    Border.all(color: Style.getTheme().dividerColor, width: 1)
+                    Border.all(
+                        color: Style.getThemeData().dividerColor, width: 1)
                 : null,
             shape: boxShape ?? BoxShape.rectangle,
             boxShadow: [
               BoxShadow(
                   color: myShadow.color ??
-                      Style.getTheme().shadowColor.withAlpha(myShadow.alpha),
+                      Style.getThemeData()
+                          .shadowColor
+                          .withAlpha(myShadow.alpha),
                   spreadRadius: myShadow.spreadRadius,
                   blurRadius: myShadow.blurRadius,
                   offset: myShadow.offset!)

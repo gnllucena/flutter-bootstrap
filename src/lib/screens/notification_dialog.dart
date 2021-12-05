@@ -21,9 +21,10 @@ class _NotificationDialogState extends State<NotificationDialog> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Style.getTheme().copyWith(
-          colorScheme: Style.getTheme().colorScheme.copyWith(
-              secondary: Style.getTheme().colorScheme.primary.withAlpha(80))),
+      data: Style.getThemeData().copyWith(
+          colorScheme: Style.getThemeData().colorScheme.copyWith(
+              secondary:
+                  Style.getThemeData().colorScheme.primary.withAlpha(80))),
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -39,7 +40,7 @@ class _NotificationDialogState extends State<NotificationDialog> {
                 child: Icon(
                   MdiIcons.notificationClearAll,
                   size: 24,
-                  color: Style.getTheme().colorScheme.onBackground,
+                  color: Style.getThemeData().colorScheme.onBackground,
                 ),
               ),
             )
@@ -61,12 +62,12 @@ class _NotificationDialogState extends State<NotificationDialog> {
                     width: 18,
                     paddingAll: 0,
                     height: 18,
-                    background: Style.getTheme().primaryColor.withAlpha(40),
+                    background: Style.getThemeData().primaryColor.withAlpha(40),
                     child: Center(
                         child: FxText.overline(
                       "2",
                       fontWeight: 600,
-                      color: Style.getTheme().primaryColor,
+                      color: Style.getThemeData().primaryColor,
                     )),
                   )
                 ],
@@ -80,13 +81,13 @@ class _NotificationDialogState extends State<NotificationDialog> {
                     TextSpan(
                         text: "50% OFF ",
                         style: Writing.button(
-                            color: Style.getTheme().primaryColor,
+                            color: Style.getThemeData().primaryColor,
                             fontWeight: 600,
                             letterSpacing: 0.2)),
                     TextSpan(
                       text: "in ultraboost all puma ltd shoes",
                       style: Writing.button(
-                          color: Style.getTheme().colorScheme.onBackground,
+                          color: Style.getThemeData().colorScheme.onBackground,
                           fontWeight: 500,
                           letterSpacing: 0.2),
                     )
@@ -101,13 +102,14 @@ class _NotificationDialogState extends State<NotificationDialog> {
                     TextSpan(
                         text: "30% OFF ",
                         style: Writing.button(
-                            color: Style.getTheme().primaryColor,
+                            color: Style.getThemeData().primaryColor,
                             fontWeight: 600,
                             letterSpacing: 0.2)),
                     TextSpan(
                         text: "in all cake till 31 july",
                         style: Writing.button(
-                            color: Style.getTheme().colorScheme.onBackground,
+                            color:
+                                Style.getThemeData().colorScheme.onBackground,
                             fontWeight: 500,
                             letterSpacing: 0.2))
                   ]),
@@ -126,12 +128,12 @@ class _NotificationDialogState extends State<NotificationDialog> {
                   width: 18,
                   paddingAll: 0,
                   height: 18,
-                  background: Style.getTheme().primaryColor.withAlpha(40),
+                  background: Style.getThemeData().primaryColor.withAlpha(40),
                   child: Center(
                       child: FxText.overline(
                     "8",
                     fontWeight: 600,
-                    color: Style.getTheme().primaryColor,
+                    color: Style.getThemeData().primaryColor,
                   )),
                 )
               ],
@@ -141,7 +143,7 @@ class _NotificationDialogState extends State<NotificationDialog> {
                 image: './assets/images/apps/grocery/product-3.png',
                 text: FxText.button(
                     "Your cake order has been delivered at Himalaya",
-                    color: Style.getTheme().colorScheme.onBackground,
+                    color: Style.getThemeData().colorScheme.onBackground,
                     fontWeight: 500,
                     letterSpacing: 0),
                 time: "Just Now"),
@@ -149,16 +151,16 @@ class _NotificationDialogState extends State<NotificationDialog> {
             singleNotification(
                 image: './assets/images/apps/grocery/product-2.png',
                 text: FxText.button("last order has been cancelled by seller",
-                    color: Style.getTheme().colorScheme.onBackground,
+                    color: Style.getThemeData().colorScheme.onBackground,
                     fontWeight: 500,
                     letterSpacing: 0),
                 time: "14 July"),
             Spacing.height(24),
             Center(
               child: FxButton.text(
-                splashColor: Style.getTheme().primaryColor.withAlpha(40),
+                splashColor: Style.getThemeData().primaryColor.withAlpha(40),
                 child: FxText.button("View all",
-                    color: Style.getTheme().primaryColor,
+                    color: Style.getThemeData().primaryColor,
                     fontWeight: 600,
                     letterSpacing: 0.2),
                 onPressed: () {},
@@ -177,12 +179,12 @@ class _NotificationDialogState extends State<NotificationDialog> {
                   width: 18,
                   paddingAll: 0,
                   height: 18,
-                  background: Style.getTheme().primaryColor.withAlpha(40),
+                  background: Style.getThemeData().primaryColor.withAlpha(40),
                   child: Center(
                       child: FxText.overline(
                     "1",
                     fontWeight: 600,
-                    color: Style.getTheme().primaryColor,
+                    color: Style.getThemeData().primaryColor,
                   )),
                 )
               ],
@@ -191,7 +193,7 @@ class _NotificationDialogState extends State<NotificationDialog> {
             singleNotification(
                 image: './assets/images/apps/grocery/profile.png',
                 text: FxText.button("Your account password has been changed",
-                    color: Style.getTheme().colorScheme.onBackground,
+                    color: Style.getThemeData().colorScheme.onBackground,
                     fontWeight: 500,
                     letterSpacing: 0),
                 time: "2 days ago"),
@@ -211,7 +213,7 @@ class _NotificationDialogState extends State<NotificationDialog> {
             width: 52,
             height: 52,
             padding: Spacing.all(10),
-            background: Style.getTheme().primaryColor.withAlpha(40),
+            background: Style.getThemeData().primaryColor.withAlpha(40),
             child: Image.asset(image),
           ),
           Expanded(

@@ -37,9 +37,10 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
 
   Widget build(BuildContext context) {
     return Theme(
-      data: Style.getTheme().copyWith(
-          colorScheme: Style.getTheme().colorScheme.copyWith(
-              secondary: Style.getTheme().colorScheme.primary.withAlpha(80))),
+      data: Style.getThemeData().copyWith(
+          colorScheme: Style.getThemeData().colorScheme.copyWith(
+              secondary:
+                  Style.getThemeData().colorScheme.primary.withAlpha(80))),
       child: Scaffold(
           appBar: AppBar(
             elevation: 0,
@@ -49,21 +50,21 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
               },
               child: Icon(
                 MdiIcons.chevronLeft,
-                color: Style.getTheme().primaryColor,
+                color: Style.getThemeData().primaryColor,
                 size: 20,
               ),
             ),
             actions: [
               Icon(
                 MdiIcons.heartOutline,
-                color: Style.getTheme().primaryColor,
+                color: Style.getThemeData().primaryColor,
                 size: 20,
               ),
               Spacing.width(16)
             ],
           ),
           body: Container(
-            color: Style.getTheme().primaryColor.withAlpha(68),
+            color: Style.getThemeData().primaryColor.withAlpha(68),
             child: ListView(
               children: <Widget>[
                 Center(
@@ -81,7 +82,7 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
                 Spacing.height(24),
                 FxContainer(
                   padding: Spacing.all(24),
-                  background: CustomStyle.getTheme().card,
+                  background: CustomStyle.getThemeData().card,
                   borderRadiusAll: 16,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,18 +124,18 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
                             },
                             padding: Spacing.fromLTRB(8, 6, 8, 6),
                             background:
-                                Style.getTheme().primaryColor.withAlpha(40),
+                                Style.getThemeData().primaryColor.withAlpha(40),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 FxText.b2("(243 review)",
-                                    color: Style.getTheme().primaryColor,
+                                    color: Style.getThemeData().primaryColor,
                                     fontWeight: 500,
                                     letterSpacing: -0.2),
                                 Icon(
                                   MdiIcons.chevronRight,
                                   size: 14,
-                                  color: Style.getTheme().primaryColor,
+                                  color: Style.getThemeData().primaryColor,
                                 )
                               ],
                             ),
@@ -159,12 +160,13 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
                                   });
                                 },
                                 padding: Spacing.all(6),
-                                background:
-                                    Style.getTheme().primaryColor.withAlpha(48),
+                                background: Style.getThemeData()
+                                    .primaryColor
+                                    .withAlpha(48),
                                 child: Icon(
                                   MdiIcons.minus,
                                   size: 14,
-                                  color: Style.getTheme().primaryColor,
+                                  color: Style.getThemeData().primaryColor,
                                 ),
                               ),
                               Spacing.width(12),
@@ -178,11 +180,11 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
                                   });
                                 },
                                 padding: Spacing.all(6),
-                                background: Style.getTheme().primaryColor,
+                                background: Style.getThemeData().primaryColor,
                                 child: Icon(
                                   MdiIcons.plus,
                                   size: 14,
-                                  color: Style.getTheme().backgroundColor,
+                                  color: Style.getThemeData().backgroundColor,
                                 ),
                               ),
                             ],
@@ -201,8 +203,8 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
                             },
                             child: FxText.b2("Buy Now",
                                 fontWeight: 600,
-                                color: Style.getTheme().backgroundColor),
-                            backgroundColor: Style.getTheme().primaryColor,
+                                color: Style.getThemeData().backgroundColor),
+                            backgroundColor: Style.getThemeData().primaryColor,
                           ))
                         ],
                       ),
@@ -268,7 +270,7 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FxContainer(
-              background: Style.getTheme().primaryColor.withAlpha(32),
+              background: Style.getThemeData().primaryColor.withAlpha(32),
               padding: Spacing.all(8),
               child: Hero(
                 tag: heroKey,
@@ -288,11 +290,11 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   FxText.b2(product.name,
-                      color: Style.getTheme().colorScheme.onBackground,
+                      color: Style.getThemeData().colorScheme.onBackground,
                       fontWeight: 600),
                   Spacing.height(8),
                   FxText.overline(product.description,
-                      color: Style.getTheme().colorScheme.onBackground,
+                      color: Style.getThemeData().colorScheme.onBackground,
                       muted: true),
                   Spacing.height(8),
                   product.discountedPrice != product.price
@@ -305,13 +307,14 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
                             Spacing.width(8),
                             FxText.b2(
                                 "\$" + doubleToString(product.discountedPrice),
-                                color:
-                                    Style.getTheme().colorScheme.onBackground,
+                                color: Style.getThemeData()
+                                    .colorScheme
+                                    .onBackground,
                                 fontWeight: 700),
                           ],
                         )
                       : FxText.b2("\$" + doubleToString(product.price),
-                          color: Style.getTheme().colorScheme.onBackground,
+                          color: Style.getThemeData().colorScheme.onBackground,
                           fontWeight: 700),
                 ],
               ),
@@ -319,7 +322,7 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
             // Space.width(8),
             Icon(
               MdiIcons.heartOutline,
-              color: Style.getTheme().primaryColor,
+              color: Style.getThemeData().primaryColor,
               size: 18,
             )
           ],

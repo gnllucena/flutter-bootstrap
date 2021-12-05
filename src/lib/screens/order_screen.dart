@@ -17,9 +17,10 @@ class _GroceryOrderScreenState extends State<GroceryOrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Style.getTheme().copyWith(
-          colorScheme: Style.getTheme().colorScheme.copyWith(
-              secondary: Style.getTheme().colorScheme.primary.withAlpha(80))),
+      data: Style.getThemeData().copyWith(
+          colorScheme: Style.getThemeData().colorScheme.copyWith(
+              secondary:
+                  Style.getThemeData().colorScheme.primary.withAlpha(80))),
       child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
@@ -30,7 +31,7 @@ class _GroceryOrderScreenState extends State<GroceryOrderScreen> {
               },
               child: Icon(
                 MdiIcons.chevronLeft,
-                color: Style.getTheme().colorScheme.onBackground,
+                color: Style.getThemeData().colorScheme.onBackground,
               ),
             ),
             title: FxText.sh1("Orders", fontWeight: 600),
@@ -91,13 +92,13 @@ class _GroceryOrderScreenState extends State<GroceryOrderScreen> {
           ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(8)),
             child: Container(
-              color: Style.getTheme().primaryColor.withAlpha(40),
+              color: Style.getThemeData().primaryColor.withAlpha(40),
               height: 80,
               width: 80,
               child: Center(
                   child: FxText.sh1("+" + (listItem.length - 2).toString(),
                       letterSpacing: 0.5,
-                      color: Style.getTheme().primaryColor,
+                      color: Style.getThemeData().primaryColor,
                       fontWeight: 600)),
             ),
           ),
@@ -108,7 +109,7 @@ class _GroceryOrderScreenState extends State<GroceryOrderScreen> {
           FxContainer(
             margin: (i == 2) ? Spacing.zero : Spacing.right(space),
             padding: Spacing.all(12),
-            background: Style.getTheme().primaryColor.withAlpha(40),
+            background: Style.getThemeData().primaryColor.withAlpha(40),
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(8)),
               child: Image.asset(
@@ -125,9 +126,9 @@ class _GroceryOrderScreenState extends State<GroceryOrderScreen> {
     return FxContainer(
       padding: Spacing.all(16),
       margin: Spacing.bottom(16),
-      background: CustomStyle.getTheme().card,
+      background: CustomStyle.getThemeData().card,
       bordered: true,
-      border: Border.all(color: CustomStyle.getTheme().border, width: 1.2),
+      border: Border.all(color: CustomStyle.getThemeData().border, width: 1.2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -150,7 +151,7 @@ class _GroceryOrderScreenState extends State<GroceryOrderScreen> {
               ),
               FxContainer(
                 padding: Spacing.fromLTRB(12, 8, 12, 8),
-                background: CustomStyle.getTheme().card,
+                background: CustomStyle.getThemeData().card,
                 borderRadiusAll: 4,
                 child: FxText.overline(status!.toUpperCase(),
                     fontWeight: 700, letterSpacing: 0.2),

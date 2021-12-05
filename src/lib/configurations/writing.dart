@@ -172,7 +172,7 @@ class Writing {
     Color? finalColor;
 
     if (color == null) {
-      var themeColor = Style.getTheme().colorScheme.onBackground;
+      var themeColor = Style.getThemeData().colorScheme.onBackground;
 
       finalColor = xMuted
           ? themeColor.withAlpha(160)

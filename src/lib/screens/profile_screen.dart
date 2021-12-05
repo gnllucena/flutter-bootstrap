@@ -31,7 +31,7 @@ class _GroceryProfileScreenState extends State<GroceryProfileScreen>
             Center(
               child: FxContainer.rounded(
                 padding: Spacing.all(20),
-                background: Style.getTheme().primaryColor.withAlpha(40),
+                background: Style.getThemeData().primaryColor.withAlpha(40),
                 child: Image.asset(
                   'assets/images/apps/grocery/profile.png',
                   width: 60,

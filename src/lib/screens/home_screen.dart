@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   FxText.h6(Language.translate("language"),
-                      color: Style.getTheme().colorScheme.onBackground,
+                      color: Style.getThemeData().colorScheme.onBackground,
                       fontWeight: 600),
                   InkWell(
                     onTap: () {
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen>
                         Icon(
                           FeatherIcons.bell,
                           size: 22,
-                          color: Style.getTheme()
+                          color: Style.getThemeData()
                               .colorScheme
                               .onBackground
                               .withAlpha(200),
@@ -82,13 +82,13 @@ class _HomeScreenState extends State<HomeScreen>
                             height: 14,
                             width: 14,
                             decoration: BoxDecoration(
-                                color: Style.getTheme().primaryColor,
+                                color: Style.getThemeData().primaryColor,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(40))),
                             child: Center(
                               child: FxText.overline(
                                 "2",
-                                color: Style.getTheme().backgroundColor,
+                                color: Style.getThemeData().backgroundColor,
                                 fontSize: 9,
                                 fontWeight: 500,
                               ),
@@ -105,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen>
                       padding: Spacing.x(20),
                       child: Image(
                         image: AssetImage(Images.settingIcon),
-                        color: Style.getTheme().colorScheme.onBackground,
+                        color: Style.getThemeData().colorScheme.onBackground,
                         width: 24,
                         height: 24,
                       ),
@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen>
             Padding(
               padding: Spacing.horizontal(24),
               child: FxText.b2("What would you buy today?",
-                  color: Style.getTheme().colorScheme.onBackground,
+                  color: Style.getThemeData().colorScheme.onBackground,
                   fontWeight: 500,
                   xMuted: true),
             ),
@@ -132,10 +132,10 @@ class _HomeScreenState extends State<HomeScreen>
                 children: [
                   FxText.sh1("Categories",
                       letterSpacing: 0,
-                      color: Style.getTheme().colorScheme.onBackground,
+                      color: Style.getThemeData().colorScheme.onBackground,
                       fontWeight: 600),
                   FxText.caption("See All",
-                      color: Style.getTheme().colorScheme.onBackground,
+                      color: Style.getThemeData().colorScheme.onBackground,
                       fontWeight: 600,
                       xMuted: true,
                       letterSpacing: 0),
@@ -156,10 +156,10 @@ class _HomeScreenState extends State<HomeScreen>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   FxText.sh1("Best Selling",
-                      color: Style.getTheme().colorScheme.onBackground,
+                      color: Style.getThemeData().colorScheme.onBackground,
                       fontWeight: 600),
                   FxText.caption("See All",
-                      color: Style.getTheme().colorScheme.onBackground,
+                      color: Style.getThemeData().colorScheme.onBackground,
                       fontWeight: 600,
                       xMuted: true,
                       letterSpacing: 0),
@@ -189,19 +189,20 @@ class _HomeScreenState extends State<HomeScreen>
 
   Widget getBannerWidget() {
     return FxContainer(
-      background: Style.getTheme().primaryColor.withAlpha(28),
+      background: Style.getThemeData().primaryColor.withAlpha(28),
       padding: Spacing.all(24),
       margin: Spacing.horizontal(24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           FxText.b1("Enjoy the special offer\nup to 60%",
-              color: Style.getTheme().primaryColor,
+              color: Style.getThemeData().primaryColor,
               fontWeight: 600,
               letterSpacing: 0),
           Spacing.height(8),
           FxText.caption("at 15 - 25 March 2021",
-              color: Style.getTheme().colorScheme.onBackground.withAlpha(100),
+              color:
+                  Style.getThemeData().colorScheme.onBackground.withAlpha(100),
               fontWeight: 500,
               letterSpacing: -0.2),
         ],
@@ -260,7 +261,7 @@ class _HomeScreenState extends State<HomeScreen>
             Spacing.height(4),
             FxText.overline(
               category.title,
-              color: Style.getTheme().colorScheme.onBackground,
+              color: Style.getThemeData().colorScheme.onBackground,
             )
           ],
         ),
@@ -282,12 +283,12 @@ class _HomeScreenState extends State<HomeScreen>
       },
       child: FxContainer(
         margin: Spacing.bottom(16),
-        background: Style.getTheme().primaryColor.withAlpha(32),
+        background: Style.getThemeData().primaryColor.withAlpha(32),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FxContainer(
-              background: Style.getTheme().primaryColor.withAlpha(32),
+              background: Style.getThemeData().primaryColor.withAlpha(32),
               padding: Spacing.all(8),
               child: Hero(
                 tag: heroKey,
@@ -307,11 +308,11 @@ class _HomeScreenState extends State<HomeScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   FxText.b2(product.name,
-                      color: Style.getTheme().colorScheme.onBackground,
+                      color: Style.getThemeData().colorScheme.onBackground,
                       fontWeight: 600),
                   Spacing.height(8),
                   FxText.overline(product.description,
-                      color: Style.getTheme().colorScheme.onBackground,
+                      color: Style.getThemeData().colorScheme.onBackground,
                       muted: true),
                   Spacing.height(8),
                   product.discountedPrice != product.price
@@ -324,20 +325,21 @@ class _HomeScreenState extends State<HomeScreen>
                             Spacing.width(8),
                             FxText.b2(
                                 "\$" + doubleToString(product.discountedPrice),
-                                color:
-                                    Style.getTheme().colorScheme.onBackground,
+                                color: Style.getThemeData()
+                                    .colorScheme
+                                    .onBackground,
                                 fontWeight: 700),
                           ],
                         )
                       : FxText.b2("\$" + doubleToString(product.price),
-                          color: Style.getTheme().colorScheme.onBackground,
+                          color: Style.getThemeData().colorScheme.onBackground,
                           fontWeight: 700),
                 ],
               ),
             ),
             Icon(
               MdiIcons.heartOutline,
-              color: Style.getTheme().primaryColor,
+              color: Style.getThemeData().primaryColor,
               size: 18,
             )
           ],
