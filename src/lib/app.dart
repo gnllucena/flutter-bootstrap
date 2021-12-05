@@ -18,7 +18,7 @@ class App extends StatefulWidget {
 class _AppState extends State<App> with SingleTickerProviderStateMixin {
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 
-  var _currentIndex = 0;
+  var _index = 0;
   var _theme = Style.getThemeData();
 
   late TabController _tabController;
@@ -30,15 +30,15 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
     _tabController = new TabController(length: 4, vsync: this, initialIndex: 0);
 
     _tabController.addListener(() => setState(() {
-          _currentIndex = _tabController.index;
+          _index = _tabController.index;
         }));
 
     _tabController.animation!.addListener(() {
       final value = _tabController.animation!.value;
 
       setState(() {
-        if (value - _currentIndex > 0.5) _currentIndex = _currentIndex + 1;
-        if (value - _currentIndex < -0.5) _currentIndex = _currentIndex - 1;
+        if (value - _index > 0.5) _index = _index + 1;
+        if (value - _index < -0.5) _index = _index - 1;
       });
     });
   }
@@ -77,106 +77,17 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                   indicatorColor: _theme.primaryColor,
                   tabs: <Widget>[
                     Container(
-                      child: (_currentIndex == 0)
-                          ? Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                FxText.b2("Home",
-                                    color: _theme.primaryColor,
-                                    letterSpacing: 0,
-                                    fontWeight: 600),
-                                Container(
-                                  margin: Spacing.top(6),
-                                  decoration: BoxDecoration(
-                                      color: _theme.primaryColor,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(2.5))),
-                                  height: 5,
-                                  width: 5,
-                                )
-                              ],
-                            )
-                          : Icon(
-                              FeatherIcons.home,
-                              size: 20,
-                              color: _theme.colorScheme.onBackground,
-                            ),
-                    ),
+                        child: _buildAppBarButton(
+                            "Home", _index == 0, FeatherIcons.home)),
                     Container(
-                        child: (_currentIndex == 1)
-                            ? Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  FxText.b2("Search",
-                                      color: _theme.primaryColor,
-                                      letterSpacing: 0,
-                                      fontWeight: 600),
-                                  Container(
-                                    margin: Spacing.top(6),
-                                    decoration: BoxDecoration(
-                                        color: _theme.primaryColor,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(2.5))),
-                                    height: 5,
-                                    width: 5,
-                                  )
-                                ],
-                              )
-                            : Icon(
-                                FeatherIcons.search,
-                                size: 20,
-                                color: _theme.colorScheme.onBackground,
-                              )),
+                        child: _buildAppBarButton(
+                            "Search", _index == 1, FeatherIcons.search)),
                     Container(
-                        child: (_currentIndex == 2)
-                            ? Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  FxText.b2("Cart",
-                                      color: _theme.primaryColor,
-                                      letterSpacing: 0,
-                                      fontWeight: 600),
-                                  Container(
-                                    margin: Spacing.top(6),
-                                    decoration: BoxDecoration(
-                                        color: _theme.primaryColor,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(2.5))),
-                                    height: 5,
-                                    width: 5,
-                                  )
-                                ],
-                              )
-                            : Icon(
-                                FeatherIcons.shoppingCart,
-                                size: 20,
-                                color: _theme.colorScheme.onBackground,
-                              )),
+                        child: _buildAppBarButton(
+                            "Cart", _index == 2, FeatherIcons.shoppingCart)),
                     Container(
-                        child: (_currentIndex == 3)
-                            ? Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  FxText.b2("Profile",
-                                      color: _theme.primaryColor,
-                                      letterSpacing: 0,
-                                      fontWeight: 600),
-                                  Container(
-                                    margin: Spacing.top(6),
-                                    decoration: BoxDecoration(
-                                        color: _theme.primaryColor,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(2.5))),
-                                    height: 5,
-                                    width: 5,
-                                  )
-                                ],
-                              )
-                            : Icon(
-                                FeatherIcons.user,
-                                size: 20,
-                                color: _theme.colorScheme.onBackground,
-                              )),
+                        child: _buildAppBarButton(
+                            "Cart", _index == 3, FeatherIcons.user)),
                   ],
                 ),
               ),
@@ -185,6 +96,32 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
         ],
       ),
       // drawer: _buildDrawer(),
+    );
+  }
+
+  Widget _buildAppBarButton(String name, bool visible, IconData icon) {
+    if (visible) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          FxText.b2(name,
+              color: _theme.primaryColor, letterSpacing: 0, fontWeight: 600),
+          Container(
+            margin: Spacing.top(6),
+            decoration: BoxDecoration(
+                color: _theme.primaryColor,
+                borderRadius: BorderRadius.all(Radius.circular(2.5))),
+            height: 5,
+            width: 5,
+          )
+        ],
+      );
+    }
+
+    return Icon(
+      icon,
+      size: 20,
+      color: _theme.colorScheme.onBackground,
     );
   }
 }
