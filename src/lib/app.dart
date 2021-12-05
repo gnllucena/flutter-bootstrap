@@ -19,9 +19,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 
   var _currentIndex = 0;
-  var _customTheme = CustomStyle.getThemeData();
   var _theme = Style.getThemeData();
-  var _isDark = Style.getCurrentTheme() == Styles.dark;
 
   late TabController _tabController;
 
@@ -70,14 +68,13 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
                   color: CustomStyle.getThemeData().card.withAlpha(220),
-                  // borderRadius: Shape.circular(16)
                 ),
                 padding: Spacing.vertical(12),
                 child: TabBar(
                   controller: _tabController,
                   indicator: BoxDecoration(),
                   indicatorSize: TabBarIndicatorSize.tab,
-                  indicatorColor: Style.getThemeData().primaryColor,
+                  indicatorColor: _theme.primaryColor,
                   tabs: <Widget>[
                     Container(
                       child: (_currentIndex == 0)
@@ -85,13 +82,13 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 FxText.b2("Home",
-                                    color: Style.getThemeData().primaryColor,
+                                    color: _theme.primaryColor,
                                     letterSpacing: 0,
                                     fontWeight: 600),
                                 Container(
                                   margin: Spacing.top(6),
                                   decoration: BoxDecoration(
-                                      color: Style.getThemeData().primaryColor,
+                                      color: _theme.primaryColor,
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(2.5))),
                                   height: 5,
@@ -102,8 +99,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                           : Icon(
                               FeatherIcons.home,
                               size: 20,
-                              color:
-                                  Style.getThemeData().colorScheme.onBackground,
+                              color: _theme.colorScheme.onBackground,
                             ),
                     ),
                     Container(
@@ -112,14 +108,13 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
                                   FxText.b2("Search",
-                                      color: Style.getThemeData().primaryColor,
+                                      color: _theme.primaryColor,
                                       letterSpacing: 0,
                                       fontWeight: 600),
                                   Container(
                                     margin: Spacing.top(6),
                                     decoration: BoxDecoration(
-                                        color:
-                                            Style.getThemeData().primaryColor,
+                                        color: _theme.primaryColor,
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(2.5))),
                                     height: 5,
@@ -130,9 +125,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                             : Icon(
                                 FeatherIcons.search,
                                 size: 20,
-                                color: Style.getThemeData()
-                                    .colorScheme
-                                    .onBackground,
+                                color: _theme.colorScheme.onBackground,
                               )),
                     Container(
                         child: (_currentIndex == 2)
@@ -140,14 +133,13 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
                                   FxText.b2("Cart",
-                                      color: Style.getThemeData().primaryColor,
+                                      color: _theme.primaryColor,
                                       letterSpacing: 0,
                                       fontWeight: 600),
                                   Container(
                                     margin: Spacing.top(6),
                                     decoration: BoxDecoration(
-                                        color:
-                                            Style.getThemeData().primaryColor,
+                                        color: _theme.primaryColor,
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(2.5))),
                                     height: 5,
@@ -158,9 +150,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                             : Icon(
                                 FeatherIcons.shoppingCart,
                                 size: 20,
-                                color: Style.getThemeData()
-                                    .colorScheme
-                                    .onBackground,
+                                color: _theme.colorScheme.onBackground,
                               )),
                     Container(
                         child: (_currentIndex == 3)
@@ -168,14 +158,13 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
                                   FxText.b2("Profile",
-                                      color: Style.getThemeData().primaryColor,
+                                      color: _theme.primaryColor,
                                       letterSpacing: 0,
                                       fontWeight: 600),
                                   Container(
                                     margin: Spacing.top(6),
                                     decoration: BoxDecoration(
-                                        color:
-                                            Style.getThemeData().primaryColor,
+                                        color: _theme.primaryColor,
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(2.5))),
                                     height: 5,
@@ -186,9 +175,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                             : Icon(
                                 FeatherIcons.user,
                                 size: 20,
-                                color: Style.getThemeData()
-                                    .colorScheme
-                                    .onBackground,
+                                color: _theme.colorScheme.onBackground,
                               )),
                   ],
                 ),

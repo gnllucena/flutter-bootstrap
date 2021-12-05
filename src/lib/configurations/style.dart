@@ -281,7 +281,7 @@ class CustomStyle {
   });
 
   static CustomStyle getThemeData() {
-    if (Style.getCurrentTheme() == Styles.light) {
+    if (Style._currentTheme == Styles.light) {
       return _light;
     }
 

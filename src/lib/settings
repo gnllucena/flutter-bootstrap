@@ -1,3 +1,7 @@
+
+
+var _isDark = Style.getCurrentTheme() == Styles.dark;
+
 void changeDirection() {
     if (Writing.getTextDirection() == TextDirection.ltr) {
       Provider.of<SettingsNotifier>(context, listen: false)
