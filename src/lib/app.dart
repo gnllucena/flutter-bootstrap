@@ -10,9 +10,9 @@ import 'package:zerodezenove/screens/profile_screen.dart';
 import 'package:zerodezenove/screens/search_screen.dart';
 import 'package:zerodezenove/screens/select_language_dialog.dart';
 import 'package:zerodezenove/env.dart';
-import 'package:zerodezenove/widgets/button/button.dart';
-import 'package:zerodezenove/widgets/container/container.dart';
-import 'package:zerodezenove/widgets/text/text.dart';
+import 'package:zerodezenove/widgets/FX/button/button.dart';
+import 'package:zerodezenove/widgets/FX/container/container.dart';
+import 'package:zerodezenove/widgets/FX/text/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:provider/provider.dart';
@@ -22,11 +22,12 @@ class App extends StatefulWidget {
   App({Key? key}) : super(key: key);
 
   @override
-  AppState createState() => AppState();
+  _AppState createState() => _AppState();
 }
 
-class AppState extends State<App> with SingleTickerProviderStateMixin {
+class _AppState extends State<App> with SingleTickerProviderStateMixin {
   int currentIndex = 0;
+  int _currentIndex = 0;
 
   _handleTabSelection() {
     setState(() {
@@ -35,7 +36,7 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
   }
 
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
-  int _currentIndex = 0;
+
   late TabController tabController;
 
   bool isDark = false;
@@ -155,15 +156,9 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
           TabBarView(
             controller: _tabController,
             children: <Widget>[
-              HomeScreen(
-                rootContext: context,
-              ),
-              GrocerySearchScreen(
-                rootContext: context,
-              ),
-              GroceryCartScreen(
-                rootContext: context,
-              ),
+              HomeScreen(rootContext: context),
+              GrocerySearchScreen(rootContext: context),
+              GroceryCartScreen(rootContext: context),
               GroceryProfileScreen(rootContext: context)
             ],
           ),

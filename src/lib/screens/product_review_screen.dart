@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:zerodezenove/configurations/spacing.dart';
 import 'package:zerodezenove/configurations/style.dart';
-import 'package:zerodezenove/widgets/container/container.dart';
-import 'package:zerodezenove/widgets/star_rating/star_rating.dart';
-import 'package:zerodezenove/widgets/text/text.dart';
+import 'package:zerodezenove/widgets/FX/container/container.dart';
+import 'package:zerodezenove/widgets/FX/star_rating/star_rating.dart';
+import 'package:zerodezenove/widgets/FX/text/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';

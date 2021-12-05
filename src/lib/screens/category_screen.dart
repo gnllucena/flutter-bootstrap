@@ -6,8 +6,8 @@ import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/domain/category.dart';
 import 'package:zerodezenove/domain/product.dart';
 import 'package:zerodezenove/screens/single_product_screen.dart';
-import 'package:zerodezenove/widgets/container/container.dart';
-import 'package:zerodezenove/widgets/text/text.dart';
+import 'package:zerodezenove/widgets/FX/container/container.dart';
+import 'package:zerodezenove/widgets/FX/text/text.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 

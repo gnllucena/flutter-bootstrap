@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:zerodezenove/configurations/writing.dart';
 
 class FxText extends StatelessWidget {
-  //Key
-
   final Key? key;
 
   final String text;
@@ -255,8 +253,6 @@ class FxText extends StatelessWidget {
       this.textHeightBehavior,
       this.textScaleFactor,
       this.textWidthBasis});
-
-  // Material Design 3
 
   FxText.d1(this.text,
       {this.style,

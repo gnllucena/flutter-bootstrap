@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zerodezenove/configurations/language.dart';
 import 'package:zerodezenove/configurations/spacing.dart';
 import 'package:zerodezenove/notifiers/settings_notifier.dart';
-import 'package:zerodezenove/widgets/text/text.dart';
+import 'package:zerodezenove/widgets/FX/text/text.dart';
 import 'package:provider/provider.dart';
 
 class SelectLanguageDialog extends StatefulWidget {

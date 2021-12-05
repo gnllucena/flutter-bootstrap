@@ -5,11 +5,11 @@ import 'package:zerodezenove/configurations/spacing.dart';
 import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/configurations/writing.dart';
 import 'package:zerodezenove/domain/product.dart';
-import 'package:zerodezenove/widgets/text_field/text_field.dart';
+import 'package:zerodezenove/widgets/FX/text_field/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:zerodezenove/widgets/container/container.dart';
-import 'package:zerodezenove/widgets/text/text.dart';
+import 'package:zerodezenove/widgets/FX/container/container.dart';
+import 'package:zerodezenove/widgets/FX/text/text.dart';
 import 'package:flutter/rendering.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
