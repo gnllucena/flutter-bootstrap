@@ -7,22 +7,22 @@ enum Styles { light, dark }
 
 class Style {
   static Styles _defaultTheme = Styles.light;
-  static Styles _theme = _defaultTheme;
+  static Styles _currentTheme = _defaultTheme;
 
-  static void setTheme(Styles themeType) async {
-    _theme = themeType;
+  static void setTheme(Styles theme) async {
+    _currentTheme = theme;
 
     var preferences = await SharedPreferences.getInstance();
     preferences.setString(
-        "theme_mode", _theme == Styles.light ? "light" : "dark");
+        "theme_mode", _currentTheme == Styles.light ? "light" : "dark");
   }
 
-  static Styles getTheme() {
-    return _theme;
+  static Styles getCurrentTheme() {
+    return _currentTheme;
   }
 
   static ThemeData getThemeData() {
-    if (_theme == Styles.light) {
+    if (_currentTheme == Styles.light) {
       return _light;
     }
 
@@ -281,7 +281,7 @@ class CustomStyle {
   });
 
   static CustomStyle getThemeData() {
-    if (Style.getTheme() == Styles.light) {
+    if (Style.getCurrentTheme() == Styles.light) {
       return _light;
     }
 

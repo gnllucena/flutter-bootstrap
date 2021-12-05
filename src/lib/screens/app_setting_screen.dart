@@ -41,7 +41,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
   }
 
   void changeTheme() {
-    if (Style.getTheme() == Styles.light) {
+    if (Style.getCurrentTheme() == Styles.light) {
       Provider.of<SettingsNotifier>(context, listen: false)
           .updateTheme(Styles.dark);
     } else {
@@ -116,7 +116,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
   Widget build(BuildContext context) {
     return Consumer<SettingsNotifier>(
       builder: (BuildContext context, SettingsNotifier value, Widget? child) {
-        isDark = Style.getTheme() == Styles.dark;
+        isDark = Style.getCurrentTheme() == Styles.dark;
         return Theme(
           data: Style.getThemeData().copyWith(
               colorScheme: Style.getThemeData().colorScheme.copyWith(

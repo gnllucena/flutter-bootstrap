@@ -26,41 +26,32 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> with SingleTickerProviderStateMixin {
-  int currentIndex = 0;
-  int _currentIndex = 0;
-
-  _handleTabSelection() {
-    setState(() {
-      _currentIndex = _tabController!.index;
-    });
-  }
-
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 
-  late TabController tabController;
+  var _currentIndex = 0;
+  var _customTheme = CustomStyle.getThemeData();
+  var _theme = Style.getThemeData();
+  var _isDark = Style.getCurrentTheme() == Styles.dark;
 
-  bool isDark = false;
-  TextDirection textDirection = TextDirection.ltr;
-  TabController? _tabController;
+  late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
 
     _tabController = new TabController(length: 4, vsync: this, initialIndex: 0);
-    _tabController!.addListener(_handleTabSelection);
-    _tabController!.animation!.addListener(() {
-      final aniValue = _tabController!.animation!.value;
 
-      if (aniValue - _currentIndex > 0.5) {
-        setState(() {
-          _currentIndex = _currentIndex + 1;
-        });
-      } else if (aniValue - _currentIndex < -0.5) {
-        setState(() {
-          _currentIndex = _currentIndex - 1;
-        });
-      }
+    _tabController.addListener(() => setState(() {
+          _currentIndex = _tabController.index;
+        }));
+
+    _tabController.animation!.addListener(() {
+      final value = _tabController.animation!.value;
+
+      setState(() {
+        if (value - _currentIndex > 0.5) _currentIndex = _currentIndex + 1;
+        if (value - _currentIndex < -0.5) _currentIndex = _currentIndex - 1;
+      });
     });
   }
 
@@ -121,7 +112,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
   }
 
   void changeTheme() {
-    if (Style.getTheme() == Styles.light) {
+    if (Style.getCurrentTheme() == Styles.light) {
       Provider.of<SettingsNotifier>(context, listen: false)
           .updateTheme(Styles.dark);
     } else {
@@ -439,7 +430,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                           child: Image(
                             height: 20,
                             width: 20,
-                            image: AssetImage(!isDark
+                            image: AssetImage(!_isDark
                                 ? Images.darkModeOutline
                                 : Images.lightModeOutline),
                             color: CustomStyle.occur,
@@ -448,7 +439,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                         Spacing.width(16),
                         Expanded(
                           child: FxText.b1(
-                            !isDark
+                            !_isDark
                                 ? Language.translate("dark_mode")
                                 : Language.translate("light_mode"),
                           ),
