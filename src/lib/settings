@@ -1,0 +1,300 @@
+void changeDirection() {
+    if (Writing.getTextDirection() == TextDirection.ltr) {
+      Provider.of<SettingsNotifier>(context, listen: false)
+          .updateDirection(TextDirection.rtl);
+    } else {
+      Provider.of<SettingsNotifier>(context, listen: false)
+          .updateDirection(TextDirection.ltr);
+    }
+    setState(() {});
+  }
+
+  void changeTheme() {
+    if (Style.getCurrentTheme() == Styles.light) {
+      Provider.of<SettingsNotifier>(context, listen: false)
+          .updateTheme(Styles.dark);
+    } else {
+      Provider.of<SettingsNotifier>(context, listen: false)
+          .updateTheme(Styles.light);
+    }
+
+    setState(() {});
+  }
+
+  void launchCodecanyonURL() async {
+    String url = "https://codecanyon.net/user/coderthemes/portfolio";
+    await launch(url);
+  }
+
+  void launchDocumentation() async {
+    String url = "http://onekit.coderthemes.com/index.html";
+    await launch(url);
+  }
+
+  void launchChangeLog() async {
+    String url = "http://onekit.coderthemes.com/changlog.html";
+    await launch(url);
+  }
+
+  Widget _buildDrawer() {
+    return FxContainer.none(
+      margin: Spacing.fromLTRB(16, Spacing.safeAreaTop(context) + 16, 16, 16),
+      borderRadiusAll: 4,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      background: Style.getThemeData().scaffoldBackgroundColor,
+      child: Drawer(
+          child: Container(
+        color: Style.getThemeData().scaffoldBackgroundColor,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Container(
+              padding: Spacing.only(left: 20, bottom: 24, top: 24, right: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Image(
+                    image: AssetImage(Images.brandLogo),
+                    height: 102,
+                    width: 102,
+                  ),
+                  Spacing.height(16),
+                  FxContainer(
+                    padding: Spacing.fromLTRB(12, 4, 12, 4),
+                    borderRadiusAll: 4,
+                    background:
+                        Style.getThemeData().colorScheme.primary.withAlpha(40),
+                    child: FxText.caption("v. 8.0.0",
+                        color: Style.getThemeData().colorScheme.primary,
+                        fontWeight: 600,
+                        letterSpacing: 0.2),
+                  ),
+                ],
+              ),
+            ),
+            Spacing.height(32),
+            Container(
+              margin: Spacing.x(20),
+              child: Column(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              SelectLanguageDialog());
+                    },
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    child: Row(
+                      children: [
+                        FxContainer(
+                          paddingAll: 12,
+                          borderRadiusAll: 4,
+                          child: Image(
+                            height: 20,
+                            width: 20,
+                            image: AssetImage(Images.languageOutline),
+                            color: CustomStyle.peach,
+                          ),
+                          background: CustomStyle.peach.withAlpha(20),
+                        ),
+                        Spacing.width(16),
+                        Expanded(
+                          child: FxText.b1(
+                            Language.translate("language"),
+                          ),
+                        ),
+                        Spacing.width(16),
+                        autoDirection(Icon(
+                          FeatherIcons.chevronRight,
+                          size: 18,
+                          color: Style.getThemeData().colorScheme.onBackground,
+                        )),
+                      ],
+                    ),
+                  ),
+                  Spacing.height(20),
+                  InkWell(
+                    onTap: () {
+                      changeDirection();
+                    },
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    child: Row(
+                      children: [
+                        FxContainer(
+                          paddingAll: 12,
+                          borderRadiusAll: 4,
+                          child: Image(
+                            height: 20,
+                            width: 20,
+                            image: AssetImage(
+                                Writing.getTextDirection() == TextDirection.ltr
+                                    ? Images.paragraphRTLOutline
+                                    : Images.paragraphLTROutline),
+                            color: CustomStyle.skyBlue,
+                          ),
+                          background: CustomStyle.skyBlue.withAlpha(20),
+                        ),
+                        Spacing.width(16),
+                        Expanded(
+                          child: FxText.b1(
+                            Writing.getTextDirection() == TextDirection.ltr
+                                ? Language.translate("right_to_left") + " (RTL)"
+                                : Language.translate("left_to_right") +
+                                    " (LTR)",
+                          ),
+                        ),
+                        Spacing.width(16),
+                        autoDirection(Icon(
+                          FeatherIcons.chevronRight,
+                          size: 18,
+                          color: Style.getThemeData().colorScheme.onBackground,
+                        )),
+                      ],
+                    ),
+                  ),
+                  Spacing.height(20),
+                  InkWell(
+                    onTap: () {
+                      changeTheme();
+                    },
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    child: Row(
+                      children: [
+                        FxContainer(
+                          paddingAll: 12,
+                          borderRadiusAll: 4,
+                          background: CustomStyle.occur.withAlpha(20),
+                          child: Image(
+                            height: 20,
+                            width: 20,
+                            image: AssetImage(!_isDark
+                                ? Images.darkModeOutline
+                                : Images.lightModeOutline),
+                            color: CustomStyle.occur,
+                          ),
+                        ),
+                        Spacing.width(16),
+                        Expanded(
+                          child: FxText.b1(
+                            !_isDark
+                                ? Language.translate("dark_mode")
+                                : Language.translate("light_mode"),
+                          ),
+                        ),
+                        Spacing.width(16),
+                        autoDirection(Icon(
+                          FeatherIcons.chevronRight,
+                          size: 18,
+                          color: Style.getThemeData().colorScheme.onBackground,
+                        )),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Spacing.height(20),
+            Divider(
+              thickness: 1,
+            ),
+            Spacing.height(16),
+            Container(
+              margin: Spacing.x(20),
+              child: Column(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      launchDocumentation();
+                    },
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    child: Row(
+                      children: [
+                        FxContainer(
+                          paddingAll: 12,
+                          borderRadiusAll: 4,
+                          child: Image(
+                            height: 20,
+                            width: 20,
+                            image: AssetImage(Images.documentationIcon),
+                            color: CustomStyle.skyBlue,
+                          ),
+                          background: CustomStyle.skyBlue.withAlpha(20),
+                        ),
+                        Spacing.width(16),
+                        Expanded(
+                          child: FxText.b1(
+                            Language.translate("documentation"),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Spacing.height(20),
+                  InkWell(
+                    onTap: () {
+                      launchChangeLog();
+                    },
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    child: Row(
+                      children: [
+                        FxContainer(
+                          paddingAll: 12,
+                          borderRadiusAll: 4,
+                          child: Image(
+                            height: 20,
+                            width: 20,
+                            image: AssetImage(Images.changeLogIcon),
+                            color: CustomStyle.peach,
+                          ),
+                          background: CustomStyle.peach.withAlpha(20),
+                        ),
+                        Spacing.width(16),
+                        Expanded(
+                          child: FxText.b1(
+                            Language.translate("changelog"),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Spacing.height(20),
+            Center(
+              child: FxButton(
+                borderRadiusAll: 4,
+                elevation: 0,
+                onPressed: () {
+                  launchCodecanyonURL();
+                },
+                splashColor:
+                    Style.getThemeData().colorScheme.onPrimary.withAlpha(40),
+                child: FxText(
+                  Language.translate("buy_now"),
+                  color: Style.getThemeData().colorScheme.onPrimary,
+                ),
+                backgroundColor: Style.getThemeData().colorScheme.primary,
+              ),
+            )
+          ],
+        ),
+      )),
+    );
+  }
+
+  class NavItem {
+  final String title;
+  final String icon;
+  final Widget screen;
+  final double size;
+
+  NavItem(this.title, this.icon, this.screen, [this.size = 28]);
+}
