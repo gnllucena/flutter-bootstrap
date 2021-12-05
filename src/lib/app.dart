@@ -1,7 +1,7 @@
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:zerodezenove/configurations/language.dart';
 import 'package:zerodezenove/configurations/spacing.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/configurations/writing.dart';
 import 'package:zerodezenove/notifiers/settings_notifier.dart';
 import 'package:zerodezenove/screens/cart_screen.dart';
@@ -120,12 +120,12 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
   }
 
   void changeTheme() {
-    if (Skin.theme == Skins.light) {
+    if (Style.theme == Styles.light) {
       Provider.of<SettingsNotifier>(context, listen: false)
-          .updateTheme(Skins.dark);
+          .updateTheme(Styles.dark);
     } else {
       Provider.of<SettingsNotifier>(context, listen: false)
-          .updateTheme(Skins.light);
+          .updateTheme(Styles.light);
     }
 
     setState(() {});
@@ -176,7 +176,7 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
-                  color: CustomSkin.getTheme().card.withAlpha(220),
+                  color: CustomStyle.getTheme().card.withAlpha(220),
                   // borderRadius: Shape.circular(16)
                 ),
                 padding: Spacing.vertical(12),
@@ -184,7 +184,7 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                   controller: _tabController,
                   indicator: BoxDecoration(),
                   indicatorSize: TabBarIndicatorSize.tab,
-                  indicatorColor: Skin.getTheme().primaryColor,
+                  indicatorColor: Style.getTheme().primaryColor,
                   tabs: <Widget>[
                     Container(
                       child: (_currentIndex == 0)
@@ -192,13 +192,13 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 FxText.b2("Home",
-                                    color: Skin.getTheme().primaryColor,
+                                    color: Style.getTheme().primaryColor,
                                     letterSpacing: 0,
                                     fontWeight: 600),
                                 Container(
                                   margin: Spacing.top(6),
                                   decoration: BoxDecoration(
-                                      color: Skin.getTheme().primaryColor,
+                                      color: Style.getTheme().primaryColor,
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(2.5))),
                                   height: 5,
@@ -209,7 +209,7 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                           : Icon(
                               FeatherIcons.home,
                               size: 20,
-                              color: Skin.getTheme().colorScheme.onBackground,
+                              color: Style.getTheme().colorScheme.onBackground,
                             ),
                     ),
                     Container(
@@ -218,13 +218,13 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
                                   FxText.b2("Search",
-                                      color: Skin.getTheme().primaryColor,
+                                      color: Style.getTheme().primaryColor,
                                       letterSpacing: 0,
                                       fontWeight: 600),
                                   Container(
                                     margin: Spacing.top(6),
                                     decoration: BoxDecoration(
-                                        color: Skin.getTheme().primaryColor,
+                                        color: Style.getTheme().primaryColor,
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(2.5))),
                                     height: 5,
@@ -235,7 +235,8 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                             : Icon(
                                 FeatherIcons.search,
                                 size: 20,
-                                color: Skin.getTheme().colorScheme.onBackground,
+                                color:
+                                    Style.getTheme().colorScheme.onBackground,
                               )),
                     Container(
                         child: (_currentIndex == 2)
@@ -243,13 +244,13 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
                                   FxText.b2("Cart",
-                                      color: Skin.getTheme().primaryColor,
+                                      color: Style.getTheme().primaryColor,
                                       letterSpacing: 0,
                                       fontWeight: 600),
                                   Container(
                                     margin: Spacing.top(6),
                                     decoration: BoxDecoration(
-                                        color: Skin.getTheme().primaryColor,
+                                        color: Style.getTheme().primaryColor,
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(2.5))),
                                     height: 5,
@@ -260,7 +261,8 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                             : Icon(
                                 FeatherIcons.shoppingCart,
                                 size: 20,
-                                color: Skin.getTheme().colorScheme.onBackground,
+                                color:
+                                    Style.getTheme().colorScheme.onBackground,
                               )),
                     Container(
                         child: (_currentIndex == 3)
@@ -268,13 +270,13 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
                                   FxText.b2("Profile",
-                                      color: Skin.getTheme().primaryColor,
+                                      color: Style.getTheme().primaryColor,
                                       letterSpacing: 0,
                                       fontWeight: 600),
                                   Container(
                                     margin: Spacing.top(6),
                                     decoration: BoxDecoration(
-                                        color: Skin.getTheme().primaryColor,
+                                        color: Style.getTheme().primaryColor,
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(2.5))),
                                     height: 5,
@@ -285,7 +287,8 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                             : Icon(
                                 FeatherIcons.user,
                                 size: 20,
-                                color: Skin.getTheme().colorScheme.onBackground,
+                                color:
+                                    Style.getTheme().colorScheme.onBackground,
                               )),
                   ],
                 ),
@@ -303,10 +306,10 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
       margin: Spacing.fromLTRB(16, Spacing.safeAreaTop(context) + 16, 16, 16),
       borderRadiusAll: 4,
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      background: Skin.getTheme().scaffoldBackgroundColor,
+      background: Style.getTheme().scaffoldBackgroundColor,
       child: Drawer(
           child: Container(
-        color: Skin.getTheme().scaffoldBackgroundColor,
+        color: Style.getTheme().scaffoldBackgroundColor,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
@@ -326,9 +329,9 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                     padding: Spacing.fromLTRB(12, 4, 12, 4),
                     borderRadiusAll: 4,
                     background:
-                        Skin.getTheme().colorScheme.primary.withAlpha(40),
+                        Style.getTheme().colorScheme.primary.withAlpha(40),
                     child: FxText.caption("v. 8.0.0",
-                        color: Skin.getTheme().colorScheme.primary,
+                        color: Style.getTheme().colorScheme.primary,
                         fontWeight: 600,
                         letterSpacing: 0.2),
                   ),
@@ -358,9 +361,9 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                             height: 20,
                             width: 20,
                             image: AssetImage(Images.languageOutline),
-                            color: CustomSkin.peach,
+                            color: CustomStyle.peach,
                           ),
-                          background: CustomSkin.peach.withAlpha(20),
+                          background: CustomStyle.peach.withAlpha(20),
                         ),
                         Spacing.width(16),
                         Expanded(
@@ -372,7 +375,7 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                         autoDirection(Icon(
                           FeatherIcons.chevronRight,
                           size: 18,
-                          color: Skin.getTheme().colorScheme.onBackground,
+                          color: Style.getTheme().colorScheme.onBackground,
                         )),
                       ],
                     ),
@@ -396,9 +399,9 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                                 Writing.getTextDirection() == TextDirection.ltr
                                     ? Images.paragraphRTLOutline
                                     : Images.paragraphLTROutline),
-                            color: CustomSkin.skyBlue,
+                            color: CustomStyle.skyBlue,
                           ),
-                          background: CustomSkin.skyBlue.withAlpha(20),
+                          background: CustomStyle.skyBlue.withAlpha(20),
                         ),
                         Spacing.width(16),
                         Expanded(
@@ -413,7 +416,7 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                         autoDirection(Icon(
                           FeatherIcons.chevronRight,
                           size: 18,
-                          color: Skin.getTheme().colorScheme.onBackground,
+                          color: Style.getTheme().colorScheme.onBackground,
                         )),
                       ],
                     ),
@@ -430,14 +433,14 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                         FxContainer(
                           paddingAll: 12,
                           borderRadiusAll: 4,
-                          background: CustomSkin.occur.withAlpha(20),
+                          background: CustomStyle.occur.withAlpha(20),
                           child: Image(
                             height: 20,
                             width: 20,
                             image: AssetImage(!isDark
                                 ? Images.darkModeOutline
                                 : Images.lightModeOutline),
-                            color: CustomSkin.occur,
+                            color: CustomStyle.occur,
                           ),
                         ),
                         Spacing.width(16),
@@ -452,7 +455,7 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                         autoDirection(Icon(
                           FeatherIcons.chevronRight,
                           size: 18,
-                          color: Skin.getTheme().colorScheme.onBackground,
+                          color: Style.getTheme().colorScheme.onBackground,
                         )),
                       ],
                     ),
@@ -484,9 +487,9 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                             height: 20,
                             width: 20,
                             image: AssetImage(Images.documentationIcon),
-                            color: CustomSkin.skyBlue,
+                            color: CustomStyle.skyBlue,
                           ),
-                          background: CustomSkin.skyBlue.withAlpha(20),
+                          background: CustomStyle.skyBlue.withAlpha(20),
                         ),
                         Spacing.width(16),
                         Expanded(
@@ -513,9 +516,9 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                             height: 20,
                             width: 20,
                             image: AssetImage(Images.changeLogIcon),
-                            color: CustomSkin.peach,
+                            color: CustomStyle.peach,
                           ),
-                          background: CustomSkin.peach.withAlpha(20),
+                          background: CustomStyle.peach.withAlpha(20),
                         ),
                         Spacing.width(16),
                         Expanded(
@@ -538,12 +541,12 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
                   launchCodecanyonURL();
                 },
                 splashColor:
-                    Skin.getTheme().colorScheme.onPrimary.withAlpha(40),
+                    Style.getTheme().colorScheme.onPrimary.withAlpha(40),
                 child: FxText(
                   Language.translate("buy_now"),
-                  color: Skin.getTheme().colorScheme.onPrimary,
+                  color: Style.getTheme().colorScheme.onPrimary,
                 ),
-                backgroundColor: Skin.getTheme().colorScheme.primary,
+                backgroundColor: Style.getTheme().colorScheme.primary,
               ),
             )
           ],

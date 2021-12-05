@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:zerodezenove/configurations/spacing.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/widgets/container/container.dart';
 import 'package:zerodezenove/widgets/star_rating/star_rating.dart';
 import 'package:zerodezenove/widgets/text/text.dart';
@@ -25,9 +25,9 @@ class _GroceryProductReviewScreenState extends State<GroceryProductReviewScreen>
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Skin.getTheme().copyWith(
-          colorScheme: Skin.getTheme().colorScheme.copyWith(
-              secondary: Skin.getTheme().colorScheme.primary.withAlpha(80))),
+      data: Style.getTheme().copyWith(
+          colorScheme: Style.getTheme().colorScheme.copyWith(
+              secondary: Style.getTheme().colorScheme.primary.withAlpha(80))),
       child: Scaffold(
           appBar: AppBar(
             elevation: 0,
@@ -38,7 +38,7 @@ class _GroceryProductReviewScreenState extends State<GroceryProductReviewScreen>
               child: Icon(
                 MdiIcons.chevronLeft,
                 size: 20,
-                color: Skin.getTheme().colorScheme.onBackground,
+                color: Style.getTheme().colorScheme.onBackground,
               ),
             ),
             title: FxText("Reviews", fontWeight: 600),
@@ -72,7 +72,7 @@ class _GroceryProductReviewScreenState extends State<GroceryProductReviewScreen>
                   onPressed: () {},
                   child: FxText.b2("Write a Review",
                       letterSpacing: 0,
-                      color: Skin.getTheme().primaryColor,
+                      color: Style.getTheme().primaryColor,
                       fontWeight: 600),
                 ),
               )
@@ -145,7 +145,7 @@ class _GroceryProductReviewScreenState extends State<GroceryProductReviewScreen>
                         children: <Widget>[
                           FxStarRating(
                               rating: rating,
-                              activeColor: Skin.getTheme().primaryColor,
+                              activeColor: Style.getTheme().primaryColor,
                               showInactive: false,
                               spacing: 0),
                           Spacing.width(4),
@@ -182,13 +182,13 @@ class _GroceryProductReviewScreenState extends State<GroceryProductReviewScreen>
         children: [
           Container(
             child: FxText.caption(i.toString(),
-                color: Skin.getTheme().colorScheme.onBackground,
+                color: Style.getTheme().colorScheme.onBackground,
                 fontWeight: 600),
           ),
           Spacing.width(4),
           Icon(
             MdiIcons.starOutline,
-            color: Skin.getTheme().colorScheme.onBackground,
+            color: Style.getTheme().colorScheme.onBackground,
             size: 10,
           ),
           Expanded(
@@ -196,7 +196,8 @@ class _GroceryProductReviewScreenState extends State<GroceryProductReviewScreen>
               margin: Spacing.left(8),
               height: 4,
               decoration: BoxDecoration(
-                  color: Skin.getTheme().colorScheme.onBackground.withAlpha(60),
+                  color:
+                      Style.getTheme().colorScheme.onBackground.withAlpha(60),
                   borderRadius: BorderRadius.all(Radius.circular(4))),
               child: Row(
                 children: <Widget>[
@@ -220,7 +221,7 @@ class _GroceryProductReviewScreenState extends State<GroceryProductReviewScreen>
           Container(
             margin: Spacing.left(8),
             child: FxText.caption(ratingList[i].toString(),
-                color: Skin.getTheme().colorScheme.onBackground, muted: true),
+                color: Style.getTheme().colorScheme.onBackground, muted: true),
           )
         ],
       ));
@@ -229,8 +230,8 @@ class _GroceryProductReviewScreenState extends State<GroceryProductReviewScreen>
     return FxContainer(
       padding: Spacing.all(16),
       bordered: true,
-      border: Border.all(color: CustomSkin.getTheme().border),
-      background: CustomSkin.getTheme().card,
+      border: Border.all(color: CustomStyle.getTheme().border),
+      background: CustomStyle.getTheme().card,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -252,7 +253,7 @@ class _GroceryProductReviewScreenState extends State<GroceryProductReviewScreen>
                             ),
                             Icon(
                               MdiIcons.starOutline,
-                              color: Skin.getTheme().colorScheme.onBackground,
+                              color: Style.getTheme().colorScheme.onBackground,
                               size: 16,
                             )
                           ],

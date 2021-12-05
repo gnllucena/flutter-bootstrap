@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum Skins { light, dark }
+enum Styles { light, dark }
 
-class Skin {
-  static Skins defaultTheme = Skins.light;
-  static Skins theme = defaultTheme;
+class Style {
+  static Styles defaultTheme = Styles.light;
+  static Styles theme = defaultTheme;
 
-  static void setTheme(Skins themeType) async {
+  static void setTheme(Styles themeType) async {
     theme = themeType;
 
     var preferences = await SharedPreferences.getInstance();
     preferences.setString(
-        "theme_mode", theme == Skins.light ? "light" : "dark");
+        "theme_mode", theme == Styles.light ? "light" : "dark");
   }
 
   static ThemeData getTheme() {
-    if (theme == Skins.light) {
+    if (theme == Styles.light) {
       return _light;
     }
 
@@ -224,7 +224,7 @@ class Skin {
   );
 }
 
-class CustomSkin {
+class CustomStyle {
   static final Color occur = Color(0xffb38220);
   static final Color peach = Color(0xffe09c5f);
   static final Color skyBlue = Color(0xff639fdc);
@@ -256,7 +256,7 @@ class CustomSkin {
       shimmerBaseColor,
       shimmerHighlightColor;
 
-  CustomSkin({
+  CustomStyle({
     this.border = const Color(0xffeeeeee),
     this.borderDark = const Color(0xffe6e6e6),
     this.card = const Color(0xfff0f0f0),
@@ -276,15 +276,15 @@ class CustomSkin {
     this.shimmerHighlightColor = const Color(0xFFE0E0E0),
   });
 
-  static CustomSkin getTheme() {
-    if (Skin.theme == Skins.light) {
+  static CustomStyle getTheme() {
+    if (Style.theme == Styles.light) {
       return _light;
     }
 
     return _dark;
   }
 
-  static final CustomSkin _light = CustomSkin(
+  static final CustomStyle _light = CustomStyle(
       card: Color(0xfff6f6f6),
       cardDark: Color(0xfff0f0f0),
       disabledColor: Color(0xff636363),
@@ -301,7 +301,7 @@ class CustomSkin {
       shimmerBaseColor: Color(0xFFF5F5F5),
       shimmerHighlightColor: Color(0xFFE0E0E0));
 
-  static final CustomSkin _dark = CustomSkin(
+  static final CustomStyle _dark = CustomStyle(
       card: Color(0xff222327),
       cardDark: Color(0xff101010),
       border: Color(0xff303030),

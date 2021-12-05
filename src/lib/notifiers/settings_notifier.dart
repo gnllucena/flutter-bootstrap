@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zerodezenove/configurations/language.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/configurations/writing.dart';
 
 class SettingsNotifier extends ChangeNotifier {
   init() async {
     var preferences = await SharedPreferences.getInstance();
     var theme = preferences.getString("theme_mode").toString() == "dark"
-        ? Skins.dark
-        : Skins.light;
+        ? Styles.dark
+        : Styles.light;
 
-    Skin.setTheme(theme);
+    Style.setTheme(theme);
 
     notifyListeners();
   }
 
-  void updateTheme(Skins theme) async {
-    Skin.setTheme(theme);
+  void updateTheme(Styles theme) async {
+    Style.setTheme(theme);
 
     notifyListeners();
   }

@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:zerodezenove/configurations/spacing.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 import 'package:flutter/material.dart';
 
 class FxContainer extends StatelessWidget {
@@ -138,7 +138,7 @@ class FxContainer extends StatelessWidget {
       alignment: alignment,
       margin: margin ?? Spacing.all(marginAll ?? 0),
       decoration: BoxDecoration(
-          color: background ?? Skin.getTheme().cardTheme.color,
+          color: background ?? Style.getTheme().cardTheme.color,
           shape: shape,
           borderRadius: enableBorderRadius
               ? (shape == BoxShape.rectangle
@@ -148,7 +148,7 @@ class FxContainer extends StatelessWidget {
               : null,
           border: bordered
               ? border ??
-                  Border.all(color: Skin.getTheme().dividerColor, width: 1)
+                  Border.all(color: Style.getTheme().dividerColor, width: 1)
               : null),
       padding: padding ?? Spacing.all(paddingAll ?? 16),
       clipBehavior: clipBehavior ?? Clip.none,

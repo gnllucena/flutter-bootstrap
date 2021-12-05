@@ -1,5 +1,5 @@
 import 'package:zerodezenove/configurations/spacing.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -287,7 +287,7 @@ class _FxTextFieldState extends State<FxTextField> {
     focusedBorder = widget.focusedBorder;
     filled = widget.filled;
     fillColor = fillColor ??
-        Skin.getTheme().inputDecorationTheme.fillColor ??
+        Style.getTheme().inputDecorationTheme.fillColor ??
         Colors.transparent;
     prefixIcon = widget.prefixIcon;
 
@@ -421,12 +421,13 @@ class _FxTextFieldState extends State<FxTextField> {
     switch (widget.textFieldStyle) {
       case FxTextFieldStyle.underlined:
         filled = filled ?? true;
-        fillColor = fillColor ?? Skin.getTheme().inputDecorationTheme.fillColor;
+        fillColor =
+            fillColor ?? Style.getTheme().inputDecorationTheme.fillColor;
         enabledBorder = enabledBorder ??
             UnderlineInputBorder(
               borderSide: BorderSide(
                 color: enabledBorderColor ??
-                    Skin.getTheme()
+                    Style.getTheme()
                         .inputDecorationTheme
                         .enabledBorder!
                         .borderSide
@@ -438,14 +439,15 @@ class _FxTextFieldState extends State<FxTextField> {
             UnderlineInputBorder(
               borderSide: BorderSide(
                 color:
-                    focusedBorderColor ?? Skin.getTheme().colorScheme.primary,
+                    focusedBorderColor ?? Style.getTheme().colorScheme.primary,
               ),
             );
         break;
 
       case FxTextFieldStyle.outlined:
         filled = filled ?? false;
-        fillColor = fillColor ?? Skin.getTheme().inputDecorationTheme.fillColor;
+        fillColor =
+            fillColor ?? Style.getTheme().inputDecorationTheme.fillColor;
         enabledBorder = enabledBorder ??
             OutlineInputBorder(
               borderRadius:
@@ -454,7 +456,7 @@ class _FxTextFieldState extends State<FxTextField> {
                 color: autoFocusedBorder
                     ? Colors.transparent
                     : enabledBorderColor ??
-                        Skin.getTheme()
+                        Style.getTheme()
                             .inputDecorationTheme
                             .enabledBorder!
                             .borderSide
@@ -468,7 +470,7 @@ class _FxTextFieldState extends State<FxTextField> {
                   BorderRadius.all(Radius.circular(enabledBorderRadius ?? 8)),
               borderSide: BorderSide(
                 color:
-                    focusedBorderColor ?? Skin.getTheme().colorScheme.primary,
+                    focusedBorderColor ?? Style.getTheme().colorScheme.primary,
               ),
             );
         border = enabledBorder;

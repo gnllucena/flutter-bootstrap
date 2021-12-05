@@ -1,5 +1,5 @@
 import 'package:zerodezenove/configurations/spacing.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/widgets/container/container.dart';
 import 'package:zerodezenove/widgets/dotted_line/dotted_line.dart';
 import 'package:zerodezenove/widgets/text/text.dart';
@@ -15,10 +15,10 @@ class _GroceryCouponScreenState extends State<GroceryCouponScreen> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Skin.getTheme().copyWith(
-          colorScheme: Skin.getTheme()
+      data: Style.getTheme().copyWith(
+          colorScheme: Style.getTheme()
               .colorScheme
-              .copyWith(secondary: Skin.getTheme().primaryColor)),
+              .copyWith(secondary: Style.getTheme().primaryColor)),
       child: Scaffold(
           appBar: AppBar(
             elevation: 0,
@@ -35,16 +35,16 @@ class _GroceryCouponScreenState extends State<GroceryCouponScreen> {
             child: ListView(
               padding: Spacing.fromLTRB(24, 8, 24, 0),
               children: <Widget>[
-                singleCoupon(MdiIcons.skype, CustomSkin.blue, "Skype", "Shoes",
+                singleCoupon(MdiIcons.skype, CustomStyle.blue, "Skype", "Shoes",
                     80, "VIABILITY50"),
                 // Space.height(24),
-                singleCoupon(MdiIcons.spotify, CustomSkin.green, "Spotify",
+                singleCoupon(MdiIcons.spotify, CustomStyle.green, "Spotify",
                     "Songs", 30, "SPOTIFY70"),
                 // Space.height(24),
-                singleCoupon(MdiIcons.cart, CustomSkin.purple, "Cart", "Shop",
+                singleCoupon(MdiIcons.cart, CustomStyle.purple, "Cart", "Shop",
                     60, "CART30"),
                 // Space.height(24),
-                singleCoupon(MdiIcons.sonyPlaystation, CustomSkin.orange,
+                singleCoupon(MdiIcons.sonyPlaystation, CustomStyle.orange,
                     "Sony", "PS5", 35, "SPS35"),
               ],
             ),
@@ -57,7 +57,7 @@ class _GroceryCouponScreenState extends State<GroceryCouponScreen> {
     return FxContainer(
       margin: Spacing.bottom(16),
       padding: Spacing.all(16),
-      background: CustomSkin.getTheme().card,
+      background: CustomStyle.getTheme().card,
       onTap: () {
         Navigator.pop(context);
       },
@@ -71,7 +71,7 @@ class _GroceryCouponScreenState extends State<GroceryCouponScreen> {
                     shape: BoxShape.circle, color: color.withAlpha(200)),
                 child: Icon(
                   iconData,
-                  color: Skin.getTheme().backgroundColor,
+                  color: Style.getTheme().backgroundColor,
                 ),
               ),
               Spacing.height(8),
@@ -86,7 +86,7 @@ class _GroceryCouponScreenState extends State<GroceryCouponScreen> {
           ),
           Spacing.width(16),
           FxDottedLine(
-            color: Skin.getTheme().colorScheme.onBackground.withAlpha(100),
+            color: Style.getTheme().colorScheme.onBackground.withAlpha(100),
             height: 100,
             strokeWidth: 1.2,
             dottedLength: 8,
@@ -115,12 +115,12 @@ class _GroceryCouponScreenState extends State<GroceryCouponScreen> {
                   FxContainer(
                     padding: Spacing.fromLTRB(12, 8, 12, 8),
                     borderRadiusAll: 4,
-                    background: Skin.getTheme().primaryColor.withAlpha(40),
+                    background: Style.getTheme().primaryColor.withAlpha(40),
                     child: FxText.caption(
                       code,
                       letterSpacing: 0,
                       fontWeight: 600,
-                      color: Skin.getTheme().primaryColor,
+                      color: Style.getTheme().primaryColor,
                     ),
                   )
                 ],

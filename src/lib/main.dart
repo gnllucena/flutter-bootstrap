@@ -4,7 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:zerodezenove/app.dart';
 import 'package:zerodezenove/configurations/language.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/configurations/writing.dart';
 import 'package:zerodezenove/notifiers/settings_notifier.dart';
 
@@ -30,7 +30,7 @@ class Main extends StatelessWidget {
       builder: (BuildContext context, SettingsNotifier value, Widget? child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: Skin.getTheme(),
+          theme: Style.getTheme(),
           builder: (context, child) {
             return Directionality(
               textDirection: Writing.getTextDirection(),

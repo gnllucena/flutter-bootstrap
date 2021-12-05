@@ -1,5 +1,5 @@
 import 'package:zerodezenove/configurations/spacing.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/widgets/container/container.dart';
 import 'package:zerodezenove/widgets/text/text.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +17,9 @@ class _GroceryOrderScreenState extends State<GroceryOrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Skin.getTheme().copyWith(
-          colorScheme: Skin.getTheme().colorScheme.copyWith(
-              secondary: Skin.getTheme().colorScheme.primary.withAlpha(80))),
+      data: Style.getTheme().copyWith(
+          colorScheme: Style.getTheme().colorScheme.copyWith(
+              secondary: Style.getTheme().colorScheme.primary.withAlpha(80))),
       child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
@@ -30,7 +30,7 @@ class _GroceryOrderScreenState extends State<GroceryOrderScreen> {
               },
               child: Icon(
                 MdiIcons.chevronLeft,
-                color: Skin.getTheme().colorScheme.onBackground,
+                color: Style.getTheme().colorScheme.onBackground,
               ),
             ),
             title: FxText.sh1("Orders", fontWeight: 600),
@@ -91,13 +91,13 @@ class _GroceryOrderScreenState extends State<GroceryOrderScreen> {
           ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(8)),
             child: Container(
-              color: Skin.getTheme().primaryColor.withAlpha(40),
+              color: Style.getTheme().primaryColor.withAlpha(40),
               height: 80,
               width: 80,
               child: Center(
                   child: FxText.sh1("+" + (listItem.length - 2).toString(),
                       letterSpacing: 0.5,
-                      color: Skin.getTheme().primaryColor,
+                      color: Style.getTheme().primaryColor,
                       fontWeight: 600)),
             ),
           ),
@@ -108,7 +108,7 @@ class _GroceryOrderScreenState extends State<GroceryOrderScreen> {
           FxContainer(
             margin: (i == 2) ? Spacing.zero : Spacing.right(space),
             padding: Spacing.all(12),
-            background: Skin.getTheme().primaryColor.withAlpha(40),
+            background: Style.getTheme().primaryColor.withAlpha(40),
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(8)),
               child: Image.asset(
@@ -125,9 +125,9 @@ class _GroceryOrderScreenState extends State<GroceryOrderScreen> {
     return FxContainer(
       padding: Spacing.all(16),
       margin: Spacing.bottom(16),
-      background: CustomSkin.getTheme().card,
+      background: CustomStyle.getTheme().card,
       bordered: true,
-      border: Border.all(color: CustomSkin.getTheme().border, width: 1.2),
+      border: Border.all(color: CustomStyle.getTheme().border, width: 1.2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -150,7 +150,7 @@ class _GroceryOrderScreenState extends State<GroceryOrderScreen> {
               ),
               FxContainer(
                 padding: Spacing.fromLTRB(12, 8, 12, 8),
-                background: CustomSkin.getTheme().card,
+                background: CustomStyle.getTheme().card,
                 borderRadiusAll: 4,
                 child: FxText.overline(status!.toUpperCase(),
                     fontWeight: 700, letterSpacing: 0.2),

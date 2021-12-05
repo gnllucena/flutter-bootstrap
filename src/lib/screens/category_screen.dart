@@ -2,7 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:zerodezenove/configurations/spacing.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/domain/category.dart';
 import 'package:zerodezenove/domain/product.dart';
 import 'package:zerodezenove/screens/single_product_screen.dart';
@@ -35,10 +35,10 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Skin.getTheme().copyWith(
-          colorScheme: Skin.getTheme()
+      data: Style.getTheme().copyWith(
+          colorScheme: Style.getTheme()
               .colorScheme
-              .copyWith(secondary: Skin.getTheme().primaryColor)),
+              .copyWith(secondary: Style.getTheme().primaryColor)),
       child: Scaffold(
           appBar: AppBar(
             elevation: 0,
@@ -48,7 +48,7 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
               },
               child: Icon(
                 MdiIcons.chevronLeft,
-                color: Skin.getTheme().colorScheme.onBackground,
+                color: Style.getTheme().colorScheme.onBackground,
               ),
             ),
           ),
@@ -76,7 +76,7 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
                     Spacing.height(16),
                     FxText.sh1(
                       widget.category.title,
-                      color: Skin.getTheme().colorScheme.onBackground,
+                      color: Style.getTheme().colorScheme.onBackground,
                       fontWeight: 600,
                     )
                   ],
@@ -131,7 +131,7 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FxContainer(
-              background: Skin.getTheme().primaryColor.withAlpha(32),
+              background: Style.getTheme().primaryColor.withAlpha(32),
               padding: Spacing.all(8),
               child: Hero(
                 tag: heroKey,
@@ -151,11 +151,11 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   FxText.b2(product.name,
-                      color: Skin.getTheme().colorScheme.onBackground,
+                      color: Style.getTheme().colorScheme.onBackground,
                       fontWeight: 600),
                   Spacing.height(8),
                   FxText.overline(product.description,
-                      color: Skin.getTheme().colorScheme.onBackground,
+                      color: Style.getTheme().colorScheme.onBackground,
                       muted: true),
                   Spacing.height(8),
                   product.discountedPrice != product.price
@@ -168,12 +168,13 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
                             Spacing.width(8),
                             FxText.b2(
                                 "\$" + doubleToString(product.discountedPrice),
-                                color: Skin.getTheme().colorScheme.onBackground,
+                                color:
+                                    Style.getTheme().colorScheme.onBackground,
                                 fontWeight: 700),
                           ],
                         )
                       : FxText.b2("\$" + doubleToString(product.price),
-                          color: Skin.getTheme().colorScheme.onBackground,
+                          color: Style.getTheme().colorScheme.onBackground,
                           fontWeight: 700),
                 ],
               ),
@@ -181,7 +182,7 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
             // Space.width(8),
             Icon(
               MdiIcons.heartOutline,
-              color: Skin.getTheme().primaryColor,
+              color: Style.getTheme().primaryColor,
               size: 18,
             )
           ],

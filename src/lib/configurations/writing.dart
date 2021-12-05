@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 
 enum Elements {
   h4,
@@ -172,7 +172,7 @@ class Writing {
     Color? finalColor;
 
     if (color == null) {
-      var themeColor = Skin.getTheme().colorScheme.onBackground;
+      var themeColor = Style.getTheme().colorScheme.onBackground;
 
       finalColor = xMuted
           ? themeColor.withAlpha(160)

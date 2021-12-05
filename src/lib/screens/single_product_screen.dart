@@ -2,7 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:zerodezenove/configurations/spacing.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/domain/product.dart';
 import 'package:zerodezenove/widgets/button/button.dart';
 import 'package:flutter/material.dart';
@@ -37,9 +37,9 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
 
   Widget build(BuildContext context) {
     return Theme(
-      data: Skin.getTheme().copyWith(
-          colorScheme: Skin.getTheme().colorScheme.copyWith(
-              secondary: Skin.getTheme().colorScheme.primary.withAlpha(80))),
+      data: Style.getTheme().copyWith(
+          colorScheme: Style.getTheme().colorScheme.copyWith(
+              secondary: Style.getTheme().colorScheme.primary.withAlpha(80))),
       child: Scaffold(
           appBar: AppBar(
             elevation: 0,
@@ -49,21 +49,21 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
               },
               child: Icon(
                 MdiIcons.chevronLeft,
-                color: Skin.getTheme().primaryColor,
+                color: Style.getTheme().primaryColor,
                 size: 20,
               ),
             ),
             actions: [
               Icon(
                 MdiIcons.heartOutline,
-                color: Skin.getTheme().primaryColor,
+                color: Style.getTheme().primaryColor,
                 size: 20,
               ),
               Spacing.width(16)
             ],
           ),
           body: Container(
-            color: Skin.getTheme().primaryColor.withAlpha(68),
+            color: Style.getTheme().primaryColor.withAlpha(68),
             child: ListView(
               children: <Widget>[
                 Center(
@@ -81,7 +81,7 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
                 Spacing.height(24),
                 FxContainer(
                   padding: Spacing.all(24),
-                  background: CustomSkin.getTheme().card,
+                  background: CustomStyle.getTheme().card,
                   borderRadiusAll: 16,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,18 +123,18 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
                             },
                             padding: Spacing.fromLTRB(8, 6, 8, 6),
                             background:
-                                Skin.getTheme().primaryColor.withAlpha(40),
+                                Style.getTheme().primaryColor.withAlpha(40),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 FxText.b2("(243 review)",
-                                    color: Skin.getTheme().primaryColor,
+                                    color: Style.getTheme().primaryColor,
                                     fontWeight: 500,
                                     letterSpacing: -0.2),
                                 Icon(
                                   MdiIcons.chevronRight,
                                   size: 14,
-                                  color: Skin.getTheme().primaryColor,
+                                  color: Style.getTheme().primaryColor,
                                 )
                               ],
                             ),
@@ -160,11 +160,11 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
                                 },
                                 padding: Spacing.all(6),
                                 background:
-                                    Skin.getTheme().primaryColor.withAlpha(48),
+                                    Style.getTheme().primaryColor.withAlpha(48),
                                 child: Icon(
                                   MdiIcons.minus,
                                   size: 14,
-                                  color: Skin.getTheme().primaryColor,
+                                  color: Style.getTheme().primaryColor,
                                 ),
                               ),
                               Spacing.width(12),
@@ -178,11 +178,11 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
                                   });
                                 },
                                 padding: Spacing.all(6),
-                                background: Skin.getTheme().primaryColor,
+                                background: Style.getTheme().primaryColor,
                                 child: Icon(
                                   MdiIcons.plus,
                                   size: 14,
-                                  color: Skin.getTheme().backgroundColor,
+                                  color: Style.getTheme().backgroundColor,
                                 ),
                               ),
                             ],
@@ -201,8 +201,8 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
                             },
                             child: FxText.b2("Buy Now",
                                 fontWeight: 600,
-                                color: Skin.getTheme().backgroundColor),
-                            backgroundColor: Skin.getTheme().primaryColor,
+                                color: Style.getTheme().backgroundColor),
+                            backgroundColor: Style.getTheme().primaryColor,
                           ))
                         ],
                       ),
@@ -268,7 +268,7 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FxContainer(
-              background: Skin.getTheme().primaryColor.withAlpha(32),
+              background: Style.getTheme().primaryColor.withAlpha(32),
               padding: Spacing.all(8),
               child: Hero(
                 tag: heroKey,
@@ -288,11 +288,11 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   FxText.b2(product.name,
-                      color: Skin.getTheme().colorScheme.onBackground,
+                      color: Style.getTheme().colorScheme.onBackground,
                       fontWeight: 600),
                   Spacing.height(8),
                   FxText.overline(product.description,
-                      color: Skin.getTheme().colorScheme.onBackground,
+                      color: Style.getTheme().colorScheme.onBackground,
                       muted: true),
                   Spacing.height(8),
                   product.discountedPrice != product.price
@@ -305,12 +305,13 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
                             Spacing.width(8),
                             FxText.b2(
                                 "\$" + doubleToString(product.discountedPrice),
-                                color: Skin.getTheme().colorScheme.onBackground,
+                                color:
+                                    Style.getTheme().colorScheme.onBackground,
                                 fontWeight: 700),
                           ],
                         )
                       : FxText.b2("\$" + doubleToString(product.price),
-                          color: Skin.getTheme().colorScheme.onBackground,
+                          color: Style.getTheme().colorScheme.onBackground,
                           fontWeight: 700),
                 ],
               ),
@@ -318,7 +319,7 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
             // Space.width(8),
             Icon(
               MdiIcons.heartOutline,
-              color: Skin.getTheme().primaryColor,
+              color: Style.getTheme().primaryColor,
               size: 18,
             )
           ],

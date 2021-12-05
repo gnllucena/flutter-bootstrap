@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:zerodezenove/configurations/spacing.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 
 import 'package:zerodezenove/widgets/container/container.dart';
 import 'package:zerodezenove/widgets/text/text.dart';
@@ -31,7 +31,7 @@ class _GroceryProfileScreenState extends State<GroceryProfileScreen>
             Center(
               child: FxContainer.rounded(
                 padding: Spacing.all(20),
-                background: Skin.getTheme().primaryColor.withAlpha(40),
+                background: Style.getTheme().primaryColor.withAlpha(40),
                 child: Image.asset(
                   'assets/images/apps/grocery/profile.png',
                   width: 60,
@@ -53,23 +53,23 @@ class _GroceryProfileScreenState extends State<GroceryProfileScreen>
                 },
                 child: getSingleSetting(
                     iconData: FeatherIcons.shoppingBag,
-                    color: CustomSkin.brown,
+                    color: CustomStyle.brown,
                     title: "My Orders")),
             getSingleSetting(
                 iconData: FeatherIcons.creditCard,
-                color: CustomSkin.green,
+                color: CustomStyle.green,
                 title: "Wallet"),
             getSingleSetting(
                 iconData: FeatherIcons.tag,
-                color: CustomSkin.purple,
+                color: CustomStyle.purple,
                 title: "Vouchers"),
             getSingleSetting(
                 iconData: FeatherIcons.mapPin,
-                color: CustomSkin.orange,
+                color: CustomStyle.orange,
                 title: "My Address"),
             getSingleSetting(
                 iconData: FeatherIcons.logOut,
-                color: CustomSkin.red,
+                color: CustomStyle.red,
                 title: "Log Out"),
           ],
         ));

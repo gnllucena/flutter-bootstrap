@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 
 class Category {
   final String image, title;
@@ -10,13 +10,13 @@ class Category {
   static List<Category> getList() {
     return [
       Category("./assets/images/apps/grocery/strawberry.png", "Fruit",
-          CustomSkin.red.withAlpha(50)),
+          CustomStyle.red.withAlpha(50)),
       Category("./assets/images/apps/grocery/bread.png", "Bread",
-          CustomSkin.orange.withAlpha(60)),
+          CustomStyle.orange.withAlpha(60)),
       Category("./assets/images/apps/grocery/broccoli.png", "Veggie",
-          CustomSkin.green.withAlpha(50)),
+          CustomStyle.green.withAlpha(50)),
       Category("./assets/images/apps/grocery/cheese.png", "Dairy",
-          CustomSkin.yellow.withAlpha(70)),
+          CustomStyle.yellow.withAlpha(70)),
     ];
   }
 }

@@ -2,7 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:zerodezenove/configurations/spacing.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/configurations/writing.dart';
 import 'package:zerodezenove/domain/cart.dart';
 import 'package:zerodezenove/screens/checkout_screen.dart';
@@ -54,7 +54,7 @@ class _GroceryCartScreenState extends State<GroceryCartScreen>
             ),
             Spacing.height(16),
             FxContainer(
-              background: CustomSkin.getTheme().card,
+              background: CustomStyle.getTheme().card,
               padding: Spacing.all(8),
               child: Row(
                 children: [
@@ -69,11 +69,11 @@ class _GroceryCartScreenState extends State<GroceryCartScreen>
                       floatingLabelBehavior: FloatingLabelBehavior.never,
                       contentPadding: Spacing.right(16),
                       focusedBorderColor: Colors.transparent,
-                      cursorColor: Skin.getTheme().primaryColor,
+                      cursorColor: Style.getTheme().primaryColor,
                       prefixIcon: Icon(
                         MdiIcons.ticketPercentOutline,
                         size: 22,
-                        color: Skin.getTheme()
+                        color: Style.getTheme()
                             .colorScheme
                             .onBackground
                             .withAlpha(150),
@@ -91,8 +91,8 @@ class _GroceryCartScreenState extends State<GroceryCartScreen>
                     child: FxText.button("Find",
                         letterSpacing: 0.5,
                         fontWeight: 600,
-                        color: Skin.getTheme().backgroundColor),
-                    backgroundColor: Skin.getTheme().primaryColor,
+                        color: Style.getTheme().backgroundColor),
+                    backgroundColor: Style.getTheme().primaryColor,
                     borderRadiusAll: 4,
                     padding: Spacing.xy(32, 12),
                     elevation: 0,
@@ -131,7 +131,7 @@ class _GroceryCartScreenState extends State<GroceryCartScreen>
                   dashSpace: 6,
                   height: 1.2,
                   dashWidth: 8,
-                  color: Skin.getTheme().colorScheme.onBackground,
+                  color: Style.getTheme().colorScheme.onBackground,
                 ),
                 Spacing.height(12),
                 Row(
@@ -156,9 +156,9 @@ class _GroceryCartScreenState extends State<GroceryCartScreen>
                   "CHECKOUT",
                   letterSpacing: 0.5,
                   fontWeight: 600,
-                  color: Skin.getTheme().backgroundColor,
+                  color: Style.getTheme().backgroundColor,
                 ),
-                backgroundColor: Skin.getTheme().primaryColor,
+                backgroundColor: Style.getTheme().primaryColor,
                 borderRadiusAll: 4,
                 padding: Spacing.xy(32, 12),
                 elevation: 0,
@@ -225,11 +225,11 @@ class _SingleCartWidgetState extends State<SingleCartWidget> {
         key: UniqueKey(),
         direction: DismissDirection.endToStart,
         background: Container(
-          color: CustomSkin.getTheme().card,
+          color: CustomStyle.getTheme().card,
         ),
         secondaryBackground: Container(
           decoration: BoxDecoration(
-              color: CustomSkin.getTheme().cardDark,
+              color: CustomStyle.getTheme().cardDark,
               borderRadius: BorderRadius.all(Radius.circular(8))),
           padding: Spacing.horizontal(20),
           alignment: AlignmentDirectional.centerEnd,
@@ -240,12 +240,12 @@ class _SingleCartWidgetState extends State<SingleCartWidget> {
                 margin: Spacing.right(8),
                 padding: Spacing.all(16),
                 decoration: BoxDecoration(
-                    color: CustomSkin.red.withAlpha(40),
+                    color: CustomStyle.red.withAlpha(40),
                     shape: BoxShape.circle),
                 child: Icon(
                   FeatherIcons.trash,
                   size: 22,
-                  color: CustomSkin.red,
+                  color: CustomStyle.red,
                 ),
               ),
             ],
@@ -263,7 +263,7 @@ class _SingleCartWidgetState extends State<SingleCartWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               FxContainer(
-                background: Skin.getTheme().primaryColor.withAlpha(32),
+                background: Style.getTheme().primaryColor.withAlpha(32),
                 padding: Spacing.all(8),
                 child: Hero(
                   tag: heroKey!,
@@ -299,12 +299,12 @@ class _SingleCartWidgetState extends State<SingleCartWidget> {
                                       doubleToString(
                                           widget.cart.discountedPrice),
                                   color:
-                                      Skin.getTheme().colorScheme.onBackground,
+                                      Style.getTheme().colorScheme.onBackground,
                                   fontWeight: 700),
                             ],
                           )
                         : FxText.b2("\$" + doubleToString(widget.cart.price),
-                            color: Skin.getTheme().colorScheme.onBackground,
+                            color: Style.getTheme().colorScheme.onBackground,
                             fontWeight: 700),
                     Spacing.height(8),
                     Row(
@@ -319,11 +319,11 @@ class _SingleCartWidgetState extends State<SingleCartWidget> {
                           paddingAll: 8,
                           borderRadiusAll: 4,
                           background:
-                              Skin.getTheme().primaryColor.withAlpha(48),
+                              Style.getTheme().primaryColor.withAlpha(48),
                           child: Icon(
                             MdiIcons.minus,
                             size: 14,
-                            color: Skin.getTheme().primaryColor,
+                            color: Style.getTheme().primaryColor,
                           ),
                         ),
                         Spacing.width(12),
@@ -337,11 +337,11 @@ class _SingleCartWidgetState extends State<SingleCartWidget> {
                               quantity++;
                             });
                           },
-                          background: Skin.getTheme().primaryColor,
+                          background: Style.getTheme().primaryColor,
                           child: Icon(
                             MdiIcons.plus,
                             size: 14,
-                            color: Skin.getTheme().backgroundColor,
+                            color: Style.getTheme().backgroundColor,
                           ),
                         ),
                       ],

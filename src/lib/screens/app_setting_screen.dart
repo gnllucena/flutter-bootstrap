@@ -1,7 +1,7 @@
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:zerodezenove/configurations/language.dart';
 import 'package:zerodezenove/configurations/spacing.dart';
-import 'package:zerodezenove/configurations/skin.dart';
+import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/configurations/writing.dart';
 import 'package:zerodezenove/notifiers/settings_notifier.dart';
 import 'package:zerodezenove/screens/select_language_dialog.dart';
@@ -41,12 +41,12 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
   }
 
   void changeTheme() {
-    if (Skin.theme == Skins.light) {
+    if (Style.theme == Styles.light) {
       Provider.of<SettingsNotifier>(context, listen: false)
-          .updateTheme(Skins.dark);
+          .updateTheme(Styles.dark);
     } else {
       Provider.of<SettingsNotifier>(context, listen: false)
-          .updateTheme(Skins.light);
+          .updateTheme(Styles.light);
     }
 
     setState(() {});
@@ -116,12 +116,12 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
   Widget build(BuildContext context) {
     return Consumer<SettingsNotifier>(
       builder: (BuildContext context, SettingsNotifier value, Widget? child) {
-        isDark = Skin.theme == Skins.dark;
+        isDark = Style.theme == Styles.dark;
         return Theme(
-          data: Skin.getTheme().copyWith(
-              colorScheme: Skin.getTheme().colorScheme.copyWith(
+          data: Style.getTheme().copyWith(
+              colorScheme: Style.getTheme().colorScheme.copyWith(
                   secondary:
-                      Skin.getTheme().colorScheme.primary.withAlpha(80))),
+                      Style.getTheme().colorScheme.primary.withAlpha(80))),
           child: Scaffold(
             body: GestureDetector(
               onPanUpdate: (details) {
@@ -141,7 +141,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         child: autoDirection(Icon(
                           FeatherIcons.chevronLeft,
                           size: 20,
-                          color: Skin.getTheme().colorScheme.onBackground,
+                          color: Style.getTheme().colorScheme.onBackground,
                         )),
                       ),
                       Spacing.width(16),
@@ -170,9 +170,9 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                             height: 20,
                             width: 20,
                             image: AssetImage(Images.languageOutline),
-                            color: CustomSkin.peach,
+                            color: CustomStyle.peach,
                           ),
-                          background: CustomSkin.peach.withAlpha(20),
+                          background: CustomStyle.peach.withAlpha(20),
                         ),
                         Spacing.width(16),
                         Expanded(
@@ -184,7 +184,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         autoDirection(Icon(
                           FeatherIcons.chevronRight,
                           size: 18,
-                          color: Skin.getTheme().colorScheme.onBackground,
+                          color: Style.getTheme().colorScheme.onBackground,
                         )),
                       ],
                     ),
@@ -208,9 +208,9 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                                 Writing.getTextDirection() == TextDirection.ltr
                                     ? Images.paragraphRTLOutline
                                     : Images.paragraphLTROutline),
-                            color: CustomSkin.skyBlue,
+                            color: CustomStyle.skyBlue,
                           ),
-                          background: CustomSkin.skyBlue.withAlpha(20),
+                          background: CustomStyle.skyBlue.withAlpha(20),
                         ),
                         Spacing.width(16),
                         Expanded(
@@ -225,7 +225,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         autoDirection(Icon(
                           FeatherIcons.chevronRight,
                           size: 18,
-                          color: Skin.getTheme().colorScheme.onBackground,
+                          color: Style.getTheme().colorScheme.onBackground,
                         )),
                       ],
                     ),
@@ -242,14 +242,14 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         FxContainer(
                           paddingAll: 12,
                           borderRadiusAll: 4,
-                          background: CustomSkin.occur.withAlpha(28),
+                          background: CustomStyle.occur.withAlpha(28),
                           child: Image(
                             height: 20,
                             width: 20,
                             image: AssetImage(!isDark
                                 ? Images.darkModeOutline
                                 : Images.lightModeOutline),
-                            color: CustomSkin.occur,
+                            color: CustomStyle.occur,
                           ),
                         ),
                         Spacing.width(16),
@@ -264,7 +264,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         autoDirection(Icon(
                           FeatherIcons.chevronRight,
                           size: 18,
-                          color: Skin.getTheme().colorScheme.onBackground,
+                          color: Style.getTheme().colorScheme.onBackground,
                         )),
                       ],
                     ),
@@ -287,9 +287,9 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                             height: 20,
                             width: 20,
                             image: AssetImage(Images.documentationIcon),
-                            color: CustomSkin.skyBlue,
+                            color: CustomStyle.skyBlue,
                           ),
-                          background: CustomSkin.skyBlue.withAlpha(20),
+                          background: CustomStyle.skyBlue.withAlpha(20),
                         ),
                         Spacing.width(16),
                         Expanded(
@@ -316,9 +316,9 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                             height: 20,
                             width: 20,
                             image: AssetImage(Images.changeLogIcon),
-                            color: CustomSkin.peach,
+                            color: CustomStyle.peach,
                           ),
-                          background: CustomSkin.peach.withAlpha(20),
+                          background: CustomStyle.peach.withAlpha(20),
                         ),
                         Spacing.width(16),
                         Expanded(
@@ -338,13 +338,13 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         launchCodecanyonURL();
                       },
                       splashColor:
-                          Skin.getTheme().colorScheme.onPrimary.withAlpha(40),
+                          Style.getTheme().colorScheme.onPrimary.withAlpha(40),
                       child: FxText.button(
                         Language.translate("buy_now"),
-                        color: Skin.getTheme().colorScheme.onPrimary,
+                        color: Style.getTheme().colorScheme.onPrimary,
                         letterSpacing: 0.5,
                       ),
-                      backgroundColor: Skin.getTheme().colorScheme.primary,
+                      backgroundColor: Style.getTheme().colorScheme.primary,
                     ),
                   )
                 ],
