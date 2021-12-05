@@ -229,19 +229,6 @@ class Style {
 }
 
 class CustomStyle {
-  static final Color occur = Color(0xffb38220);
-  static final Color peach = Color(0xffe09c5f);
-  static final Color skyBlue = Color(0xff639fdc);
-  static final Color darkGreen = Color(0xff226e79);
-  static final Color red = Color(0xfff8575e);
-  static final Color purple = Color(0xff9f50bf);
-  static final Color pink = Color(0xffd17b88);
-  static final Color brown = Color(0xffbd631a);
-  static final Color blue = Color(0xff1a71bd);
-  static final Color green = Color(0xff068425);
-  static final Color yellow = Color(0xfffff44f);
-  static final Color orange = Color(0xffFFA500);
-
   final Color border,
       borderDark,
       card,
@@ -258,7 +245,19 @@ class CustomStyle {
       colorError,
       onError,
       shimmerBaseColor,
-      shimmerHighlightColor;
+      shimmerHighlightColor,
+      occur,
+      peach,
+      skyBlue,
+      darkGreen,
+      red,
+      purple,
+      pink,
+      brown,
+      blue,
+      green,
+      yellow,
+      orange;
 
   CustomStyle({
     this.border = const Color(0xffeeeeee),
@@ -278,6 +277,18 @@ class CustomStyle {
     this.onError = const Color(0xffffffff),
     this.shimmerBaseColor = const Color(0xFFF5F5F5),
     this.shimmerHighlightColor = const Color(0xFFE0E0E0),
+    this.occur = const Color(0xffb38220),
+    this.peach = const Color(0xffe09c5f),
+    this.skyBlue = const Color(0xff639fdc),
+    this.darkGreen = const Color(0xff226e79),
+    this.red = const Color(0xfff8575e),
+    this.purple = const Color(0xff9f50bf),
+    this.pink = const Color(0xffd17b88),
+    this.brown = const Color(0xffbd631a),
+    this.blue = const Color(0xff1a71bd),
+    this.green = const Color(0xff068425),
+    this.yellow = const Color(0xfffff44f),
+    this.orange = const Color(0xffFFA500),
   });
 
   static CustomStyle getThemeData() {
@@ -303,7 +314,19 @@ class CustomStyle {
       colorError: Color(0xfff0323c),
       onError: Color(0xffffffff),
       shimmerBaseColor: Color(0xFFF5F5F5),
-      shimmerHighlightColor: Color(0xFFE0E0E0));
+      shimmerHighlightColor: Color(0xFFE0E0E0),
+      occur: Color(0xffb38220),
+      peach: Color(0xffe09c5f),
+      skyBlue: Color(0xff639fdc),
+      darkGreen: Color(0xff226e79),
+      red: Color(0xfff8575e),
+      purple: Color(0xff9f50bf),
+      pink: Color(0xffd17b88),
+      brown: Color(0xffbd631a),
+      blue: Color(0xff1a71bd),
+      green: Color(0xff068425),
+      yellow: Color(0xfffff44f),
+      orange: Color(0xffFFA500));
 
   static final CustomStyle _dark = CustomStyle(
       card: Color(0xff222327),
@@ -322,5 +345,17 @@ class CustomStyle {
       colorError: Color(0xfff0323c),
       onError: Color(0xffffffff),
       shimmerBaseColor: Color(0xFF1a1a1a),
-      shimmerHighlightColor: Color(0xFF454545));
+      shimmerHighlightColor: Color(0xFF454545),
+      occur: Color(0xffb38220),
+      peach: Color(0xffe09c5f),
+      skyBlue: Color(0xff639fdc),
+      darkGreen: Color(0xff226e79),
+      red: Color(0xfff8575e),
+      purple: Color(0xff9f50bf),
+      pink: Color(0xffd17b88),
+      brown: Color(0xffbd631a),
+      blue: Color(0xff1a71bd),
+      green: Color(0xff068425),
+      yellow: Color(0xfffff44f),
+      orange: Color(0xffFFA500));
 }

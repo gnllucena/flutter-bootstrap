@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:zerodezenove/configurations/spacing.dart';
 import 'package:zerodezenove/configurations/style.dart';
-import 'package:zerodezenove/screens/cart_screen.dart';
-import 'package:zerodezenove/screens/home_screen.dart';
-import 'package:zerodezenove/screens/profile_screen.dart';
-import 'package:zerodezenove/screens/search_screen.dart';
+import 'package:zerodezenove/todo-screens/cart_screen.dart';
+import 'package:zerodezenove/done-screens/home_screen.dart';
+import 'package:zerodezenove/todo-screens/profile_screen.dart';
+import 'package:zerodezenove/todo-screens/search_screen.dart';
 import 'package:zerodezenove/widgets/FX/text/text.dart';
 
 class App extends StatefulWidget {
@@ -87,7 +87,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                             "Cart", _index == 2, FeatherIcons.shoppingCart)),
                     Container(
                         child: _buildAppBarButton(
-                            "Cart", _index == 3, FeatherIcons.user)),
+                            "User", _index == 3, FeatherIcons.user)),
                   ],
                 ),
               ),

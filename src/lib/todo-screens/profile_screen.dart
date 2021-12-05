@@ -53,23 +53,23 @@ class _GroceryProfileScreenState extends State<GroceryProfileScreen>
                 },
                 child: getSingleSetting(
                     iconData: FeatherIcons.shoppingBag,
-                    color: CustomStyle.brown,
+                    color: CustomStyle.getThemeData().brown,
                     title: "My Orders")),
             getSingleSetting(
                 iconData: FeatherIcons.creditCard,
-                color: CustomStyle.green,
+                color: CustomStyle.getThemeData().green,
                 title: "Wallet"),
             getSingleSetting(
                 iconData: FeatherIcons.tag,
-                color: CustomStyle.purple,
+                color: CustomStyle.getThemeData().purple,
                 title: "Vouchers"),
             getSingleSetting(
                 iconData: FeatherIcons.mapPin,
-                color: CustomStyle.orange,
+                color: CustomStyle.getThemeData().orange,
                 title: "My Address"),
             getSingleSetting(
                 iconData: FeatherIcons.logOut,
-                color: CustomStyle.red,
+                color: CustomStyle.getThemeData().red,
                 title: "Log Out"),
           ],
         ));

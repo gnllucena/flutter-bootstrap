@@ -10,13 +10,13 @@ class Category {
   static List<Category> getList() {
     return [
       Category("./assets/images/apps/grocery/strawberry.png", "Fruit",
-          CustomStyle.red.withAlpha(50)),
+          CustomStyle.getThemeData().red.withAlpha(50)),
       Category("./assets/images/apps/grocery/bread.png", "Bread",
-          CustomStyle.orange.withAlpha(60)),
+          CustomStyle.getThemeData().orange.withAlpha(60)),
       Category("./assets/images/apps/grocery/broccoli.png", "Veggie",
-          CustomStyle.green.withAlpha(50)),
+          CustomStyle.getThemeData().green.withAlpha(50)),
       Category("./assets/images/apps/grocery/cheese.png", "Dairy",
-          CustomStyle.yellow.withAlpha(70)),
+          CustomStyle.getThemeData().yellow.withAlpha(70)),
     ];
   }
 }

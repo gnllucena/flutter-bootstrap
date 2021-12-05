@@ -5,7 +5,7 @@ import 'package:zerodezenove/configurations/spacing.dart';
 import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/domain/category.dart';
 import 'package:zerodezenove/domain/product.dart';
-import 'package:zerodezenove/screens/single_product_screen.dart';
+import 'package:zerodezenove/todo-screens/single_product_screen.dart';
 import 'package:zerodezenove/widgets/FX/container/container.dart';
 import 'package:zerodezenove/widgets/FX/text/text.dart';
 import 'package:flutter/material.dart';

@@ -5,8 +5,8 @@ import 'package:zerodezenove/configurations/spacing.dart';
 import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/configurations/writing.dart';
 import 'package:zerodezenove/domain/cart.dart';
-import 'package:zerodezenove/screens/checkout_screen.dart';
-import 'package:zerodezenove/screens/coupon_screen.dart';
+import 'package:zerodezenove/todo-screens/checkout_screen.dart';
+import 'package:zerodezenove/todo-screens/coupon_screen.dart';
 import 'package:zerodezenove/widgets/FX/button/button.dart';
 import 'package:zerodezenove/widgets/FX/container/container.dart';
 import 'package:zerodezenove/widgets/FX/dashed_divider/dashed_divider.dart';
@@ -240,12 +240,12 @@ class _SingleCartWidgetState extends State<SingleCartWidget> {
                 margin: Spacing.right(8),
                 padding: Spacing.all(16),
                 decoration: BoxDecoration(
-                    color: CustomStyle.red.withAlpha(40),
+                    color: CustomStyle.getThemeData().red.withAlpha(40),
                     shape: BoxShape.circle),
                 child: Icon(
                   FeatherIcons.trash,
                   size: 22,
-                  color: CustomStyle.red,
+                  color: CustomStyle.getThemeData().red,
                 ),
               ),
             ],

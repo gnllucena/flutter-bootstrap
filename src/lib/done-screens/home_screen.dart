@@ -1,23 +1,21 @@
-import 'dart:math';
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:zerodezenove/configurations/language.dart';
 import 'package:zerodezenove/configurations/routes/slide_left_route.dart';
 import 'package:zerodezenove/configurations/spacing.dart';
 import 'package:zerodezenove/configurations/style.dart';
-import 'package:zerodezenove/screens/app_setting_screen.dart';
+import 'package:zerodezenove/todo-screens/app_setting_screen.dart';
 import 'package:zerodezenove/domain/category.dart';
 import 'package:zerodezenove/domain/product.dart';
 import 'package:zerodezenove/env.dart';
+import 'package:zerodezenove/todo-screens/category_screen.dart';
+import 'package:zerodezenove/todo-screens/notification_dialog.dart';
+import 'package:zerodezenove/todo-screens/single_product_screen.dart';
 import 'package:zerodezenove/widgets/FX/container/container.dart';
 import 'package:zerodezenove/widgets/FX/text/text.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
-import 'category_screen.dart';
-import 'notification_dialog.dart';
-import 'single_product_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final BuildContext rootContext;
@@ -30,157 +28,156 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
-  late List<Category> categories;
-  late List<Product> products;
+  late List<Category> _categories;
+  late List<Product> _products;
 
   @override
   initState() {
     super.initState();
-    categories = Category.getList();
-    products = Product.getList();
+    _categories = Category.getList();
+    _products = Product.getList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
         body: ListView(
-          padding: Spacing.fromLTRB(12, 72, 12, 70),
-          children: <Widget>[
-            Padding(
-              padding: Spacing.horizontal(24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  FxText.h6(Language.translate("language"),
-                      color: Style.getThemeData().colorScheme.onBackground,
-                      fontWeight: 600),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(new MaterialPageRoute<Null>(
-                          builder: (BuildContext context) {
-                            return NotificationDialog();
-                          },
-                          fullscreenDialog: true));
-                    },
-                    child: Stack(
-                      clipBehavior: Clip.none,
-                      children: <Widget>[
-                        Icon(
-                          FeatherIcons.bell,
-                          size: 22,
-                          color: Style.getThemeData()
-                              .colorScheme
-                              .onBackground
-                              .withAlpha(200),
-                        ),
-                        Positioned(
-                          right: -2,
-                          top: -2,
-                          child: Container(
-                            padding: Spacing.zero,
-                            height: 14,
-                            width: 14,
-                            decoration: BoxDecoration(
-                                color: Style.getThemeData().primaryColor,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(40))),
-                            child: Center(
-                              child: FxText.overline(
-                                "2",
-                                color: Style.getThemeData().backgroundColor,
-                                fontSize: 9,
-                                fontWeight: 500,
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () => Navigator.push(
-                        context, SlideLeftRoute(AppSettingScreen())),
-                    child: Container(
-                      padding: Spacing.x(20),
-                      child: Image(
-                        image: AssetImage(Images.settingIcon),
-                        color: Style.getThemeData().colorScheme.onBackground,
-                        width: 24,
-                        height: 24,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Spacing.height(8),
-            Padding(
-              padding: Spacing.horizontal(24),
-              child: FxText.b2("What would you buy today?",
+      padding: Spacing.fromLTRB(12, 72, 12, 70),
+      children: <Widget>[
+        Padding(
+          padding: Spacing.horizontal(24),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              FxText.h6("Hi, Gabriel!",
                   color: Style.getThemeData().colorScheme.onBackground,
-                  fontWeight: 500,
-                  xMuted: true),
-            ),
-            Spacing.height(24),
-            getBannerWidget(),
-            Spacing.height(24),
-            Padding(
-              padding: Spacing.horizontal(24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  FxText.sh1("Categories",
-                      letterSpacing: 0,
-                      color: Style.getThemeData().colorScheme.onBackground,
-                      fontWeight: 600),
-                  FxText.caption("See All",
-                      color: Style.getThemeData().colorScheme.onBackground,
-                      fontWeight: 600,
-                      xMuted: true,
-                      letterSpacing: 0),
-                ],
+                  fontWeight: 600),
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).push(new MaterialPageRoute<Null>(
+                      builder: (BuildContext context) {
+                        return NotificationDialog();
+                      },
+                      fullscreenDialog: true));
+                },
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: <Widget>[
+                    Icon(
+                      FeatherIcons.bell,
+                      size: 22,
+                      color: Style.getThemeData()
+                          .colorScheme
+                          .onBackground
+                          .withAlpha(200),
+                    ),
+                    Positioned(
+                      right: -2,
+                      top: -2,
+                      child: Container(
+                        padding: Spacing.zero,
+                        height: 14,
+                        width: 14,
+                        decoration: BoxDecoration(
+                            color: Style.getThemeData().primaryColor,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(40))),
+                        child: Center(
+                          child: FxText.overline(
+                            "2",
+                            color: Style.getThemeData().backgroundColor,
+                            fontSize: 9,
+                            fontWeight: 500,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-            Spacing.height(16),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: buildCategories(),
+              InkWell(
+                onTap: () =>
+                    Navigator.push(context, SlideLeftRoute(AppSettingScreen())),
+                child: Container(
+                  padding: Spacing.x(20),
+                  child: Image(
+                    image: AssetImage(Images.settingIcon),
+                    color: Style.getThemeData().colorScheme.onBackground,
+                    width: 24,
+                    height: 24,
+                  ),
+                ),
               ),
-            ),
-            Spacing.height(24),
-            Padding(
-              padding: Spacing.horizontal(24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  FxText.sh1("Best Selling",
-                      color: Style.getThemeData().colorScheme.onBackground,
-                      fontWeight: 600),
-                  FxText.caption("See All",
-                      color: Style.getThemeData().colorScheme.onBackground,
-                      fontWeight: 600,
-                      xMuted: true,
-                      letterSpacing: 0),
-                ],
-              ),
-            ),
-            Spacing.height(16),
-            Padding(
-              padding: Spacing.horizontal(24),
-              child: Column(
-                children: buildProducts(),
-              ),
-            )
-          ],
-        ));
+            ],
+          ),
+        ),
+        Spacing.height(8),
+        Padding(
+          padding: Spacing.horizontal(24),
+          child: FxText.b2("What would you buy today?",
+              color: Style.getThemeData().colorScheme.onBackground,
+              fontWeight: 500,
+              xMuted: true),
+        ),
+        Spacing.height(24),
+        getBannerWidget(),
+        Spacing.height(24),
+        Padding(
+          padding: Spacing.horizontal(24),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              FxText.sh1("Categories",
+                  letterSpacing: 0,
+                  color: Style.getThemeData().colorScheme.onBackground,
+                  fontWeight: 600),
+              FxText.caption("See All",
+                  color: Style.getThemeData().colorScheme.onBackground,
+                  fontWeight: 600,
+                  xMuted: true,
+                  letterSpacing: 0),
+            ],
+          ),
+        ),
+        Spacing.height(16),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: buildCategories(),
+          ),
+        ),
+        Spacing.height(24),
+        Padding(
+          padding: Spacing.horizontal(24),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              FxText.sh1("Best Selling",
+                  color: Style.getThemeData().colorScheme.onBackground,
+                  fontWeight: 600),
+              FxText.caption("See All",
+                  color: Style.getThemeData().colorScheme.onBackground,
+                  fontWeight: 600,
+                  xMuted: true,
+                  letterSpacing: 0),
+            ],
+          ),
+        ),
+        Spacing.height(16),
+        Padding(
+          padding: Spacing.horizontal(24),
+          child: Column(
+            children: buildProducts(),
+          ),
+        )
+      ],
+    ));
   }
 
   List<Widget> buildProducts() {
     List<Widget> list = [];
 
-    for (Product product in products) {
+    for (Product product in _products) {
       list.add(getSingleProduct(product));
     }
 
@@ -213,21 +210,11 @@ class _HomeScreenState extends State<HomeScreen>
   List<Widget> buildCategories() {
     List<Widget> list = [];
     list.add(Spacing.width(24));
-    for (int i = 0; i < categories.length; i++) {
-      list.add(getSingleCategory(categories[i]));
+    for (int i = 0; i < _categories.length; i++) {
+      list.add(getSingleCategory(_categories[i]));
       list.add(Spacing.width(16));
     }
     return list;
-  }
-
-  static String randomString(int length) {
-    var rand = new Random();
-
-    var codeUnits = new List.generate(length, (index) {
-      return rand.nextInt(33) + 89;
-    });
-
-    return new String.fromCharCodes(codeUnits);
   }
 
   static String doubleToString(double value) {
@@ -235,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Widget getSingleCategory(Category category) {
-    String heroTag = randomString(10);
+    String heroTag = category.image;
 
     return Hero(
       tag: heroTag,
@@ -270,7 +257,7 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Widget getSingleProduct(Product product) {
-    String heroKey = randomString(10);
+    String heroKey = product.name;
 
     return InkWell(
       onTap: () {

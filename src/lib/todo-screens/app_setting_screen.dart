@@ -4,7 +4,7 @@ import 'package:zerodezenove/configurations/spacing.dart';
 import 'package:zerodezenove/configurations/style.dart';
 import 'package:zerodezenove/configurations/writing.dart';
 import 'package:zerodezenove/notifiers/settings_notifier.dart';
-import 'package:zerodezenove/screens/select_language_dialog.dart';
+import 'package:zerodezenove/todo-screens/select_language_dialog.dart';
 import 'package:zerodezenove/widgets/FX/button/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -170,9 +170,10 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                             height: 20,
                             width: 20,
                             image: AssetImage(Images.languageOutline),
-                            color: CustomStyle.peach,
+                            color: CustomStyle.getThemeData().peach,
                           ),
-                          background: CustomStyle.peach.withAlpha(20),
+                          background:
+                              CustomStyle.getThemeData().peach.withAlpha(20),
                         ),
                         Spacing.width(16),
                         Expanded(
@@ -208,9 +209,10 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                                 Writing.getTextDirection() == TextDirection.ltr
                                     ? Images.paragraphRTLOutline
                                     : Images.paragraphLTROutline),
-                            color: CustomStyle.skyBlue,
+                            color: CustomStyle.getThemeData().skyBlue,
                           ),
-                          background: CustomStyle.skyBlue.withAlpha(20),
+                          background:
+                              CustomStyle.getThemeData().skyBlue.withAlpha(20),
                         ),
                         Spacing.width(16),
                         Expanded(
@@ -242,14 +244,15 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         FxContainer(
                           paddingAll: 12,
                           borderRadiusAll: 4,
-                          background: CustomStyle.occur.withAlpha(28),
+                          background:
+                              CustomStyle.getThemeData().occur.withAlpha(28),
                           child: Image(
                             height: 20,
                             width: 20,
                             image: AssetImage(!isDark
                                 ? Images.darkModeOutline
                                 : Images.lightModeOutline),
-                            color: CustomStyle.occur,
+                            color: CustomStyle.getThemeData().occur,
                           ),
                         ),
                         Spacing.width(16),
@@ -287,9 +290,10 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                             height: 20,
                             width: 20,
                             image: AssetImage(Images.documentationIcon),
-                            color: CustomStyle.skyBlue,
+                            color: CustomStyle.getThemeData().skyBlue,
                           ),
-                          background: CustomStyle.skyBlue.withAlpha(20),
+                          background:
+                              CustomStyle.getThemeData().skyBlue.withAlpha(20),
                         ),
                         Spacing.width(16),
                         Expanded(
@@ -316,9 +320,10 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                             height: 20,
                             width: 20,
                             image: AssetImage(Images.changeLogIcon),
-                            color: CustomStyle.peach,
+                            color: CustomStyle.getThemeData().peach,
                           ),
-                          background: CustomStyle.peach.withAlpha(20),
+                          background:
+                              CustomStyle.getThemeData().peach.withAlpha(20),
                         ),
                         Spacing.width(16),
                         Expanded(
