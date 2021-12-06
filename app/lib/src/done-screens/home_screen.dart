@@ -30,11 +30,12 @@ class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late List<Category> _categories;
   late List<Product> _products;
-  ThemeData _theme = Style.getThemeData();
+  late ThemeData _theme;
 
   @override
   initState() {
     super.initState();
+    _theme = Style.getThemeData();
     _categories = Category.getList();
     _products = Product.getList();
   }
