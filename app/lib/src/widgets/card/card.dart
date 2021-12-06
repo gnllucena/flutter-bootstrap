@@ -38,7 +38,7 @@ class Card extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(8)),
         border: null,
       ),
-      padding: padding ?? Spacing.horizontal(24),
+      padding: padding ?? Spacing.all(0),
       clipBehavior: Clip.none,
       child: child,
     );

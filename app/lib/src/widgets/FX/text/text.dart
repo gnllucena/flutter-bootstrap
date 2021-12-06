@@ -634,7 +634,7 @@ class FxText extends StatelessWidget {
     return Text(
       text,
       style: style ??
-          Typography.getTypography(
+          Typography.getText(
             TextStyle: style,
             color: color,
             fontWeight:

@@ -190,28 +190,27 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Widget _getProductScreen(Product product) {
-    String heroKey = product.name;
-
-    return InkWell(
+    return Card(
       onTap: () {
         Navigator.push(
             widget.rootContext,
             PageRouteBuilder(
                 transitionDuration: Duration(milliseconds: 500),
                 pageBuilder: (_, __, ___) =>
-                    GrocerySingleProductScreen(product, heroKey)));
+                    GrocerySingleProductScreen(product, product.name)));
       },
-      child: FxContainer(
-        margin: Spacing.bottom(16),
+      margin: Spacing.bottom(16),
+      child: Card(
+        padding: Spacing.all(16),
         background: _theme.primaryColor.withAlpha(32),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            FxContainer(
+            Card(
               background: _theme.primaryColor.withAlpha(32),
               padding: Spacing.all(8),
               child: Hero(
-                tag: heroKey,
+                tag: product.name,
                 child: ClipRRect(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Image.asset(
@@ -245,7 +244,6 @@ class _HomeScreenState extends State<HomeScreen>
                                             : 1),
                                 decoration: TextDecoration.lineThrough,
                                 fontWeight: 500),
-                            // Space.width(8),
                             Spacing.width(8),
                             FxText.b2(
                                 "\$" +

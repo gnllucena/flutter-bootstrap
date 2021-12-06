@@ -78,17 +78,17 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                   indicatorColor: _theme.primaryColor,
                   tabs: <Widget>[
                     Container(
-                        child: _buildAppBarButton(
-                            "Home", _index == 0, FeatherIcons.home)),
+                      child: _getAppBar("Home", 0, FeatherIcons.home),
+                    ),
                     Container(
-                        child: _buildAppBarButton(
-                            "Search", _index == 1, FeatherIcons.search)),
+                      child: _getAppBar("Search", 1, FeatherIcons.search),
+                    ),
                     Container(
-                        child: _buildAppBarButton(
-                            "Cart", _index == 2, FeatherIcons.shoppingCart)),
+                      child: _getAppBar("Cart", 2, FeatherIcons.shoppingCart),
+                    ),
                     Container(
-                        child: _buildAppBarButton(
-                            "User", _index == 3, FeatherIcons.user)),
+                      child: _getAppBar("User", 3, FeatherIcons.user),
+                    ),
                   ],
                 ),
               ),
@@ -100,29 +100,16 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
     );
   }
 
-  Widget _buildAppBarButton(String name, bool visible, IconData icon) {
-    if (visible) {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          FxText.b2(name,
-              color: _theme.primaryColor, letterSpacing: 0, fontWeight: 600),
-          Container(
-            margin: Spacing.top(6),
-            decoration: BoxDecoration(
-                color: _theme.primaryColor,
-                borderRadius: BorderRadius.all(Radius.circular(2.5))),
-            height: 5,
-            width: 5,
-          )
-        ],
-      );
-    }
+  Widget _getAppBar(String name, int index, IconData icon) {
+    var color =
+        index == _index ? _theme.primaryColor : _theme.colorScheme.onBackground;
 
-    return Icon(
-      icon,
-      size: 20,
-      color: _theme.colorScheme.onBackground,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Icon(icon, size: 25, color: color),
+        FxText.b3(name, color: color),
+      ],
     );
   }
 }
