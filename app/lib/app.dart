@@ -51,6 +51,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
         children: [
           TabBarView(
             controller: _tabController,
+            physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
               HomeScreen(rootContext: context),
               GrocerySearchScreen(rootContext: context),

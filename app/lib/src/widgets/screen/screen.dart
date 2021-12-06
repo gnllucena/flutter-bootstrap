@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:zerodezenove/src/configurations/spacing.dart';
 
-class FxButton extends StatelessWidget {
-  // final ButtonStyle? style;
+class Screen extends StatelessWidget {
+  final List<Widget> children;
 
-  // final VoidCallback? onPressed;
+  const Screen({Key? key, required this.children}) : super(key: key);
 
-  // final
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(
-            padding: Spacing.fromLTRB(12, 72, 12, 70),
-            children: <Widget>[
-          Padding(
-              padding: Spacing.horizontal(24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              ))
-        ]));
+      body: ListView(
+        padding: Spacing.fromLTRB(4, 80, 4, 70),
+        children: children,
+      ),
+    );
   }
 }

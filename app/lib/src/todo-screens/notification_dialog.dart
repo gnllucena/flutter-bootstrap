@@ -1,10 +1,10 @@
 import 'package:zerodezenove/src/configurations/spacing.dart';
 import 'package:zerodezenove/src/configurations/style.dart';
-import 'package:zerodezenove/src/configurations/writing.dart';
+import 'package:zerodezenove/src/configurations/typography.dart';
 import 'package:zerodezenove/src/widgets/FX/button/button.dart';
 import 'package:zerodezenove/src/widgets/FX/container/container.dart';
 import 'package:zerodezenove/src/widgets/FX/text/text.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Typography;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class NotificationDialog extends StatefulWidget {
@@ -80,13 +80,13 @@ class _NotificationDialogState extends State<NotificationDialog> {
                   text: TextSpan(children: <TextSpan>[
                     TextSpan(
                         text: "50% OFF ",
-                        style: Writing.button(
+                        style: Typography.button(
                             color: Style.getThemeData().primaryColor,
                             fontWeight: 600,
                             letterSpacing: 0.2)),
                     TextSpan(
                       text: "in ultraboost all puma ltd shoes",
-                      style: Writing.button(
+                      style: Typography.button(
                           color: Style.getThemeData().colorScheme.onBackground,
                           fontWeight: 500,
                           letterSpacing: 0.2),
@@ -101,13 +101,13 @@ class _NotificationDialogState extends State<NotificationDialog> {
                   text: TextSpan(children: <TextSpan>[
                     TextSpan(
                         text: "30% OFF ",
-                        style: Writing.button(
+                        style: Typography.button(
                             color: Style.getThemeData().primaryColor,
                             fontWeight: 600,
                             letterSpacing: 0.2)),
                     TextSpan(
                         text: "in all cake till 31 july",
-                        style: Writing.button(
+                        style: Typography.button(
                             color:
                                 Style.getThemeData().colorScheme.onBackground,
                             fontWeight: 500,

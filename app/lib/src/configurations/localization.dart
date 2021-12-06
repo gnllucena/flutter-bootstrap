@@ -6,25 +6,25 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zerodezenove/src/notifiers/settings_notifier.dart';
 
-class Language {
+class Localization {
   static Map<String, String>? _localized;
 
-  static Idiom _currentIdiom = _idioms.first;
+  static Language _currentLanguage = _languages.first;
 
-  static List<Idiom> _idioms = [
-    Idiom(Locale('en'), "English"),
-    Idiom(Locale('hi'), "Hindi"),
-    Idiom(
+  static List<Language> _languages = [
+    Language(Locale('en'), "English"),
+    Language(Locale('hi'), "Hindi"),
+    Language(
       Locale('ar'),
       "Arabic",
       true,
     ),
-    Idiom(Locale('fr'), "French"),
-    Idiom(Locale('zh'), "Chinese"),
+    Language(Locale('fr'), "French"),
+    Language(Locale('zh'), "Chinese"),
   ];
 
   static Future<bool> init() async {
-    _currentIdiom = await getIdiom();
+    _currentLanguage = await getLanguage();
 
     return true;
   }
@@ -39,14 +39,14 @@ class Language {
     return text;
   }
 
-  static List<Idiom> getIdioms() {
-    return _idioms;
+  static List<Language> getLanguages() {
+    return _languages;
   }
 
-  static Idiom getIdiomFromCode(String code) {
-    var idiom = _idioms.first;
+  static Language getLanguageFromCode(String code) {
+    var idiom = _languages.first;
 
-    _idioms.forEach((Idiom i) {
+    _languages.forEach((Language i) {
       if (i.locale.languageCode == code) {
         idiom = i;
       }
@@ -55,40 +55,40 @@ class Language {
     return idiom;
   }
 
-  static Idiom? getIdiomFromLocale(Locale locale) {
-    for (var idiom in _idioms) {
+  static Language? getLanguageFromLocale(Locale locale) {
+    for (var idiom in _languages) {
       if (idiom.locale.languageCode == locale.languageCode) {
         return idiom;
       }
     }
   }
 
-  static Idiom getCurrentIdiom() {
-    return _currentIdiom;
+  static Language getCurrentLanguage() {
+    return _currentLanguage;
   }
 
-  static List<String> getLanguageCode() {
-    return _idioms.map((e) => e.locale.languageCode).toList();
+  static List<String> getLocalizationCode() {
+    return _languages.map((e) => e.locale.languageCode).toList();
   }
 
   static List<Locale> getLocales() {
-    return _idioms.map((e) => e.locale).toList();
+    return _languages.map((e) => e.locale).toList();
   }
 
-  static Future<Idiom> getIdiom() async {
-    Idiom? idiom;
+  static Future<Language> getLanguage() async {
+    Language? idiom;
 
     var preferences = await SharedPreferences.getInstance();
     var code = preferences.getString("lang_code");
 
     if (code != null) {
-      idiom = getIdiomFromLocale(Locale(code));
+      idiom = getLanguageFromLocale(Locale(code));
     }
 
-    return idiom ?? _idioms.first;
+    return idiom ?? _languages.first;
   }
 
-  static Future<bool> setIdiom(Idiom idiom) async {
+  static Future<bool> setLanguage(Language idiom) async {
     var intl = await rootBundle
         .loadString('assets/lang/${idiom.locale.languageCode}.json');
 
@@ -105,12 +105,12 @@ class Language {
   }
 }
 
-class Idiom {
+class Language {
   final Locale locale;
   final bool supportRTL;
   final String name;
 
-  Idiom(this.locale, this.name, [this.supportRTL = false]);
+  Language(this.locale, this.name, [this.supportRTL = false]);
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate {
@@ -120,14 +120,14 @@ class AppLocalizationsDelegate extends LocalizationsDelegate {
 
   @override
   bool isSupported(Locale locale) =>
-      Language.getLanguageCode().contains(locale.languageCode);
+      Localization.getLocalizationCode().contains(locale.languageCode);
 
   @override
   Future load(Locale locale) => _load(locale);
 
   Future _load(Locale locale) async {
-    Provider.of<SettingsNotifier>(context, listen: false)
-        .updateLanguage(Language.getIdiomFromCode(locale.languageCode));
+    Provider.of<SettingsNotifier>(context, listen: false).updateLocalization(
+        Localization.getLanguageFromCode(locale.languageCode));
     return;
   }
 

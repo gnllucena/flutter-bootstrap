@@ -1,14 +1,14 @@
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Typography;
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:zerodezenove/env.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:zerodezenove/src/configurations/language.dart';
+import 'package:zerodezenove/src/configurations/localization.dart';
 import 'package:zerodezenove/src/configurations/spacing.dart';
 import 'package:zerodezenove/src/configurations/style.dart';
-import 'package:zerodezenove/src/configurations/writing.dart';
+import 'package:zerodezenove/src/configurations/typography.dart';
 import 'package:zerodezenove/src/notifiers/settings_notifier.dart';
 import 'package:zerodezenove/src/todo-screens/select_language_dialog.dart';
 import 'package:zerodezenove/src/widgets/FX/button/button.dart';
@@ -31,7 +31,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
   }
 
   void changeDirection() {
-    if (Writing.getTextDirection() == TextDirection.ltr) {
+    if (Typography.getTextDirection() == TextDirection.ltr) {
       Provider.of<SettingsNotifier>(context, listen: false)
           .updateDirection(TextDirection.rtl);
     } else {
@@ -69,7 +69,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
   }
 
   Icon autoDirection(Icon icon) {
-    if (Writing.getTextDirection() == TextDirection.ltr) {
+    if (Typography.getTextDirection() == TextDirection.ltr) {
       return icon;
     }
 
@@ -131,7 +131,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                 }
               },
               child: ListView(
-                padding: Spacing.fromLTRB(20, 48, 20, 20),
+                padding: Spacing.fromLTRB(4, 80, 4, 70),
                 children: [
                   Row(
                     children: [
@@ -147,7 +147,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                       ),
                       Spacing.width(16),
                       FxText.sh1(
-                        Language.translate("settings"),
+                        Localization.translate("settings"),
                         fontWeight: 600,
                       ),
                     ],
@@ -158,7 +158,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                       showDialog(
                           context: context,
                           builder: (BuildContext context) =>
-                              SelectLanguageDialog());
+                              SelectLocalizationDialog());
                     },
                     highlightColor: Colors.transparent,
                     splashColor: Colors.transparent,
@@ -179,7 +179,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         Spacing.width(16),
                         Expanded(
                           child: FxText.b1(
-                            Language.translate("language"),
+                            Localization.translate("language"),
                           ),
                         ),
                         Spacing.width(16),
@@ -206,10 +206,10 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                           child: Image(
                             height: 20,
                             width: 20,
-                            image: AssetImage(
-                                Writing.getTextDirection() == TextDirection.ltr
-                                    ? Images.paragraphRTLOutline
-                                    : Images.paragraphLTROutline),
+                            image: AssetImage(Typography.getTextDirection() ==
+                                    TextDirection.ltr
+                                ? Images.paragraphRTLOutline
+                                : Images.paragraphLTROutline),
                             color: CustomStyle.getThemeData().skyBlue,
                           ),
                           background:
@@ -218,9 +218,10 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         Spacing.width(16),
                         Expanded(
                           child: FxText.b1(
-                            Writing.getTextDirection() == TextDirection.ltr
-                                ? Language.translate("right_to_left") + " (RTL)"
-                                : Language.translate("left_to_right") +
+                            Typography.getTextDirection() == TextDirection.ltr
+                                ? Localization.translate("right_to_left") +
+                                    " (RTL)"
+                                : Localization.translate("left_to_right") +
                                     " (LTR)",
                           ),
                         ),
@@ -260,8 +261,8 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         Expanded(
                           child: FxText.b1(
                             !isDark
-                                ? Language.translate("dark_mode")
-                                : Language.translate("light_mode"),
+                                ? Localization.translate("dark_mode")
+                                : Localization.translate("light_mode"),
                           ),
                         ),
                         Spacing.width(16),
@@ -299,7 +300,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         Spacing.width(16),
                         Expanded(
                           child: FxText.b1(
-                            Language.translate("documentation"),
+                            Localization.translate("documentation"),
                           ),
                         ),
                       ],
@@ -329,7 +330,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         Spacing.width(16),
                         Expanded(
                           child: FxText.b1(
-                            Language.translate("changelog"),
+                            Localization.translate("changelog"),
                           ),
                         ),
                       ],
@@ -348,7 +349,7 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                           .onPrimary
                           .withAlpha(40),
                       child: FxText.button(
-                        Language.translate("buy_now"),
+                        Localization.translate("buy_now"),
                         color: Style.getThemeData().colorScheme.onPrimary,
                         letterSpacing: 0.5,
                       ),

@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:zerodezenove/src/configurations/writing.dart';
+import 'package:flutter/material.dart' hide Typography;
+import 'package:zerodezenove/src/configurations/typography.dart';
 
 class FxText extends StatelessWidget {
   final Key? key;
@@ -634,20 +634,20 @@ class FxText extends StatelessWidget {
     return Text(
       text,
       style: style ??
-          Writing.getWriting(
+          Typography.getTypography(
             TextStyle: style,
             color: color,
             fontWeight:
-                fontWeight ?? Writing.getTextFontWeight()[textType] ?? 500,
+                fontWeight ?? Typography.getTextFontWeight()[textType] ?? 500,
             muted: muted,
             letterSpacing: letterSpacing ??
-                Writing.getLetteringSpacing()[textType] ??
+                Typography.getLetteringSpacing()[textType] ??
                 0.15,
             height: height,
             xMuted: xMuted,
             decoration: decoration,
             wordSpacing: wordSpacing,
-            fontSize: fontSize ?? Writing.getTextSize()[textType],
+            fontSize: fontSize ?? Typography.getTextSize()[textType],
           ),
       textAlign: textAlign,
       maxLines: maxLines,
@@ -656,7 +656,7 @@ class FxText extends StatelessWidget {
       semanticsLabel: semanticsLabel,
       softWrap: softWrap,
       strutStyle: strutStyle,
-      textDirection: textDirection ?? Writing.getTextDirection(),
+      textDirection: textDirection ?? Typography.getTextDirection(),
       textHeightBehavior: textHeightBehavior,
       textScaleFactor: textScaleFactor,
       textWidthBasis: textWidthBasis,

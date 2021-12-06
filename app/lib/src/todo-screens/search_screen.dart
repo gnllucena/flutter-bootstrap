@@ -3,15 +3,16 @@ import 'dart:ui';
 
 import 'package:zerodezenove/src/configurations/spacing.dart';
 import 'package:zerodezenove/src/configurations/style.dart';
-import 'package:zerodezenove/src/configurations/writing.dart';
+import 'package:zerodezenove/src/configurations/typography.dart';
 import 'package:zerodezenove/src/domain/product.dart';
 import 'package:zerodezenove/src/widgets/FX/text_field/text_field.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Typography;
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:zerodezenove/src/widgets/FX/container/container.dart';
 import 'package:zerodezenove/src/widgets/FX/text/text.dart';
 import 'package:flutter/rendering.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:zerodezenove/src/widgets/screen/screen.dart';
 
 import 'single_product_screen.dart';
 
@@ -37,63 +38,57 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: ListView(
-          padding: Spacing.fromLTRB(24, 48, 24, 70),
-          children: <Widget>[
-            Container(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: FxTextField(
-                      hintText: "Search",
-                      prefixIcon: Icon(
-                        FeatherIcons.search,
-                        size: 18,
-                        color: Style.getThemeData()
-                            .colorScheme
-                            .onBackground
-                            .withAlpha(150),
-                      ),
-                      filled: true,
-                      isDense: true,
-                      fillColor: CustomStyle.getThemeData().card,
-                      hintStyle: Writing.b2(),
-                      labelStyle: Writing.b2(),
-                      style: Writing.b2(),
-                      textCapitalization: TextCapitalization.sentences,
-                      labelText: "Search",
-                      floatingLabelBehavior: FloatingLabelBehavior.never,
-                      cursorColor: Style.getThemeData().primaryColor,
-                      focusedBorderColor: Colors.transparent,
-                    ),
-                  ),
-                  Spacing.width(16),
-                  //Space.width(16),
-                  FxContainer(
-                    background: Style.getThemeData().primaryColor.withAlpha(32),
-                    child: Transform.rotate(
-                      angle: pi / 2,
-                      child: Icon(
-                        FeatherIcons.sliders,
-                        color: Style.getThemeData().primaryColor,
-                        size: 20,
-                      ),
-                    ),
-                  )
-                ],
+    return Screen(children: [
+      Container(
+        child: Row(
+          children: [
+            Expanded(
+              child: FxTextField(
+                hintText: "Search",
+                prefixIcon: Icon(
+                  FeatherIcons.search,
+                  size: 18,
+                  color: Style.getThemeData()
+                      .colorScheme
+                      .onBackground
+                      .withAlpha(150),
+                ),
+                filled: true,
+                isDense: true,
+                fillColor: CustomStyle.getThemeData().card,
+                hintStyle: Typography.b2(),
+                labelStyle: Typography.b2(),
+                style: Typography.b2(),
+                textCapitalization: TextCapitalization.sentences,
+                labelText: "Search",
+                floatingLabelBehavior: FloatingLabelBehavior.never,
+                cursorColor: Style.getThemeData().primaryColor,
+                focusedBorderColor: Colors.transparent,
               ),
             ),
-            Spacing.height(24),
-            FxText.b2("Search for Vegetables",
-                letterSpacing: 0, fontWeight: 600),
-            Spacing.height(16),
-            Column(
-              children: buildProducts(),
+            Spacing.width(16),
+            //Space.width(16),
+            FxContainer(
+              background: Style.getThemeData().primaryColor.withAlpha(32),
+              child: Transform.rotate(
+                angle: pi / 2,
+                child: Icon(
+                  FeatherIcons.sliders,
+                  color: Style.getThemeData().primaryColor,
+                  size: 20,
+                ),
+              ),
             )
           ],
-        ));
+        ),
+      ),
+      Spacing.height(24),
+      FxText.b2("Search for Vegetables", letterSpacing: 0, fontWeight: 600),
+      Spacing.height(16),
+      Column(
+        children: buildProducts(),
+      )
+    ]);
   }
 
   List<Widget> buildProducts() {

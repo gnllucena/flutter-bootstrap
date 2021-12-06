@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:zerodezenove/src/configurations/spacing.dart';
 import 'package:zerodezenove/src/configurations/style.dart';
-import 'package:zerodezenove/src/configurations/writing.dart';
+import 'package:zerodezenove/src/configurations/typography.dart';
 import 'package:zerodezenove/src/domain/cart.dart';
 import 'package:zerodezenove/src/todo-screens/checkout_screen.dart';
 import 'package:zerodezenove/src/todo-screens/coupon_screen.dart';
@@ -12,7 +12,7 @@ import 'package:zerodezenove/src/widgets/FX/container/container.dart';
 import 'package:zerodezenove/src/widgets/FX/dashed_divider/dashed_divider.dart';
 import 'package:zerodezenove/src/widgets/FX/text/text.dart';
 import 'package:zerodezenove/src/widgets/FX/text_field/text_field.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Typography;
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -61,9 +61,9 @@ class _GroceryCartScreenState extends State<GroceryCartScreen>
                   Expanded(
                     child: FxTextField(
                       hintText: "Promo Code",
-                      hintStyle: Writing.b2(),
-                      labelStyle: Writing.b2(),
-                      style: Writing.b2(),
+                      hintStyle: Typography.b2(),
+                      labelStyle: Typography.b2(),
+                      style: Typography.b2(),
                       labelText: "Promo Code",
                       isDense: true,
                       floatingLabelBehavior: FloatingLabelBehavior.never,

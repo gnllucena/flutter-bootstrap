@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:zerodezenove/src/configurations/language.dart';
+import 'package:zerodezenove/src/configurations/localization.dart';
 import 'package:zerodezenove/src/configurations/spacing.dart';
 import 'package:zerodezenove/src/notifiers/settings_notifier.dart';
 import 'package:zerodezenove/src/widgets/FX/text/text.dart';
 import 'package:provider/provider.dart';
 
-class SelectLanguageDialog extends StatefulWidget {
-  const SelectLanguageDialog({Key? key}) : super(key: key);
+class SelectLocalizationDialog extends StatefulWidget {
+  const SelectLocalizationDialog({Key? key}) : super(key: key);
 
   @override
-  _SelectLanguageDialogState createState() => _SelectLanguageDialogState();
+  _SelectLocalizationDialogState createState() =>
+      _SelectLocalizationDialogState();
 }
 
-class _SelectLanguageDialogState extends State<SelectLanguageDialog> {
+class _SelectLocalizationDialogState extends State<SelectLocalizationDialog> {
   late ThemeData theme;
 
   Widget build(BuildContext context) {
@@ -33,17 +34,17 @@ class _SelectLanguageDialogState extends State<SelectLanguageDialog> {
   _buildOptions() {
     List<Widget> list = [];
 
-    for (Idiom idiom in Language.getIdioms()) {
+    for (Language idiom in Localization.getLanguages()) {
       list.add(InkWell(
         onTap: () => _handleChange(idiom),
         child: Container(
           padding: Spacing.horizontal(16),
           child: Row(
             children: <Widget>[
-              Radio<Idiom>(
+              Radio<Language>(
                 value: idiom,
-                groupValue: Language.getCurrentIdiom(),
-                onChanged: (Idiom? value) {
+                groupValue: Localization.getCurrentLanguage(),
+                onChanged: (Language? value) {
                   if (value != null) {
                     _handleChange(value);
                   }
@@ -63,10 +64,10 @@ class _SelectLanguageDialogState extends State<SelectLanguageDialog> {
     return list;
   }
 
-  Future<void> _handleChange(Idiom idiom) async {
+  Future<void> _handleChange(Language idiom) async {
     setState(() {
       Provider.of<SettingsNotifier>(context, listen: false)
-          .updateLanguage(idiom);
+          .updateLocalization(idiom);
     });
 
     Navigator.pop(context);

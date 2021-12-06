@@ -1,18 +1,21 @@
 import 'dart:ui';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Card;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:zerodezenove/env.dart';
 import 'package:zerodezenove/src/configurations/routes/slide_left_route.dart';
 import 'package:zerodezenove/src/configurations/spacing.dart';
 import 'package:zerodezenove/src/configurations/style.dart';
-import 'package:zerodezenove/src/todo-screens/app_setting_screen.dart';
 import 'package:zerodezenove/src/domain/category.dart';
 import 'package:zerodezenove/src/domain/product.dart';
-import 'package:zerodezenove/env.dart';
+import 'package:zerodezenove/src/todo-screens/app_setting_screen.dart';
 import 'package:zerodezenove/src/todo-screens/category_screen.dart';
 import 'package:zerodezenove/src/todo-screens/single_product_screen.dart';
 import 'package:zerodezenove/src/widgets/FX/container/container.dart';
 import 'package:zerodezenove/src/widgets/FX/text/text.dart';
+import 'package:zerodezenove/src/widgets/paragraph/paragraph.dart';
+import 'package:zerodezenove/src/widgets/screen/screen.dart';
+import 'package:zerodezenove/src/widgets/card/card.dart';
 
 class HomeScreen extends StatefulWidget {
   final BuildContext rootContext;
@@ -38,153 +41,134 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: ListView(
-      padding: Spacing.fromLTRB(12, 72, 12, 70),
+    return Screen(
       children: <Widget>[
-        Padding(
-          padding: Spacing.horizontal(24),
+        Paragraph(
+          children: [
+            FxText.h6(
+              "Hi, Gabriel!",
+              color: _theme.colorScheme.onBackground,
+              fontWeight: 600,
+            ),
+            InkWell(
+              onTap: () => Navigator.push(
+                context,
+                SlideLeftRoute(AppSettingScreen()),
+              ),
+              child: Container(
+                child: Image(
+                  image: AssetImage(Images.settingIcon),
+                  color: _theme.colorScheme.onBackground,
+                  width: 24,
+                  height: 24,
+                ),
+              ),
+            )
+          ],
+        ),
+        Spacing.height(8),
+        Paragraph(
+          children: [
+            FxText.b2(
+              "What would you buy today?",
+              color: _theme.colorScheme.onBackground,
+              fontWeight: 500,
+              xMuted: true,
+            )
+          ],
+        ),
+        Spacing.height(24),
+        Card(
+          background: _theme.primaryColor.withAlpha(28),
+          padding: Spacing.all(24),
+          margin: Spacing.horizontal(24),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              FxText.h6("Hi, Gabriel!",
-                  color: _theme.colorScheme.onBackground, fontWeight: 600),
-              InkWell(
-                onTap: () =>
-                    Navigator.push(context, SlideLeftRoute(AppSettingScreen())),
-                child: Container(
-                  child: Image(
-                    image: AssetImage(Images.settingIcon),
-                    color: _theme.colorScheme.onBackground,
-                    width: 24,
-                    height: 24,
-                  ),
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  FxText.b1("Enjoy the special offer\nup to 60%",
+                      color: _theme.primaryColor,
+                      fontWeight: 600,
+                      letterSpacing: 0),
+                  Spacing.height(8),
+                  FxText.caption("at 15 - 25 March 2021",
+                      color: _theme.colorScheme.onBackground.withAlpha(100),
+                      fontWeight: 500,
+                      letterSpacing: -0.2),
+                ],
               ),
             ],
           ),
         ),
-        Spacing.height(8),
-        Padding(
-          padding: Spacing.horizontal(24),
-          child: FxText.b2("What would you buy today?",
-              color: _theme.colorScheme.onBackground,
-              fontWeight: 500,
-              xMuted: true),
-        ),
         Spacing.height(24),
-        getBannerWidget(),
-        Spacing.height(24),
-        Padding(
-          padding: Spacing.horizontal(24),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              FxText.sh1("Categories",
-                  letterSpacing: 0,
-                  color: _theme.colorScheme.onBackground,
-                  fontWeight: 600),
-              FxText.caption("See All",
-                  color: _theme.colorScheme.onBackground,
-                  fontWeight: 600,
-                  xMuted: true,
-                  letterSpacing: 0),
-            ],
-          ),
+        Paragraph(
+          children: [
+            FxText.sh1("Categories",
+                letterSpacing: 0,
+                color: _theme.colorScheme.onBackground,
+                fontWeight: 600),
+            FxText.caption("See All",
+                color: _theme.colorScheme.onBackground,
+                fontWeight: 600,
+                xMuted: true,
+                letterSpacing: 0),
+          ],
         ),
         Spacing.height(16),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: buildCategories(),
+            children: (() {
+              List<Widget> children = [];
+              children.add(Spacing.width(24));
+
+              for (int i = 0; i < _categories.length; i++) {
+                children.add(_getCategoryHero(_categories[i]));
+                children.add(Spacing.width(16));
+              }
+
+              return children;
+            }()),
           ),
         ),
         Spacing.height(24),
-        Padding(
-          padding: Spacing.horizontal(24),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              FxText.sh1("Best Selling",
-                  color: _theme.colorScheme.onBackground, fontWeight: 600),
-              FxText.caption("See All",
-                  color: _theme.colorScheme.onBackground,
-                  fontWeight: 600,
-                  xMuted: true,
-                  letterSpacing: 0),
-            ],
-          ),
+        Paragraph(
+          children: [
+            FxText.sh1("Best Selling",
+                color: _theme.colorScheme.onBackground, fontWeight: 600),
+            FxText.caption("See All",
+                color: _theme.colorScheme.onBackground,
+                fontWeight: 600,
+                xMuted: true,
+                letterSpacing: 0),
+          ],
         ),
         Spacing.height(16),
         Padding(
           padding: Spacing.horizontal(24),
           child: Column(
-            children: buildProducts(),
+            children: _products.map((e) => _getProductScreen(e)).toList(),
           ),
         )
       ],
-    ));
-  }
-
-  List<Widget> buildProducts() {
-    List<Widget> list = [];
-
-    for (Product product in _products) {
-      list.add(getSingleProduct(product));
-    }
-
-    return list;
-  }
-
-  Widget getBannerWidget() {
-    return FxContainer(
-      background: _theme.primaryColor.withAlpha(28),
-      padding: Spacing.all(24),
-      margin: Spacing.horizontal(24),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          FxText.b1("Enjoy the special offer\nup to 60%",
-              color: _theme.primaryColor, fontWeight: 600, letterSpacing: 0),
-          Spacing.height(8),
-          FxText.caption("at 15 - 25 March 2021",
-              color: _theme.colorScheme.onBackground.withAlpha(100),
-              fontWeight: 500,
-              letterSpacing: -0.2),
-        ],
-      ),
     );
   }
 
-  List<Widget> buildCategories() {
-    List<Widget> list = [];
-    list.add(Spacing.width(24));
-    for (int i = 0; i < _categories.length; i++) {
-      list.add(getSingleCategory(_categories[i]));
-      list.add(Spacing.width(16));
-    }
-    return list;
-  }
-
-  static String doubleToString(double value) {
-    return value.toStringAsFixed(value.truncateToDouble() == value ? 0 : 1);
-  }
-
-  Widget getSingleCategory(Category category) {
-    String heroTag = category.image;
-
+  Widget _getCategoryHero(Category category) {
     return Hero(
-      tag: heroTag,
-      child: FxContainer(
-        width: 80,
+      tag: category.image,
+      child: Card(
         onTap: () {
           Navigator.push(
               widget.rootContext,
               PageRouteBuilder(
                   transitionDuration: Duration(milliseconds: 500),
-                  pageBuilder: (_, __, ___) =>
-                      GroceryCategoryScreen(context, category, heroTag)));
+                  pageBuilder: (_, __, ___) => GroceryCategoryScreen(
+                      context, category, category.image)));
         },
+        width: 80,
         padding: Spacing.all(16),
         background: category.color,
         child: Column(
@@ -205,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen>
     );
   }
 
-  Widget getSingleProduct(Product product) {
+  Widget _getProductScreen(Product product) {
     String heroKey = product.name;
 
     return InkWell(
@@ -252,18 +236,36 @@ class _HomeScreenState extends State<HomeScreen>
                   product.discountedPrice != product.price
                       ? Row(
                           children: [
-                            FxText.caption("\$" + doubleToString(product.price),
+                            FxText.caption(
+                                "\$" +
+                                    product.price.toStringAsFixed(
+                                        product.price.truncateToDouble() ==
+                                                product.price
+                                            ? 0
+                                            : 1),
                                 decoration: TextDecoration.lineThrough,
                                 fontWeight: 500),
                             // Space.width(8),
                             Spacing.width(8),
                             FxText.b2(
-                                "\$" + doubleToString(product.discountedPrice),
+                                "\$" +
+                                    product.discountedPrice.toStringAsFixed(
+                                        product.discountedPrice
+                                                    .truncateToDouble() ==
+                                                product.discountedPrice
+                                            ? 0
+                                            : 1),
                                 color: _theme.colorScheme.onBackground,
                                 fontWeight: 700),
                           ],
                         )
-                      : FxText.b2("\$" + doubleToString(product.price),
+                      : FxText.b2(
+                          "\$" +
+                              product.price.toStringAsFixed(
+                                  product.price.truncateToDouble() ==
+                                          product.price
+                                      ? 0
+                                      : 1),
                           color: _theme.colorScheme.onBackground,
                           fontWeight: 700),
                 ],

@@ -29,7 +29,7 @@ enum Elements {
   b3
 }
 
-class Writing {
+class Typography {
   static Map<int, FontWeight> _fontWeight = {
     100: FontWeight.w100,
     200: FontWeight.w200,
@@ -156,7 +156,7 @@ class Writing {
     return _textSize;
   }
 
-  static TextStyle getWriting(
+  static TextStyle getTypography(
       {TextStyle? TextStyle,
       int? fontWeight = 500,
       bool muted = false,
@@ -204,7 +204,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.h4],
         color: color,
         height: height,
@@ -228,7 +228,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.h5],
         color: color,
         height: height,
@@ -252,7 +252,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.h6],
         color: color,
         height: height,
@@ -276,7 +276,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.sh1],
         color: color,
         height: height,
@@ -300,7 +300,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.sh2],
         color: color,
         height: height,
@@ -324,7 +324,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.button],
         color: color,
         height: height,
@@ -349,7 +349,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.caption],
         color: color,
         height: height,
@@ -374,7 +374,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.overline],
         color: color,
         height: height,
@@ -399,7 +399,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.d1],
         color: color,
         height: height,
@@ -423,7 +423,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.d2],
         color: color,
         height: height,
@@ -447,7 +447,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.d3],
         color: color,
         height: height,
@@ -471,7 +471,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.h1],
         color: color,
         height: height,
@@ -495,7 +495,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.h2],
         color: color,
         height: height,
@@ -519,7 +519,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.h3],
         color: color,
         height: height,
@@ -543,7 +543,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.t1],
         color: color,
         height: height,
@@ -567,7 +567,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.t2],
         color: color,
         height: height,
@@ -591,7 +591,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.t3],
         color: color,
         height: height,
@@ -615,7 +615,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.l1],
         color: color,
         height: height,
@@ -639,7 +639,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.l2],
         color: color,
         height: height,
@@ -663,7 +663,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.l3],
         color: color,
         height: height,
@@ -687,7 +687,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.b1],
         color: color,
         height: height,
@@ -711,7 +711,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.b2],
         color: color,
         height: height,
@@ -735,7 +735,7 @@ class Writing {
       double? height,
       double wordSpacing = 0,
       double? fontSize}) {
-    return getWriting(
+    return getTypography(
         fontSize: fontSize ?? _textSize[Elements.b3],
         color: color,
         height: height,

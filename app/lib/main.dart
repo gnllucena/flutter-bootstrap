@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Typography;
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:zerodezenove/app.dart';
-import 'package:zerodezenove/src/configurations/language.dart';
+import 'package:zerodezenove/src/configurations/localization.dart';
 import 'package:zerodezenove/src/configurations/style.dart';
-import 'package:zerodezenove/src/configurations/writing.dart';
+import 'package:zerodezenove/src/configurations/typography.dart';
 import 'package:zerodezenove/src/notifiers/settings_notifier.dart';
 
 void main() {
@@ -33,7 +33,7 @@ class Main extends StatelessWidget {
           theme: Style.getThemeData(),
           builder: (context, child) {
             return Directionality(
-              textDirection: Writing.getTextDirection(),
+              textDirection: Typography.getTextDirection(),
               child: child!,
             );
           },
@@ -43,7 +43,7 @@ class Main extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          supportedLocales: Language.getLocales(),
+          supportedLocales: Localization.getLocales(),
           home: App(),
         );
       },

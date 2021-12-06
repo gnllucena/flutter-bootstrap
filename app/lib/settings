@@ -3,7 +3,7 @@
 var _isDark = Style.getCurrentTheme() == Styles.dark;
 
 void changeDirection() {
-    if (Writing.getTextDirection() == TextDirection.ltr) {
+    if (Typography.getTextDirection() == TextDirection.ltr) {
       Provider.of<SettingsNotifier>(context, listen: false)
           .updateDirection(TextDirection.rtl);
     } else {
@@ -107,7 +107,7 @@ void changeDirection() {
                         Spacing.width(16),
                         Expanded(
                           child: FxText.b1(
-                            Language.translate("language"),
+                            Localization.translate("language"),
                           ),
                         ),
                         Spacing.width(16),
@@ -135,7 +135,7 @@ void changeDirection() {
                             height: 20,
                             width: 20,
                             image: AssetImage(
-                                Writing.getTextDirection() == TextDirection.ltr
+                                Typography.getTextDirection() == TextDirection.ltr
                                     ? Images.paragraphRTLOutline
                                     : Images.paragraphLTROutline),
                             color: CustomStyle.skyBlue,
@@ -145,9 +145,9 @@ void changeDirection() {
                         Spacing.width(16),
                         Expanded(
                           child: FxText.b1(
-                            Writing.getTextDirection() == TextDirection.ltr
-                                ? Language.translate("right_to_left") + " (RTL)"
-                                : Language.translate("left_to_right") +
+                            Typography.getTextDirection() == TextDirection.ltr
+                                ? Localization.translate("right_to_left") + " (RTL)"
+                                : Localization.translate("left_to_right") +
                                     " (LTR)",
                           ),
                         ),
@@ -186,8 +186,8 @@ void changeDirection() {
                         Expanded(
                           child: FxText.b1(
                             !_isDark
-                                ? Language.translate("dark_mode")
-                                : Language.translate("light_mode"),
+                                ? Localization.translate("dark_mode")
+                                : Localization.translate("light_mode"),
                           ),
                         ),
                         Spacing.width(16),
@@ -233,7 +233,7 @@ void changeDirection() {
                         Spacing.width(16),
                         Expanded(
                           child: FxText.b1(
-                            Language.translate("documentation"),
+                            Localization.translate("documentation"),
                           ),
                         ),
                       ],
@@ -262,7 +262,7 @@ void changeDirection() {
                         Spacing.width(16),
                         Expanded(
                           child: FxText.b1(
-                            Language.translate("changelog"),
+                            Localization.translate("changelog"),
                           ),
                         ),
                       ],
@@ -282,7 +282,7 @@ void changeDirection() {
                 splashColor:
                     Style.getThemeData().colorScheme.onPrimary.withAlpha(40),
                 child: FxText(
-                  Language.translate("buy_now"),
+                  Localization.translate("buy_now"),
                   color: Style.getThemeData().colorScheme.onPrimary,
                 ),
                 backgroundColor: Style.getThemeData().colorScheme.primary,

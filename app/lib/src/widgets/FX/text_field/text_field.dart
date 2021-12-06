@@ -1,12 +1,12 @@
 import 'package:zerodezenove/src/configurations/spacing.dart';
 import 'package:zerodezenove/src/configurations/style.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Typography;
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
 
-import 'package:zerodezenove/src/configurations/writing.dart';
+import 'package:zerodezenove/src/configurations/typography.dart';
 
 enum FxTextFieldType { email, password, name, address, mobileNumber }
 enum FxTextFieldStyle {
@@ -315,7 +315,7 @@ class _FxTextFieldState extends State<FxTextField> {
     buildTextFieldType();
 
     return TextField(
-      style: widget.style ?? Writing.b1(color: textColor),
+      style: widget.style ?? Typography.b1(color: textColor),
       onTap: widget.onTap,
       cursorColor: cursorColor,
       textAlign: widget.textAlign ?? TextAlign.start,
@@ -353,7 +353,8 @@ class _FxTextFieldState extends State<FxTextField> {
             prefixIconConstraints: widget.prefixIconConstraints,
             prefix: widget.prefix,
             labelText: labelText,
-            labelStyle: widget.labelStyle ?? Writing.b1(color: labelTextColor),
+            labelStyle:
+                widget.labelStyle ?? Typography.b1(color: labelTextColor),
             helperMaxLines: widget.helperMaxLines,
             isDense: widget.isDense ?? false,
             helperStyle: widget.helperStyle,
@@ -363,7 +364,7 @@ class _FxTextFieldState extends State<FxTextField> {
             hintMaxLines: widget.hintMaxLines,
             hintStyle: widget.hintStyle ??
                 widget.labelStyle ??
-                Writing.b1(color: labelTextColor),
+                Typography.b1(color: labelTextColor),
             hintText: widget.enableHint ? (widget.hintText ?? labelText) : null,
             hintTextDirection: widget.hintTextDirection,
           ),

@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Typography;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:zerodezenove/src/configurations/language.dart';
+import 'package:zerodezenove/src/configurations/localization.dart';
 import 'package:zerodezenove/src/configurations/style.dart';
-import 'package:zerodezenove/src/configurations/writing.dart';
+import 'package:zerodezenove/src/configurations/typography.dart';
 
 class SettingsNotifier extends ChangeNotifier {
   init() async {
@@ -23,21 +23,21 @@ class SettingsNotifier extends ChangeNotifier {
   }
 
   void updateDirection(TextDirection textDirection, [bool notify = true]) {
-    Writing.setTextDirection(textDirection);
+    Typography.setTextDirection(textDirection);
 
     if (notify) {
       notifyListeners();
     }
   }
 
-  Future<void> updateLanguage(Idiom idiom) async {
+  Future<void> updateLocalization(Language idiom) async {
     if (idiom.supportRTL) {
       updateDirection(TextDirection.rtl, false);
     } else {
       updateDirection(TextDirection.ltr, false);
     }
 
-    await Language.setIdiom(idiom);
+    await Localization.setLanguage(idiom);
 
     notifyListeners();
   }
