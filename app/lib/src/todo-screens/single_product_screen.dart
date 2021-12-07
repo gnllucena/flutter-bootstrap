@@ -14,10 +14,9 @@ import 'checkout_screen.dart';
 import 'product_review_screen.dart';
 
 class GrocerySingleProductScreen extends StatefulWidget {
-  final String heroKey;
   final Product product;
 
-  const GrocerySingleProductScreen(this.product, this.heroKey);
+  const GrocerySingleProductScreen(this.product);
 
   @override
   _GrocerySingleProductScreenState createState() =>
@@ -69,7 +68,7 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
               children: <Widget>[
                 Center(
                   child: Hero(
-                    tag: widget.heroKey,
+                    tag: "product-product-${widget.product.id}",
                     child: ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(8)),
                       child: Image.asset(
@@ -262,7 +261,7 @@ class _GrocerySingleProductScreenState extends State<GrocerySingleProductScreen>
             PageRouteBuilder(
                 transitionDuration: Duration(milliseconds: 500),
                 pageBuilder: (_, __, ___) =>
-                    GrocerySingleProductScreen(product, heroKey)));
+                    GrocerySingleProductScreen(product)));
       },
       child: FxContainer(
         margin: Spacing.bottom(16),

@@ -58,7 +58,7 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
                 child: Column(
                   children: [
                     Hero(
-                      tag: "widget.heroTag" + widget.category.title,
+                      tag: "category-category" + widget.category.title,
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
@@ -122,7 +122,7 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
             PageRouteBuilder(
                 transitionDuration: Duration(milliseconds: 500),
                 pageBuilder: (_, __, ___) =>
-                    GrocerySingleProductScreen(product, heroKey)));
+                    GrocerySingleProductScreen(product)));
       },
       child: FxContainer(
         margin: Spacing.bottom(16),

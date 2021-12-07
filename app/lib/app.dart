@@ -5,7 +5,7 @@ import 'package:zerodezenove/src/configurations/style.dart';
 import 'package:zerodezenove/src/todo-screens/cart_screen.dart';
 import 'package:zerodezenove/src/done-screens/home_screen.dart';
 import 'package:zerodezenove/src/todo-screens/profile_screen.dart';
-import 'package:zerodezenove/src/todo-screens/search_screen.dart';
+import 'package:zerodezenove/src/done-screens/search_screen.dart';
 import 'package:zerodezenove/src/widgets/FX/text/text.dart';
 
 class App extends StatefulWidget {

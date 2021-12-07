@@ -6,15 +6,17 @@ import 'package:zerodezenove/src/configurations/style.dart';
 import 'package:zerodezenove/src/configurations/typography.dart';
 import 'package:zerodezenove/src/domain/product.dart';
 import 'package:zerodezenove/src/widgets/FX/text_field/text_field.dart';
-import 'package:flutter/material.dart' hide Typography;
+import 'package:flutter/material.dart' hide Typography, Card;
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:zerodezenove/src/widgets/FX/container/container.dart';
 import 'package:zerodezenove/src/widgets/FX/text/text.dart';
 import 'package:flutter/rendering.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:zerodezenove/src/widgets/card/card.dart';
+import 'package:zerodezenove/src/widgets/paragraph/paragraph.dart';
 import 'package:zerodezenove/src/widgets/screen/screen.dart';
 
-import 'single_product_screen.dart';
+import '../todo-screens/single_product_screen.dart';
 
 class GrocerySearchScreen extends StatefulWidget {
   final BuildContext rootContext;
@@ -28,20 +30,22 @@ class GrocerySearchScreen extends StatefulWidget {
 
 class _GrocerySearchScreenState extends State<GrocerySearchScreen>
     with SingleTickerProviderStateMixin {
-  late List<Product> products;
+  late List<Product> _products;
   late ThemeData _theme;
 
   @override
   initState() {
     super.initState();
-    products = Product.getList();
+    _products = Product.getList();
+    _theme = Style.getThemeData();
   }
 
   @override
   Widget build(BuildContext context) {
     _theme = Theme.of(context);
     return Screen(children: [
-      Container(
+      Card(
+        padding: Spacing.horizontal(24),
         child: Row(
           children: [
             Expanded(
@@ -50,10 +54,7 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
                 prefixIcon: Icon(
                   FeatherIcons.search,
                   size: 18,
-                  color: Style.getThemeData()
-                      .colorScheme
-                      .onBackground
-                      .withAlpha(150),
+                  color: _theme.colorScheme.onBackground.withAlpha(150),
                 ),
                 filled: true,
                 isDense: true,
@@ -64,18 +65,18 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
                 textCapitalization: TextCapitalization.sentences,
                 labelText: "Search",
                 floatingLabelBehavior: FloatingLabelBehavior.never,
-                cursorColor: Style.getThemeData().primaryColor,
+                cursorColor: _theme.primaryColor,
                 focusedBorderColor: Colors.transparent,
               ),
             ),
             Spacing.width(16),
-            FxContainer(
-              background: Style.getThemeData().primaryColor.withAlpha(32),
+            Card(
+              background: _theme.primaryColor.withAlpha(32),
               child: Transform.rotate(
                 angle: pi / 2,
                 child: Icon(
                   FeatherIcons.sliders,
-                  color: Style.getThemeData().primaryColor,
+                  color: _theme.primaryColor,
                   size: 20,
                 ),
               ),
@@ -84,39 +85,22 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
         ),
       ),
       Spacing.height(24),
-      FxText.b2("Search for Vegetables", letterSpacing: 0, fontWeight: 600),
+      Paragraph(
+        children: [
+          FxText.b2("Search for Vegetables", letterSpacing: 0, fontWeight: 600)
+        ],
+      ),
       Spacing.height(16),
-      Column(
-        children: buildProducts(),
-      )
+      Card(
+        padding: Spacing.horizontal(24),
+        child: Column(
+          children: _products.map((e) => _getProductWidget(e)).toList(),
+        ),
+      ),
     ]);
   }
 
-  List<Widget> buildProducts() {
-    List<Widget> list = [];
-    for (Product product in products) {
-      list.add(getSingleProduct(product));
-    }
-    return list;
-  }
-
-  static String randomString(int length) {
-    var rand = new Random();
-
-    var codeUnits = new List.generate(length, (index) {
-      return rand.nextInt(33) + 89;
-    });
-
-    return new String.fromCharCodes(codeUnits);
-  }
-
-  static String doubleToString(double value) {
-    return value.toStringAsFixed(value.truncateToDouble() == value ? 0 : 1);
-  }
-
-  Widget getSingleProduct(Product product) {
-    String heroKey = randomString(10);
-
+  Widget _getProductWidget(Product product) {
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -124,7 +108,7 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
             PageRouteBuilder(
                 transitionDuration: Duration(milliseconds: 500),
                 pageBuilder: (_, __, ___) =>
-                    GrocerySingleProductScreen(product, heroKey)));
+                    GrocerySingleProductScreen(product)));
       },
       child: FxContainer(
         margin: Spacing.bottom(16),
@@ -132,11 +116,11 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            FxContainer(
+            Card(
               background: Style.getThemeData().primaryColor.withAlpha(32),
               padding: Spacing.all(8),
               child: Hero(
-                tag: heroKey,
+                tag: "search-product-${product.id}",
                 child: ClipRRect(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Image.asset(
@@ -153,39 +137,51 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   FxText.b2(product.name,
-                      color: Style.getThemeData().colorScheme.onBackground,
-                      fontWeight: 600),
+                      color: _theme.colorScheme.onBackground, fontWeight: 600),
                   Spacing.height(8),
                   FxText.overline(product.description,
-                      color: Style.getThemeData().colorScheme.onBackground,
-                      muted: true),
+                      color: _theme.colorScheme.onBackground, muted: true),
                   Spacing.height(8),
                   product.discountedPrice != product.price
                       ? Row(
                           children: [
-                            FxText.caption("\$" + doubleToString(product.price),
+                            FxText.caption(
+                                "\$" +
+                                    product.price.toStringAsFixed(
+                                        product.price.truncateToDouble() ==
+                                                product.price
+                                            ? 0
+                                            : 1),
                                 decoration: TextDecoration.lineThrough,
                                 fontWeight: 500),
-                            // Space.width(8),
                             Spacing.width(8),
                             FxText.b2(
-                                "\$" + doubleToString(product.discountedPrice),
-                                color: Style.getThemeData()
-                                    .colorScheme
-                                    .onBackground,
+                                "\$" +
+                                    product.discountedPrice.toStringAsFixed(
+                                        product.discountedPrice
+                                                    .truncateToDouble() ==
+                                                product.discountedPrice
+                                            ? 0
+                                            : 1),
+                                color: _theme.colorScheme.onBackground,
                                 fontWeight: 700),
                           ],
                         )
-                      : FxText.b2("\$" + doubleToString(product.price),
-                          color: Style.getThemeData().colorScheme.onBackground,
+                      : FxText.b2(
+                          "\$" +
+                              product.price.toStringAsFixed(
+                                  product.price.truncateToDouble() ==
+                                          product.price
+                                      ? 0
+                                      : 1),
+                          color: _theme.colorScheme.onBackground,
                           fontWeight: 700),
                 ],
               ),
             ),
-            // Space.width(8),
             Icon(
               MdiIcons.heartOutline,
-              color: Style.getThemeData().primaryColor,
+              color: _theme.primaryColor,
               size: 18,
             )
           ],

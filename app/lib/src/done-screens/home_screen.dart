@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart' hide Card;
@@ -12,7 +11,6 @@ import 'package:zerodezenove/src/domain/product.dart';
 import 'package:zerodezenove/src/todo-screens/app_setting_screen.dart';
 import 'package:zerodezenove/src/todo-screens/category_screen.dart';
 import 'package:zerodezenove/src/todo-screens/single_product_screen.dart';
-import 'package:zerodezenove/src/widgets/FX/container/container.dart';
 import 'package:zerodezenove/src/widgets/FX/text/text.dart';
 import 'package:zerodezenove/src/widgets/paragraph/paragraph.dart';
 import 'package:zerodezenove/src/widgets/screen/screen.dart';
@@ -149,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen>
           ],
         ),
         Spacing.height(16),
-        Padding(
+        Card(
           padding: Spacing.horizontal(24),
           child: Column(
             children: _products.map((e) => _getProductWidget(e)).toList(),
@@ -161,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   Widget _getCategoryWidget(Category category) {
     return Hero(
-      tag: "category-${category.id}",
+      tag: "home-category-${category.id}",
       child: Card(
         width: 80,
         onTap: () {
@@ -200,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen>
             PageRouteBuilder(
                 transitionDuration: Duration(milliseconds: 500),
                 pageBuilder: (_, __, ___) =>
-                    GrocerySingleProductScreen(product, product.name)));
+                    GrocerySingleProductScreen(product)));
       },
       margin: Spacing.bottom(16),
       child: Card(
