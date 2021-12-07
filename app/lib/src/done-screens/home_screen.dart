@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart' hide Card;
@@ -11,6 +12,7 @@ import 'package:zerodezenove/src/domain/product.dart';
 import 'package:zerodezenove/src/todo-screens/app_setting_screen.dart';
 import 'package:zerodezenove/src/todo-screens/category_screen.dart';
 import 'package:zerodezenove/src/todo-screens/single_product_screen.dart';
+import 'package:zerodezenove/src/widgets/FX/container/container.dart';
 import 'package:zerodezenove/src/widgets/FX/text/text.dart';
 import 'package:zerodezenove/src/widgets/paragraph/paragraph.dart';
 import 'package:zerodezenove/src/widgets/screen/screen.dart';
@@ -120,17 +122,18 @@ class _HomeScreenState extends State<HomeScreen>
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: (() {
-              List<Widget> children = [];
-              children.add(Spacing.width(24));
+            children: buildCategories(),
+            // children: (() {
+            //   List<Widget> children = [];
+            //   children.add(Spacing.width(24));
 
-              for (int i = 0; i < _categories.length; i++) {
-                children.add(_getCategoryHero(_categories[i]));
-                children.add(Spacing.width(16));
-              }
+            //   for (int i = 0; i < _categories.length; i++) {
+            //     children.add(_getCategoryHero(_categories[i]));
+            //     children.add(Spacing.width(16));
+            //   }
 
-              return children;
-            }()),
+            //   return children;
+            // }()),
           ),
         ),
         Spacing.height(24),
@@ -156,8 +159,62 @@ class _HomeScreenState extends State<HomeScreen>
     );
   }
 
+  List<Widget> buildCategories() {
+    List<Widget> list = [];
+    list.add(Spacing.width(24));
+    for (int i = 0; i < _categories.length; i++) {
+      list.add(getSingleCategory(_categories[i]));
+      list.add(Spacing.width(16));
+    }
+    return list;
+  }
+
+  static String randomString(int length) {
+    var rand = new Random();
+    var codeUnits = new List.generate(length, (index) {
+      return rand.nextInt(33) + 89;
+    });
+
+    return new String.fromCharCodes(codeUnits);
+  }
+
+  Widget getSingleCategory(Category category) {
+    String heroTag = randomString(10);
+
+    return Hero(
+      tag: heroTag,
+      child: FxContainer(
+        width: 80,
+        onTap: () {
+          Navigator.push(
+              widget.rootContext,
+              PageRouteBuilder(
+                  transitionDuration: Duration(milliseconds: 500),
+                  pageBuilder: (_, __, ___) =>
+                      GroceryCategoryScreen(context, category, heroTag)));
+        },
+        padding: Spacing.all(16),
+        background: category.color,
+        child: Column(
+          children: [
+            Image.asset(
+              category.image,
+              width: 28,
+              height: 28,
+            ),
+            Spacing.height(4),
+            FxText.overline(
+              category.title,
+              color: _theme.colorScheme.onBackground,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _getCategoryHero(Category category) {
-    var hero = Hero(
+    return Hero(
       tag: category.image,
       child: Card(
         onTap: () {
@@ -187,8 +244,6 @@ class _HomeScreenState extends State<HomeScreen>
         ),
       ),
     );
-
-    return hero;
   }
 
   Widget _getProductScreen(Product product) {
