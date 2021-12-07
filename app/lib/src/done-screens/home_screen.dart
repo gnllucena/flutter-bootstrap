@@ -128,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen>
               children.add(Spacing.width(24));
 
               for (int i = 0; i < _categories.length; i++) {
-                children.add(_getCategoryHero(_categories[i]));
+                children.add(_getCategoryWidget(_categories[i]));
                 children.add(Spacing.width(16));
               }
 
@@ -152,14 +152,14 @@ class _HomeScreenState extends State<HomeScreen>
         Padding(
           padding: Spacing.horizontal(24),
           child: Column(
-            children: _products.map((e) => _getProductScreen(e)).toList(),
+            children: _products.map((e) => _getProductWidget(e)).toList(),
           ),
         )
       ],
     );
   }
 
-  Widget _getCategoryHero(Category category) {
+  Widget _getCategoryWidget(Category category) {
     return Hero(
       tag: "category-${category.id}",
       child: Card(
@@ -192,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen>
     );
   }
 
-  Widget _getProductScreen(Product product) {
+  Widget _getProductWidget(Product product) {
     return Card(
       onTap: () {
         Navigator.push(
