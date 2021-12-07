@@ -42,6 +42,16 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
   Widget build(BuildContext context) {
     _theme = Theme.of(context);
     return Screen(children: [
+      Paragraph(
+        children: [
+          FxText.h6(
+            "Search",
+            color: _theme.colorScheme.onBackground,
+            fontWeight: 600,
+          )
+        ],
+      ),
+      Spacing.height(16),
       Card(
         padding: Spacing.horizontal(24),
         child: Row(
@@ -66,23 +76,11 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
                 cursorColor: _theme.primaryColor,
                 focusedBorderColor: Colors.transparent,
               ),
-            ),
-            Spacing.width(16),
-            Card(
-              background: _theme.primaryColor.withAlpha(32),
-              child: Transform.rotate(
-                angle: pi / 2,
-                child: Icon(
-                  FeatherIcons.sliders,
-                  color: _theme.primaryColor,
-                  size: 20,
-                ),
-              ),
             )
           ],
         ),
       ),
-      Spacing.height(24),
+      Spacing.height(16),
       Paragraph(
         children: [
           FxText.b2("Search for Vegetables", letterSpacing: 0, fontWeight: 600)

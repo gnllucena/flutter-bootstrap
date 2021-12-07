@@ -3,9 +3,9 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:zerodezenove/src/configurations/spacing.dart';
 import 'package:zerodezenove/src/configurations/style.dart';
 import 'package:zerodezenove/src/todo-screens/cart_screen.dart';
-import 'package:zerodezenove/src/done-screens/home_screen.dart';
+import 'package:zerodezenove/src/screens/home_screen.dart';
 import 'package:zerodezenove/src/todo-screens/profile_screen.dart';
-import 'package:zerodezenove/src/done-screens/search_screen.dart';
+import 'package:zerodezenove/src/screens/search_screen.dart';
 import 'package:zerodezenove/src/widgets/FX/text/text.dart';
 
 class App extends StatefulWidget {
@@ -20,7 +20,6 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
 
   var _index = 0;
   late ThemeData _theme;
-
   late TabController _tabController;
 
   @override
@@ -53,7 +52,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
         children: [
           TabBarView(
             controller: _tabController,
-            physics: NeverScrollableScrollPhysics(),
+            // physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
               HomeScreen(rootContext: context),
               GrocerySearchScreen(rootContext: context),
