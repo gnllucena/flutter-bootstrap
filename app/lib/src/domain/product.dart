@@ -1,10 +1,11 @@
 import 'dart:math';
 
 class Product {
+  final int id;
   final String name, description, image;
   final double price, discountedPrice;
 
-  Product(this.name, this.description, this.image, this.price,
+  Product(this.id, this.name, this.description, this.image, this.price,
       this.discountedPrice);
 
   static const String _dummyText =
@@ -29,15 +30,15 @@ class Product {
 
   static List<Product> getList() {
     return [
-      Product("Orange Fresh Juice", "Generator.getDummyText(8)",
+      Product(1, "Orange Fresh Juice", "Generator.getDummyText(8)",
           "./assets/images/apps/grocery/product-2.png", 59.99, 49.99),
-      Product("Fresh Carrot", getDummyText(8),
+      Product(2, "Fresh Carrot", getDummyText(8),
           "./assets/images/apps/grocery/product-5.png", 19.99, 19.99),
-      Product("Juicy Grapes", getDummyText(8),
+      Product(3, "Juicy Grapes", getDummyText(8),
           "./assets/images/apps/grocery/product-3.png", 35, 35),
-      Product("Green Broccoli", getDummyText(8),
+      Product(4, "Green Broccoli", getDummyText(8),
           "./assets/images/apps/grocery/product-1.png", 39.99, 29.99),
-      Product("Cauliflower", getDummyText(8),
+      Product(5, "Cauliflower", getDummyText(8),
           "./assets/images/apps/grocery/product-4.png", 25, 25),
     ];
   }

@@ -14,9 +14,8 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 class GroceryCategoryScreen extends StatefulWidget {
   final BuildContext rootContext;
   final Category category;
-  final String heroTag;
 
-  const GroceryCategoryScreen(this.rootContext, this.category, this.heroTag);
+  const GroceryCategoryScreen(this.rootContext, this.category);
 
   @override
   _GroceryCategoryScreenState createState() => _GroceryCategoryScreenState();
@@ -59,7 +58,7 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
                 child: Column(
                   children: [
                     Hero(
-                      tag: widget.heroTag,
+                      tag: "widget.heroTag" + widget.category.title,
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),

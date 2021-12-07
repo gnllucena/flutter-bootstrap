@@ -38,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen>
     super.initState();
     _categories = Category.getList();
     _products = Product.getList();
+    _theme = Style.getThemeData();
   }
 
   @override
@@ -122,18 +123,17 @@ class _HomeScreenState extends State<HomeScreen>
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: buildCategories(),
-            // children: (() {
-            //   List<Widget> children = [];
-            //   children.add(Spacing.width(24));
+            children: (() {
+              List<Widget> children = [];
+              children.add(Spacing.width(24));
 
-            //   for (int i = 0; i < _categories.length; i++) {
-            //     children.add(_getCategoryHero(_categories[i]));
-            //     children.add(Spacing.width(16));
-            //   }
+              for (int i = 0; i < _categories.length; i++) {
+                children.add(_getCategoryHero(_categories[i]));
+                children.add(Spacing.width(16));
+              }
 
-            //   return children;
-            // }()),
+              return children;
+            }()),
           ),
         ),
         Spacing.height(24),
@@ -159,31 +159,10 @@ class _HomeScreenState extends State<HomeScreen>
     );
   }
 
-  List<Widget> buildCategories() {
-    List<Widget> list = [];
-    list.add(Spacing.width(24));
-    for (int i = 0; i < _categories.length; i++) {
-      list.add(getSingleCategory(_categories[i]));
-      list.add(Spacing.width(16));
-    }
-    return list;
-  }
-
-  static String randomString(int length) {
-    var rand = new Random();
-    var codeUnits = new List.generate(length, (index) {
-      return rand.nextInt(33) + 89;
-    });
-
-    return new String.fromCharCodes(codeUnits);
-  }
-
-  Widget getSingleCategory(Category category) {
-    String heroTag = randomString(10);
-
+  Widget _getCategoryHero(Category category) {
     return Hero(
-      tag: heroTag,
-      child: FxContainer(
+      tag: "category-${category.id}",
+      child: Card(
         width: 80,
         onTap: () {
           Navigator.push(
@@ -191,41 +170,8 @@ class _HomeScreenState extends State<HomeScreen>
               PageRouteBuilder(
                   transitionDuration: Duration(milliseconds: 500),
                   pageBuilder: (_, __, ___) =>
-                      GroceryCategoryScreen(context, category, heroTag)));
+                      GroceryCategoryScreen(context, category)));
         },
-        padding: Spacing.all(16),
-        background: category.color,
-        child: Column(
-          children: [
-            Image.asset(
-              category.image,
-              width: 28,
-              height: 28,
-            ),
-            Spacing.height(4),
-            FxText.overline(
-              category.title,
-              color: _theme.colorScheme.onBackground,
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _getCategoryHero(Category category) {
-    return Hero(
-      tag: category.image,
-      child: Card(
-        onTap: () {
-          Navigator.push(
-              widget.rootContext,
-              PageRouteBuilder(
-                  transitionDuration: Duration(milliseconds: 500),
-                  pageBuilder: (_, __, ___) => GroceryCategoryScreen(
-                      context, category, category.image)));
-        },
-        width: 80,
         padding: Spacing.all(16),
         background: category.color,
         child: Column(
