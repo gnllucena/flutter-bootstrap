@@ -29,6 +29,7 @@ class GrocerySearchScreen extends StatefulWidget {
 class _GrocerySearchScreenState extends State<GrocerySearchScreen>
     with SingleTickerProviderStateMixin {
   late List<Product> products;
+  late ThemeData _theme;
 
   @override
   initState() {
@@ -38,6 +39,7 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
 
   @override
   Widget build(BuildContext context) {
+    _theme = Theme.of(context);
     return Screen(children: [
       Container(
         child: Row(
@@ -67,7 +69,6 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
               ),
             ),
             Spacing.width(16),
-            //Space.width(16),
             FxContainer(
               background: Style.getThemeData().primaryColor.withAlpha(32),
               child: Transform.rotate(

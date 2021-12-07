@@ -19,13 +19,15 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 
   var _index = 0;
-  var _theme = Style.getThemeData();
+  late ThemeData _theme;
 
   late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
+
+    _theme = Style.getThemeData();
 
     _tabController = new TabController(length: 4, vsync: this, initialIndex: 0);
 
@@ -64,13 +66,13 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
             left: 0,
             right: 0,
             child: Container(
-              padding: Spacing.all(16),
+              padding: Spacing.all(12),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
                   color: CustomStyle.getThemeData().card.withAlpha(220),
                 ),
-                padding: Spacing.vertical(12),
+                padding: Spacing.vertical(6),
                 child: TabBar(
                   controller: _tabController,
                   indicator: BoxDecoration(),
@@ -78,16 +80,16 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                   indicatorColor: _theme.primaryColor,
                   tabs: <Widget>[
                     Container(
-                      child: _getAppBar("Home", 0, FeatherIcons.home),
+                      child: _getTabBar("Home", 0, FeatherIcons.home),
                     ),
                     Container(
-                      child: _getAppBar("Search", 1, FeatherIcons.search),
+                      child: _getTabBar("Search", 1, FeatherIcons.search),
                     ),
                     Container(
-                      child: _getAppBar("Cart", 2, FeatherIcons.shoppingCart),
+                      child: _getTabBar("Cart", 2, FeatherIcons.shoppingCart),
                     ),
                     Container(
-                      child: _getAppBar("User", 3, FeatherIcons.user),
+                      child: _getTabBar("User", 3, FeatherIcons.user),
                     ),
                   ],
                 ),
@@ -100,14 +102,15 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
     );
   }
 
-  Widget _getAppBar(String name, int index, IconData icon) {
+  Widget _getTabBar(String name, int index, IconData icon) {
     var color =
         index == _index ? _theme.primaryColor : _theme.colorScheme.onBackground;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Icon(icon, size: 25, color: color),
+        Icon(icon, size: 22, color: color),
+        Spacing.height(6),
         FxText.b3(name, color: color),
       ],
     );

@@ -11,7 +11,6 @@ import 'package:zerodezenove/src/domain/product.dart';
 import 'package:zerodezenove/src/todo-screens/app_setting_screen.dart';
 import 'package:zerodezenove/src/todo-screens/category_screen.dart';
 import 'package:zerodezenove/src/todo-screens/single_product_screen.dart';
-import 'package:zerodezenove/src/widgets/FX/container/container.dart';
 import 'package:zerodezenove/src/widgets/FX/text/text.dart';
 import 'package:zerodezenove/src/widgets/paragraph/paragraph.dart';
 import 'package:zerodezenove/src/widgets/screen/screen.dart';
@@ -35,13 +34,13 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   initState() {
     super.initState();
-    _theme = Style.getThemeData();
     _categories = Category.getList();
     _products = Product.getList();
   }
 
   @override
   Widget build(BuildContext context) {
+    _theme = Theme.of(context);
     return Screen(
       children: <Widget>[
         Paragraph(
@@ -158,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Widget _getCategoryHero(Category category) {
-    return Hero(
+    var hero = Hero(
       tag: category.image,
       child: Card(
         onTap: () {
@@ -188,6 +187,8 @@ class _HomeScreenState extends State<HomeScreen>
         ),
       ),
     );
+
+    return hero;
   }
 
   Widget _getProductScreen(Product product) {
