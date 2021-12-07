@@ -1,22 +1,20 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:flutter/rendering.dart';
+import 'package:flutter/material.dart' hide Typography, Card;
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:zerodezenove/src/todo-screens/single_product_screen.dart';
+import 'package:zerodezenove/src/widgets/FX/text/text.dart';
+import 'package:zerodezenove/src/widgets/card/card.dart';
+import 'package:zerodezenove/src/widgets/paragraph/paragraph.dart';
+import 'package:zerodezenove/src/widgets/screen/screen.dart';
 import 'package:zerodezenove/src/configurations/spacing.dart';
 import 'package:zerodezenove/src/configurations/style.dart';
 import 'package:zerodezenove/src/configurations/typography.dart';
 import 'package:zerodezenove/src/domain/product.dart';
 import 'package:zerodezenove/src/widgets/FX/text_field/text_field.dart';
-import 'package:flutter/material.dart' hide Typography, Card;
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:zerodezenove/src/widgets/FX/container/container.dart';
-import 'package:zerodezenove/src/widgets/FX/text/text.dart';
-import 'package:flutter/rendering.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:zerodezenove/src/widgets/card/card.dart';
-import 'package:zerodezenove/src/widgets/paragraph/paragraph.dart';
-import 'package:zerodezenove/src/widgets/screen/screen.dart';
-
-import '../todo-screens/single_product_screen.dart';
 
 class GrocerySearchScreen extends StatefulWidget {
   final BuildContext rootContext;
@@ -101,7 +99,7 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
   }
 
   Widget _getProductWidget(Product product) {
-    return InkWell(
+    return Card(
       onTap: () {
         Navigator.push(
             widget.rootContext,
@@ -110,17 +108,18 @@ class _GrocerySearchScreenState extends State<GrocerySearchScreen>
                 pageBuilder: (_, __, ___) =>
                     GrocerySingleProductScreen(product)));
       },
-      child: FxContainer(
-        margin: Spacing.bottom(16),
-        background: CustomStyle.getThemeData().card,
+      margin: Spacing.bottom(16),
+      child: Card(
+        padding: Spacing.all(16),
+        background: _theme.primaryColor.withAlpha(32),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Card(
-              background: Style.getThemeData().primaryColor.withAlpha(32),
+              background: _theme.primaryColor.withAlpha(32),
               padding: Spacing.all(8),
               child: Hero(
-                tag: "search-product-${product.id}",
+                tag: product.name,
                 child: ClipRRect(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Image.asset(
