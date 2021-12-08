@@ -168,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen>
               PageRouteBuilder(
                   transitionDuration: Duration(milliseconds: 500),
                   pageBuilder: (_, __, ___) =>
-                      GroceryCategoryScreen(context, category)));
+                      CategoryScreen(context, category)));
         },
         padding: Spacing.all(16),
         background: category.color,

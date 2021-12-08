@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/rendering.dart';
@@ -16,17 +15,16 @@ import 'package:zerodezenove/src/configurations/typography.dart';
 import 'package:zerodezenove/src/domain/product.dart';
 import 'package:zerodezenove/src/widgets/FX/text_field/text_field.dart';
 
-class GrocerySearchScreen extends StatefulWidget {
+class SearchScreen extends StatefulWidget {
   final BuildContext rootContext;
 
-  const GrocerySearchScreen({Key? key, required this.rootContext})
-      : super(key: key);
+  const SearchScreen({Key? key, required this.rootContext}) : super(key: key);
 
   @override
-  _GrocerySearchScreenState createState() => _GrocerySearchScreenState();
+  _SearchScreenState createState() => _SearchScreenState();
 }
 
-class _GrocerySearchScreenState extends State<GrocerySearchScreen>
+class _SearchScreenState extends State<SearchScreen>
     with SingleTickerProviderStateMixin {
   late List<Product> _products;
   late ThemeData _theme;

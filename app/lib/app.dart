@@ -55,7 +55,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
             // physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
               HomeScreen(rootContext: context),
-              GrocerySearchScreen(rootContext: context),
+              SearchScreen(rootContext: context),
               GroceryCartScreen(rootContext: context),
               GroceryProfileScreen(rootContext: context)
             ],

@@ -11,24 +11,24 @@ import 'package:zerodezenove/src/widgets/FX/text/text.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class GroceryCategoryScreen extends StatefulWidget {
+class CategoryScreen extends StatefulWidget {
   final BuildContext rootContext;
   final Category category;
 
-  const GroceryCategoryScreen(this.rootContext, this.category);
+  const CategoryScreen(this.rootContext, this.category);
 
   @override
-  _GroceryCategoryScreenState createState() => _GroceryCategoryScreenState();
+  _CategoryScreenState createState() => _CategoryScreenState();
 }
 
-class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
+class _CategoryScreenState extends State<CategoryScreen>
     with SingleTickerProviderStateMixin {
-  late List<Product> products;
+  late List<Product> _products;
 
   @override
   initState() {
     super.initState();
-    products = Product.getList();
+    _products = Product.getList();
   }
 
   @override
@@ -92,7 +92,7 @@ class _GroceryCategoryScreenState extends State<GroceryCategoryScreen>
 
   List<Widget> buildProducts() {
     List<Widget> list = [];
-    for (Product product in products) {
+    for (Product product in _products) {
       list.add(getSingleProduct(product));
     }
     return list;
