@@ -1,6 +1,10 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:flutter/material.dart' hide Card;
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:zerodezenove/src/widgets/card/card.dart';
+import 'package:zerodezenove/src/widgets/screen/screen.dart';
 import 'package:zerodezenove/src/configurations/spacing.dart';
 import 'package:zerodezenove/src/configurations/style.dart';
 import 'package:zerodezenove/src/domain/category.dart';
@@ -8,8 +12,6 @@ import 'package:zerodezenove/src/domain/product.dart';
 import 'package:zerodezenove/src/todo-screens/single_product_screen.dart';
 import 'package:zerodezenove/src/widgets/FX/container/container.dart';
 import 'package:zerodezenove/src/widgets/FX/text/text.dart';
-import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CategoryScreen extends StatefulWidget {
   final BuildContext rootContext;
@@ -24,69 +26,65 @@ class CategoryScreen extends StatefulWidget {
 class _CategoryScreenState extends State<CategoryScreen>
     with SingleTickerProviderStateMixin {
   late List<Product> _products;
+  late ThemeData _theme;
 
   @override
   initState() {
     super.initState();
     _products = Product.getList();
+    _theme = Style.getThemeData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: Style.getThemeData().copyWith(
-          colorScheme: Style.getThemeData()
-              .colorScheme
-              .copyWith(secondary: Style.getThemeData().primaryColor)),
-      child: Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            leading: InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Icon(
-                MdiIcons.chevronLeft,
-                color: Style.getThemeData().colorScheme.onBackground,
-              ),
-            ),
+    _theme = Theme.of(context);
+    return Screen(
+      padding: Spacing.fromLTRB(24, 0, 24, 0),
+      appBar: AppBar(
+        elevation: 0,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            MdiIcons.chevronLeft,
+            color: _theme.colorScheme.onBackground,
           ),
-          body: ListView(
-            padding: Spacing.fromLTRB(24, 0, 24, 0),
-            children: <Widget>[
-              Container(
-                child: Column(
-                  children: [
-                    Hero(
-                      tag: "category-category" + widget.category.title,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: widget.category.color,
-                        ),
-                        padding: Spacing.all(20),
-                        child: Image.asset(
-                          widget.category.image,
-                          width: 52,
-                          height: 52,
-                        ),
-                      ),
-                    ),
-                    Spacing.height(16),
-                    FxText.sh1(
-                      widget.category.title,
-                      color: Style.getThemeData().colorScheme.onBackground,
-                      fontWeight: 600,
-                    )
-                  ],
+        ),
+      ),
+      children: <Widget>[
+        Card(
+          child: Column(
+            children: [
+              Hero(
+                tag: "category-category" + widget.category.title,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: widget.category.color,
+                  ),
+                  padding: Spacing.all(20),
+                  child: Image.asset(
+                    widget.category.image,
+                    width: 52,
+                    height: 52,
+                  ),
                 ),
               ),
-              Spacing.height(24),
-              Column(
-                children: buildProducts(),
+              Spacing.height(16),
+              FxText.sh1(
+                widget.category.title,
+                color: Style.getThemeData().colorScheme.onBackground,
+                fontWeight: 600,
               )
             ],
-          )),
+          ),
+        ),
+        Spacing.height(24),
+        Column(
+          children: buildProducts(),
+        )
+      ],
     );
   }
 
